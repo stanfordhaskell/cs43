@@ -47,6 +47,7 @@ pages:
   only:
     - master
 ```
+
 ## Building locally
 
 To work locally with this project, you'll have to follow the steps below:
