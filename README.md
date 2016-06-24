@@ -26,8 +26,27 @@ documentation http://doc.gitlab.com/ee/pages/README.html.
 This project's static Pages are built by [GitLab CI][ci], following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
-contents of .gitlab-ci.yml in codeblock
+```
+image: haskell:7.10.3
 
+pages:
+  cache:
+    paths:
+      - .cabal-sandbox
+      - cabal.sandbox.config
+      - _cache
+  before_script:
+    - cabal sandbox init
+    - cabal update
+    - cabal install -j
+  script:
+    - cabal run site build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+```
 ## Building locally
 
 To work locally with this project, you'll have to follow the steps below:
