@@ -1,0 +1,19 @@
+image: haskell:7.10.3
+
+pages:
+  cache:
+    paths:
+      - .cabal-sandbox
+      - cabal.sandbox.config
+      - _cache
+  before_script:
+    - cabal sandbox init
+    - cabal update
+    - cabal install -j
+  script:
+    - cabal run site build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

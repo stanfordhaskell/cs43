@@ -1,0 +1,9 @@
+.cabal-sandbox
+cabal.sandbox.config
+dist/
+_cache
+public
+.cabal-sandbox
+.stack-work
+thumb/
+thumbs.db
