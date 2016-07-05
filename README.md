@@ -80,6 +80,9 @@ unless you want to contribute back to the upstream project.
 * [Google discussion group](https://groups.google.com/forum/#!forum/hakyll)
 * [Hakyll on StackOverflow](https://stackoverflow.com/questions/tagged/hakyll)
 
+---
+
+Forked from https://gitlab.com/jtojnar/hakyll
 
 [ci]: https://about.gitlab.com/gitlab-ci/
 [hakyll]: https://jaspervdj.be/hakyll/
