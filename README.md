@@ -32,21 +32,22 @@ image: haskell:7.10.3
 pages:
   cache:
     paths:
-      - .cabal-sandbox
-      - cabal.sandbox.config
       - _cache
+      - .stack
   before_script:
-    - cabal sandbox init
-    - cabal update
-    - cabal install -j
+    - export STACK_ROOT=`pwd`/.stack
+    - stack install --only-dependencies
+    - stack build
   script:
-    - cabal run site build
+    - stack exec site build
   artifacts:
     paths:
       - public
   only:
     - master
 ```
+
+Initial build may take some time (around 30 minutes), following builds will be significantly faster.
 
 ## Building locally
 
