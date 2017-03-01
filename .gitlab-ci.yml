@@ -1,4 +1,4 @@
-image: haskell:7.10.3
+image: haskell:latest
 
 pages:
   cache:
@@ -7,6 +7,7 @@ pages:
       - .stack
   before_script:
     - export STACK_ROOT=`pwd`/.stack
+    - stack setup
     - stack install --only-dependencies
     - stack build
   script:
