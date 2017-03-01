@@ -5,7 +5,7 @@
 Example [Hakyll] website using GitLab Pages.
 
 Learn more about GitLab Pages at https://pages.gitlab.io and the official
-documentation http://doc.gitlab.com/ee/pages/README.html.
+documentation https://docs.gitlab.com/ce/user/project/pages/.
 
 ---
 
@@ -89,5 +89,5 @@ Forked from https://gitlab.com/jtojnar/hakyll
 [hakyll]: https://jaspervdj.be/hakyll/
 [install]: https://jaspervdj.be/hakyll/tutorials/01-installation.html
 [documentation]: http://link-to-main-documentation-page
-[userpages]: http://doc.gitlab.com/ee/pages/README.html#user-or-group-pages
-[projpages]: http://doc.gitlab.com/ee/pages/README.html#project-pages
+[userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
+[projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
