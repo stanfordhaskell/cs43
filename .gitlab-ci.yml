@@ -1,15 +1,27 @@
 image: haskell:latest
 
+before_script:
+  - apt-get update && apt-get install xz make
+  - export STACK_ROOT=`pwd`/.stack
+  - stack setup
+  - stack install --only-dependencies
+  - stack build
+
+build:
+  cache:
+    paths:
+      - _cache
+      - .stack
+  script:
+    - stack exec site build
+  except:
+    - master
+
 pages:
   cache:
     paths:
       - _cache
       - .stack
-  before_script:
-    - export STACK_ROOT=`pwd`/.stack
-    - stack setup
-    - stack install --only-dependencies
-    - stack build
   script:
     - stack exec site build
   artifacts:
