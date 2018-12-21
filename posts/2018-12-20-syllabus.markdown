@@ -1,0 +1,221 @@
+---
+title: Syllabus
+---
+
+---
+title: Syllabus
+---
+
+1. Introduction
+
+    1. Lecture 1
+
+        1. What is Functional Programming?
+
+        2. What functional programming languages are there?
+
+        3. Chronology / history of FP
+
+        4. Course roadmap
+
+        5. One cool code example
+
+    2. Lecture 2
+
+        6. Haskell and Types Introduction
+
+        7. Setting up Haskell
+
+        8. A first example (not factorial)
+
+2. Functional Abstractions I - immutable data structures and map/filter/fold
+
+    3. Lecture 3
+
+        9. What is immutability?
+
+        10. How do you program? Emphasis on recursion, map, filter, fold
+
+            1. How this differs from imperative languages
+
+        11. Go through lots of examples
+
+    4. Lecture 4
+
+        12. More examples
+
+        13. Talk about performance characteristics of immutability
+
+        14. Briefly discuss how immutability is implemented
+
+    5. *Assignment 1 - Introduction to functional programming*
+
+        15. Working with higher order functions.  Emphasis on map, filter, reduce, etc.
+
+        16. Working with immutable data structures
+
+        17. Exploration of laziness
+
+        18. Introduction to Haskell’s built-in libraries
+
+3. Basic Types and type systems
+
+    6. Lecture 5
+
+        19. The distinction between dynamic / static PLs
+
+        20. The role of types in C/C++/Java: hardware representation
+
+        21. Mathematical types and Russell's paradox
+
+        22. Simple types in Haskell
+
+    7. Lecture 6
+
+        23. Algebraic data types
+
+        24. Mutually recursive types
+
+        25. Inference -- Hindley Milner systems
+
+        26. Type classes as a sort of "Prolog"
+
+            2. Encoding complex dependencies that are resolved at compile time
+
+4. Functional Abstractions II - first class functions, partial application, currying
+
+    8. Lecture 7
+
+        27. Functions as first class objects
+
+        28. Map - an example of a higher order function
+
+        29. Lambdas
+
+        30. Composition + implementing the composition operator
+
+    9. Lecture 8
+
+        31. Partial application
+
+        32. Currying
+
+        33. Pattern matching
+
+    10. *Assignment 2 - Types*
+
+        34. Algebraic data types
+
+        35. Type classes
+
+        36. More Higher order functions
+
+5. Lisp interpretation and intro to macros
+
+    11. Lecture 9
+
+        37. What is Lisp?
+
+        38. Decomposition of Lisp into a small core
+
+        39. Introducing Clojure
+
+        40. A few basic examples of Clojure, highlighting immutability, lazy sequences, higher order functions
+
+        41. Introducing the idea of "code is data"
+
+    12. Lecture 10
+
+        42. Introduction to Macros
+
+        43. Homoiconicity
+
+        44. Creating domain specific languages / extended the compiler
+
+        45. Lots of macro examples
+
+        46. Threading macro
+
+6. Functional Abstractions III - code as data
+
+    13. Lecture 11
+
+        47. A more theoretical treatment of macros
+
+        48. Draw examples from *On Lisp*
+
+        49. Go through "Programming syntax macros" (ACM SIGPLAN) and other important papers that discuss macros
+
+    14. Lecture 12
+
+        50. Discuss how to implement the macro system
+
+        51. Potentially go through the macro section of [https://github.com/kanaka/mal](https://github.com/kanaka/mal)
+
+    15. *Assignment 3 - Implementing a lisp*
+
+        52. Write macros in Clojure
+
+        53. Extend a basic implementation of a lisp written in class to include macros
+
+7. Advanced types in Haskell: functors, applicatives, monoids
+
+    16. Lecture 13
+
+        54. Functors and applicatives
+
+    17. Lecture 14
+
+        55. Monoids
+
+        56. The diagrams library - a nice example
+
+8. Functional Abstractions IV - building up to monads in practice
+
+    18. Lecture 15
+
+        57. Examples of code that works like a monad, a la [this](http://blog.sigfpe.com/2006/08/you-could-have-invented-monads-and.html)
+
+        58. Discerning the common structure
+
+        59. The monad
+
+    19. Lecture 16
+
+        60. Examples of monads
+
+            3. IO
+
+            4. Maybe
+
+            5. Writer
+
+            6. Reader
+
+        61. Writing a proper monad
+
+    20. *Assignment 4 - Monads*
+
+        62. Write a functor, applicative, monoid, and monad
+
+        63. Use some of the monads covered in class
+
+9. Concurrency in Clojure and the STM monad
+
+    21. Lecture 17
+
+        64. Immutability and concurrency: why concurrency is more natural in a functional language
+
+        65. Review mutex based concurrency
+
+    22. Lecture 18
+
+        66. Go through STM monads / Haskell concurrency primitives
+
+10. Additional topics based on student interest, project presentations
+
+    23. Lectures 19 & 20
+
+        67. Poll students on interest in possible additional topics, ex.: implementation of the IO monad, implementation details of immutable data structures, functional reactive programming, AI and functional programming, foundations of category theory and type theory
+
+        68. Students will have the option to replace up to 2 psets with a project, so long as it covers related material and is of comparable complexity. Students who have chosen to do so will be given an opportunity to present and discuss their work.
