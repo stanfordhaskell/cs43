@@ -2,6 +2,8 @@
 
 ---
 
+# Stanford CS43: Course website
+
 Course website for Stanford's CS43: Functional Programming Paradigms.
 
 ---
