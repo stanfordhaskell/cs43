@@ -2,10 +2,7 @@
 
 ---
 
-Example [Hakyll] website using GitLab Pages.
-
-Learn more about GitLab Pages at https://pages.gitlab.io and the official
-documentation https://docs.gitlab.com/ce/user/project/pages/.
+Course website for Stanford's CS43: Functional Programming Paradigms.
 
 ---
 
@@ -58,36 +55,3 @@ To work locally with this project, you'll have to follow the steps below:
 1. Generate the website: `stack exec site build`
 1. Preview your project: `stack exec site watch`
 1. Add content
-
-Read more at Hakyll's [documentation][hakyll].
-
-## GitLab User or Group Pages
-
-To use this project as your user/group website, you will need one additional
-step: just rename your project to `namespace.gitlab.io`, where `namespace` is
-your `username` or `groupname`. This can be done by navigating to your
-project's **Settings**.
-
-Read more about [user/group Pages][userpages] and [project Pages][projpages].
-
-## Did you fork this project?
-
-If you forked this project for your own use, please go to your project's
-**Settings** and remove the forking relationship, which won't be necessary
-unless you want to contribute back to the upstream project.
-
-## Getting help
-* [Tutorials](https://jaspervdj.be/hakyll/tutorials.html)
-* [Google discussion group](https://groups.google.com/forum/#!forum/hakyll)
-* [Hakyll on StackOverflow](https://stackoverflow.com/questions/tagged/hakyll)
-
----
-
-Forked from https://gitlab.com/jtojnar/hakyll
-
-[ci]: https://about.gitlab.com/gitlab-ci/
-[hakyll]: https://jaspervdj.be/hakyll/
-[install]: https://jaspervdj.be/hakyll/tutorials/01-installation.html
-[documentation]: http://link-to-main-documentation-page
-[userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
-[projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
