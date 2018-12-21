@@ -22,7 +22,7 @@ Course website for Stanford's CS43: Functional Programming Paradigms.
 
 ## GitLab CI
 
-This project's static Pages are built by [GitLab CI][ci], following the steps
+This project's static Pages are built by GitLab CI, following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
 ```
@@ -50,10 +50,10 @@ Initial build may take some time (around 30 minutes), following builds will be s
 
 ## Building locally
 
-To work locally with this project, you'll have to follow the steps below:
+To work locally with this project:
 
 1. Fork, clone or download this project
-1. [Install][] Hakyll.
+1. Install Hakyll.
 1. Generate the website: `stack exec site build`
 1. Preview your project: `stack exec site watch`
 1. Add content
