@@ -54,6 +54,7 @@ To work locally with this project:
 
 1. Fork, clone or download this project
 1. Install Hakyll.
+1. Build site generator: `stack build`
 1. Generate the website: `stack exec site build`
 1. Preview your project: `stack exec site watch`
 1. Add content
