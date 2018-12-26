@@ -16,11 +16,19 @@ main = hakyllWith config $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "tufte-css/et-book/*/*" $ do
+        route $ customRoute $ drop 6 . toFilePath
+        compile copyFileCompiler
+        
+    match "tufte-css/tufte.css" $ do
+        route $ constRoute "css/tufte.css"
+        compile compressCssCompiler
+
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
+    match (fromList ["about.markdown", "contact.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -54,7 +62,6 @@ main = hakyllWith config $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
                     defaultContext
 
             getResourceBody
