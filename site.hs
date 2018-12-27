@@ -28,7 +28,7 @@ main = hakyllWith config $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            notes <- recentFirst =<< loadAll "notes/*"
+            notes <- chronological =<< loadAll "notes/*"
             let indexCtx =
                     listField "notes" postCtx (return notes) `mappend`
                     defaultContext
