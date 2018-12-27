@@ -16,9 +16,9 @@ quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
         greater = filter (>= p) xs
 ```
 
-<!-- <figure class="repl-wrapper" -->
-<iframe height="200px" width="50%" src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-<!-- </figure> -->
+<figure class="repl-wrapper" style="height:30rem;">
+<iframe src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</figure>
 
 ## Functionality
 
