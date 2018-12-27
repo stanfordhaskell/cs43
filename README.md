@@ -22,16 +22,18 @@ Course website for Stanford's CS43: Functional Programming Paradigms.
 
 ## Webpage Structure
 
-- Class (Home Page)
-    1. Intro
-    1. Info
-    1. Thanks
-- Notes
+(Bullet = page, number = section)
+
+- Notes (Home Page)
     1. General Description
     1. ToC
         - Notes 1
         - Notes 2
         - etc.
+- Class
+    1. Intro
+    1. Info
+    1. Thanks
 - Resources
     1. Haskell Language
         1. Language Reference
