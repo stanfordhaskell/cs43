@@ -1,7 +1,9 @@
 ---
-title: Why Functional Programming?
+title: Notes Features
 published: 2000-01-01
 ---
+
+## Interactive Repls
 
 This is an example of an embedded repl. Notice that running the code doesn't
 work; you need to add an empty main function for it to compile. You could
@@ -16,13 +18,14 @@ allow-pointer-lock allow-popups allow-same-origin allow-scripts
 allow-modals"></iframe>
 </figure>
 
-## Heading
+## Math
 
-Lorem ipsum dolor sit amet, nec munere legendos te. Sea putant appellantur eu,
-in prima adhuc sed, labitur dissentiet vis ea. Accusata splendide mei id, his et
-eruditi temporibus, est novum iudico ei. Eu liber nonumes cotidieque has,
-detracto perfecto per ne, ut eius aperiri eripuit his. In aliquid utroque duo,
-simul percipitur cum no, tota facete assueverit nec ex.
+Here is an example of latex math embedding
+
+$$ y = mx +b $$
+
+and another, inline $ax = y$. (Note you can't have spaces between the \$ and the
+math).
 
 ## Heading
 
