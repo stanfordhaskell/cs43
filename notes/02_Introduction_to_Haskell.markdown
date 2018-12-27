@@ -13,8 +13,13 @@ factorial n = n * factorial (n - 1)
 ```
 
 The first line defines the base case.  The second line defines the recursive step.
-
-\todo{Add a quick note on tail call recursion}
+<label for="todo-tail-rec"
+       class="margin-toggle sidenote-number">
+</label>
+<input type="checkbox"
+       id="todo-tail-rec"
+       class="margin-toggle"/>
+<span class="sidenote">TODO: Add a quick note on tail call recursion.</span>
 
 ## List-based recursion
 
