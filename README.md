@@ -20,6 +20,27 @@ Course website for Stanford's CS43: Functional Programming Paradigms.
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Webpage Structure
+
+- Class (Home Page)
+    1. Intro
+    1. Info
+    1. Thanks
+- Notes
+    1. General Description
+    1. ToC
+        - Notes 1
+        - Notes 2
+        - etc.
+- Resources
+    1. Haskell Language
+        1. Language Reference
+        1. Build and Project Tools
+    1. General FP
+        1. History
+        1. Interesting papers and posts
+- GitLab
+
 ## GitLab CI
 
 This project's static Pages are built by GitLab CI, following the steps

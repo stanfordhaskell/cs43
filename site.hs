@@ -12,10 +12,11 @@ config = defaultConfiguration {
 
 main :: IO ()
 main = hakyllWith config $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
 
+--    match "images/*" $ do
+--        route   idRoute
+--        compile copyFileCompiler
+--
 --    match "tufte-css/et-book/*/*" $ do
 --        route $ customRoute $ drop 6 . toFilePath
 --        compile copyFileCompiler
@@ -28,7 +29,7 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "css/*/*/*" $ do
+    match "css/*/*/*" $ do -- fonts
         route   idRoute
         compile copyFileCompiler
 
@@ -38,7 +39,14 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    match "introduction/*" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
+    match "*.markdown" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
