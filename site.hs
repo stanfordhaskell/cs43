@@ -25,13 +25,26 @@ main = hakyllWith config $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "index.html" $ do
+        route idRoute
+        compile $ do
+            notes <- recentFirst =<< loadAll "notes/*"
+            let indexCtx =
+                    listField "notes" postCtx (return notes) `mappend`
+                    defaultContext
+
+            getResourceBody
+                >>= applyAsTemplate indexCtx
+                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= relativizeUrls
+
     match "*.markdown" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
-
-    match "notes/*/*" $ do
+        
+    match "notes/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" postCtx
