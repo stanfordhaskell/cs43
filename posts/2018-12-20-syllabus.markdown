@@ -2,10 +2,6 @@
 title: Syllabus
 ---
 
----
-title: Syllabus
----
-
 1. Introduction
 
     1. Lecture 1
