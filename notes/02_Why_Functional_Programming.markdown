@@ -1,6 +1,6 @@
 ---
 title: Why Functional Programming?
-published: 2000-01-01
+published: 2000-01-02
 ---
 
 This is an example of an embedded repl. Notice that running the code doesn't
