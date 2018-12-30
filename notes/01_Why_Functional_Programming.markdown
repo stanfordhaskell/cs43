@@ -3,11 +3,14 @@ title: Why Functional Programming?
 published: 2000-01-01
 ---
 
-This is an example of an embedded repl. Notice that running the code doesn't
-work; you need to add an empty main function for it to compile. You could
-probably fix this my making it a module; but that also adds bloat. This could
-still work for a limited number of code examples, but definitely not for all.
+In this article, we will distill how functional programming is intellectually stimulating and practically useful.
 
+Let's start with an example.  Here's an implementation of `quicksort`.  It's a striking example of Haskell's expressivity and concision.  
+
+(make this a sidenote)
+In what follows, we'll talk more about the implementation details of Haskell that enables this.
+
+Feel free to play around with it in the embedded interpreter:
 ```haskell
 quicksort [] = []
 quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
@@ -22,16 +25,35 @@ quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
 
 ## Functionality
 
-Lorem ipsum dolor sit amet, nec munere legendos te. Sea putant appellantur eu, in prima adhuc sed, labitur dissentiet vis ea. Accusata splendide mei id, his et eruditi temporibus, est novum iudico ei. Eu liber nonumes cotidieque has, detracto perfecto per ne, ut eius aperiri eripuit his. In aliquid utroque duo, simul percipitur cum no, tota facete assueverit nec ex.
+- Noun, "The quality of being suited to serve a purpose well; practicality" (OED)
 
-## Elegance
+- Noun, "Of or relating to functions in computer science or mathematics."
 
-Lorem ipsum dolor sit amet, nec munere legendos te. Sea putant appellantur eu, in prima adhuc sed, labitur dissentiet vis ea. Accusata splendide mei id, his et eruditi temporibus, est novum iudico ei. Eu liber nonumes cotidieque has, detracto perfecto per ne, ut eius aperiri eripuit his. In aliquid utroque duo, simul percipitur cum no, tota facete assueverit nec ex.
+Functional programming, we argue, pertains to both definitions.  By programming at a higher level of abstraction, it is often easier to get things done with less code (definition 1).
+
+On the other hand, functional programming is about programming with functions.  The emphasis is on writing software with the building blocks of functions.
+
+
+## Expressivity
+
+Haskell enables concise but powerful programs.  Nearly all types can be inferred by the compiler.  Functional programming emphasizes higher order functions and writing software at a higher level of abstraction.
+
+Collectively, this makes it possible to express ideas in fewer lines of code.
 
 ## Immutability
 
-## Concurrency
+In Haskell, data is immutable by default.  Pure, functional code is easier to reason about than stateful code.  Immutability prevents an entire class of bugs from the get go.
+
+Immutable, functionally pure languages are often well suited to applications of concurrency.
 
 ## Safety
 
+A strong, static type system makes it possible to write safe code for systems that matter.  In Haskell, GHC compiler identifies bugs before code is even run.  Libraries like [`quickcheck`](https://github.com/nick8325/quickcheck) can even automatically generate tests to accelerate development time.
+
 ## Orthogonality
+
+Haskell, and functional programming more broadly, is uncommon and orthogonal to the typical norm in software engineering.
+
+I argue that this orthogonality is a feature, not a bug.   For startups, it is often essential to move faster than industry competitors, and Haskell's unique tooling allows one to do so.
+
+<!-- ACG's post, "The Feynman heuristic" expounds on this further.  Paul Graham makes a similar point in ... -->
