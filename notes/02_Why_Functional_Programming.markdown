@@ -1,6 +1,6 @@
 ---
 title: Why Functional Programming?
-published: 2000-01-01
+published: 2000-01-02
 ---
 
 In this article, we will distill how functional programming is intellectually stimulating and practically useful.
@@ -19,9 +19,9 @@ quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
         greater = filter (>= p) xs
 ```
 
-<!-- <figure class="repl-wrapper" -->
-<iframe height="200px" width="50%" src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-<!-- </figure> -->
+<figure class="repl-wrapper" style="height:30rem;">
+<iframe src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</figure>
 
 ## Functionality
 
@@ -48,6 +48,7 @@ Immutable, functionally pure languages are often well suited to applications of 
 
 ## Safety
 
+<<<<<<< HEAD:notes/01_Why_Functional_Programming.markdown
 A strong, static type system makes it possible to write safe code for systems that matter.  In Haskell, GHC compiler identifies bugs before code is even run.  Libraries like [`quickcheck`](https://github.com/nick8325/quickcheck) can even automatically generate tests to accelerate development time.
 
 ## Orthogonality
@@ -57,3 +58,6 @@ Haskell, and functional programming more broadly, is uncommon and orthogonal to 
 I argue that this orthogonality is a feature, not a bug.   For startups, it is often essential to move faster than industry competitors, and Haskell's unique tooling allows one to do so.
 
 <!-- ACG's post, "The Feynman heuristic" expounds on this further.  Paul Graham makes a similar point in ... -->
+=======
+## Orthogonality
+>>>>>>> 98a05713b5f96b97ddcb2483fea62bbe8ff6524a:notes/02_Why_Functional_Programming.markdown
