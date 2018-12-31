@@ -1,6 +1,5 @@
 ---
 title: Introduction to Haskell
-published: 2000-01-03
 ---
 
 Haskell doesn't really have loops like imperative languages.  So, we need to rely on recursion to execute standard programming tasks.  We'll start with some easy examples since it takes a while to get used to thinking functionally.

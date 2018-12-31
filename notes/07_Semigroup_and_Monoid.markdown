@@ -1,6 +1,5 @@
 ---
 title: Semigroup and Monoid
-published: 2000-01-01
 ---
 
 ## Semigroup

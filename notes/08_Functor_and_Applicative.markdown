@@ -1,6 +1,5 @@
 ---
-title: Notes Features
-published: 2000-01-01
+title: Functor and Applicative
 ---
 
 ## Interactive Repls

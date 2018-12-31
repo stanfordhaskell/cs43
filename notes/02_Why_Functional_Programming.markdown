@@ -1,6 +1,5 @@
 ---
 title: Why Functional Programming?
-published: 2000-01-02
 ---
 
 In this article, we will distill how functional programming is intellectually stimulating and practically useful.

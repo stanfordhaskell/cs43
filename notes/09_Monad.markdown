@@ -1,6 +1,5 @@
 ---
 title: Notes Features
-published: 2000-01-01
 ---
 
 ## Interactive Repls
