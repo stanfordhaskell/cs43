@@ -2,34 +2,31 @@
 title: Functor and Applicative
 ---
 
-## Interactive Repls
+Intro stuff.
 
-This is an example of an embedded repl. Notice that running the code doesn't
-work; you need to add an empty main function for it to compile. You could
-probably fix this my making it a module; but that also adds bloat. This could
-still work for a limited number of code examples, but definitely not for all.
+## Functor<label for="functor" class="margin-toggle sidenote-number"></label>
 
-<figure class="repl-wrapper">
-<iframe height="400px" width="100%"
-src="https://repl.it/@cs43/Quicksort?lite=true" scrolling="no" frameborder="no"
-allowtransparency="true" allowfullscreen="true" sandbox="allow-forms
-allow-pointer-lock allow-popups allow-same-origin allow-scripts
-allow-modals"></iframe>
-</figure>
+<input type="checkbox" id="functor" class="margin-toggle"/>
+<span class="sidenote">
+    Functor on the [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Functor).
+</span>
 
-## Math
+The `Functor` is the most fundamental typeclass in the standard libraries.  Intuitively, a `Functor` can be viewed as a sort of "container," coupled with an ability to apply a function to every element in the container.  One example is a list: this is a container of elements, and we can uniformly apply a function to every element using `map`.
 
-Here is an example of latex math embedding
+## Definition
 
-$$ y = mx +b $$
+```haskell
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+ 
+  (<$) :: a        -> f b -> f a
+  (<$) = fmap . const
+```
 
-and another, inline $ax = y$. (Note you can't have spaces between the \$ and the
-math).
+ 
+## Applicative<label for="applicative" class="margin-toggle sidenote-number"></label>
 
-## Heading
-
-Lorem ipsum dolor sit amet, nec munere legendos te. Sea putant appellantur eu,
-in prima adhuc sed, labitur dissentiet vis ea. Accusata splendide mei id, his et
-eruditi temporibus, est novum iudico ei. Eu liber nonumes cotidieque has,
-detracto perfecto per ne, ut eius aperiri eripuit his. In aliquid utroque duo,
-...
+<input type="checkbox" id="applicative" class="margin-toggle"/>
+<span class="sidenote">
+    Applicative on the [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Applicative).
+</span>

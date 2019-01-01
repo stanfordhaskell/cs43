@@ -11,4 +11,3 @@ x = x + 1
 ```
 
 In Haskell, variables are 
-
