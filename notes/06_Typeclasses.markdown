@@ -86,23 +86,67 @@ All we are doing here is defining `(==)` for the type `Maybe a`. Note that we ha
 typeclass constraint on `a` being in `Eq`, since otherwise we could not have `x
 == y` in the second line. 
 
-## Some Common Typeclasses
+## Some Common Typeclasses<label for="haskell-2010"
+       class="margin-toggle sidenote-number">
+</label>
+<input type="checkbox"
+       id="haskell-2010"
+       class="margin-toggle"/>
+<span class="sidenote">
+These typeclasses are all part of the [Haskell 2010](https://www.haskell.org/onlinereport/haskell2010/haskellch6.html)
+ standard. Note that the type hierarchy given there no longer exactly that in the GHC Prelude.
+</span>
+
 
 ### Eq
 
+Equality.
+
 ```haskell
-class  Eq a  where
-  (==), (/=) :: a -> a -> Bool
-  x /= y = not (x == y)
+class  Eq a  where  
+  (==), (/=)  ::  a -> a -> Bool  
+
+  x /= y  = not (x == y)  
+  x == y  = not (x /= y)
 ```
+
+Note minimial complete definition.
 
 ### Ord
 
+Ordering can be represented in Haskell using the built-in type
+
+```haskell
+data Ordering = LT | EQ | GT
+```
+
+The typeclass `Ord` defined functions that compare values.
+
 ```haskell
 class  (Eq a) => Ord a  where
-  (<), (<=), (>=), (>)  :: a -> a -> Bool
-  max, min              :: a -> a -> a
+  compare              :: a -> a -> Ordering  
+  (<), (<=), (>=), (>) :: a -> a -> Bool  
+  max, min             :: a -> a -> a 
+
+  compare x y | x == y    = EQ  
+              | x <= y    = LT  
+              | otherwise = GT  
+
+  x <= y  = compare x y /= GT  
+  x <  y  = compare x y == LT  
+  x >= y  = compare x y /= LT  
+  x >  y  = compare x y == GT  
+
+  max x y | x <= y    =  y  
+          | otherwise =  x  
+  min x y | x <= y    =  x  
+          | otherwise =  y
 ```
+
+Defining either `compare` or `==` and `<=` for a type gives a minimal complete
+definition.
+
+Note the class constraint 
 
 ### Enum
 

@@ -59,4 +59,3 @@ I argue that this orthogonality is a feature, not a bug.   For startups, it is o
 <!-- ACG's post, "The Feynman heuristic" expounds on this further.  Paul Graham makes a similar point in ... -->
 =======
 ## Orthogonality
->>>>>>> 98a05713b5f96b97ddcb2483fea62bbe8ff6524a:notes/02_Why_Functional_Programming.markdown
