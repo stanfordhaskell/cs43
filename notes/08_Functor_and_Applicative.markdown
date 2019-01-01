@@ -1,5 +1,5 @@
 ---
-title: Notes Features
+title: Functor and Applicative
 ---
 
 ## Interactive Repls

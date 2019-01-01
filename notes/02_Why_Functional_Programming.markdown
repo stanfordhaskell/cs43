@@ -1,6 +1,5 @@
 ---
 title: Why Functional Programming?
-published: 2000-01-02
 ---
 
 In this article, we will distill how functional programming is intellectually stimulating and practically useful.
@@ -57,3 +56,5 @@ Haskell, and functional programming more broadly, is uncommon and orthogonal to 
 I argue that this orthogonality is a feature, not a bug.   For startups, it is often essential to move faster than industry competitors, and Haskell's unique tooling allows one to do so.
 
 <!-- ACG's post, "The Feynman heuristic" expounds on this further.  Paul Graham makes a similar point in ... -->
+=======
+## Orthogonality

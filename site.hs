@@ -26,19 +26,6 @@ main = hakyllWith config $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            notes <- chronological =<< loadAll "notes/*"
-            let indexCtx =
-                    listField "notes" postCtx (return notes) `mappend`
-                    defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
-
     match "*.markdown" $ do
         route $ setExtension "html"
         compile $ customPandocCompiler
