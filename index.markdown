@@ -14,6 +14,8 @@ Allan Jiang, co-creator of CS43.
 
 [Intro to Haskell](notes/03_Introduction_to_Haskell.html)
 
+[Typeclasses](notes/06_Typeclasses.html)
+
 [Semigroup and Monoid](notes/07_Semigroup_and_Monoid.html)
 
 [Functor and Applicative](notes/08_Functor.html)

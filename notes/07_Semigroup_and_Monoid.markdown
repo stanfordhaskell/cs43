@@ -2,32 +2,88 @@
 title: Semigroup and Monoid
 ---
 
-## Semigroup
+Intro stuff.
+
+## Semigroup<label for="semigroup" class="margin-toggle sidenote-number"></label>
+
+<input type="checkbox" id="semigroup" class="margin-toggle"/>
+<span class="sidenote">
+    Semigroup on the [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Semigroup).
+</span>
 
 
+Motivation.
 
+### Definition
 
-<figure class="repl-wrapper">
-<iframe height="400px" width="100%"
-src="https://repl.it/@cs43/Quicksort?lite=true" scrolling="no" frameborder="no"
-allowtransparency="true" allowfullscreen="true" sandbox="allow-forms
-allow-pointer-lock allow-popups allow-same-origin allow-scripts
-allow-modals"></iframe>
-</figure>
+Some text
 
-## Math
+```haskell
+class Semigroup a where
+  (<>) :: a -> a -> a
+ 
+  sconcat :: NonEmpty a -> a
+  sconcat = sconcat (a :| as) = go a as where
+    go b (c:cs) = b <> go c cs
+    go b []     = b
+ 
+  stimes :: Integral b => b -> a -> a
+  stimes = ...
+```
 
-Here is an example of latex math embedding
+### Laws
 
-$$ y = mx +b $$
+Laws and math
 
-and another, inline $ax = y$. (Note you can't have spaces between the \$ and the
-math).
+### Instances
 
-## Heading
-
-Lorem ipsum dolor sit amet, nec munere legendos te. Sea putant appellantur eu,
-in prima adhuc sed, labitur dissentiet vis ea. Accusata splendide mei id, his et
-eruditi temporibus, est novum iudico ei. Eu liber nonumes cotidieque has,
-detracto perfecto per ne, ut eius aperiri eripuit his. In aliquid utroque duo,
 ...
+
+## Monoid<label for="monoid" class="margin-toggle sidenote-number"></label>
+
+<input type="checkbox" id="monoid" class="margin-toggle"/>
+<span class="sidenote">
+    Monoid on the [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia#Monoid).
+</span>
+
+
+Motivation.
+
+### Definition
+
+Text here.
+
+```haskell
+class Monoid a where
+  mempty  :: a
+  mappend :: a -> a -> a
+ 
+  mconcat :: [a] -> a
+  mconcat = foldr mappend mempty
+```
+
+### Laws
+
+Laws and math
+
+### Instances
+
+...
+
+## Examples
+
+### Diagrams Library
+
+https://archives.haskell.org/projects.haskell.org/diagrams/doc/manual.html
+
+### Sorting Combinators
+
+https://www.reddit.com/r/programming/comments/7cf4r/monoids_in_my_programming_language/c06adnx/
+
+### Finger Trees
+
+https://apfelmus.nfshost.com/articles/monoid-fingertree.html
+
+http://andrew.gibiansky.com/blog/haskell/finger-trees/
+
+http://www.staff.city.ac.uk/~ross/papers/FingerTree.pdf
