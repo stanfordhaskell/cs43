@@ -21,8 +21,7 @@ The first line tells us the type signature.  `length` is a function that accepts
 - Recurse on \T{xs}.
 
 
-
-## Introduction to `map`
+# Generalizing basic functions
 
 [TODO: figure on stacked abstractions]
 
@@ -83,5 +82,22 @@ map _ [] = []
 map f (x:xs) = (f x) : map f xs
 ```
 
+# Tips and tricks
+
+Here we'll provide some tips and tricks that can be useful when getting acquainted with Haskell.
+
+## Dot dot notation
+
+We can specify lists of numbers using a convenient dot dot syntax.  For example, the code `[1..10]` evaluates to `[1,2,3,4,5,6,7,8,9,10]`.  This notation works with characters and floating point numbers, but more care must be taken.
+
+## Infinite lists
+
+Since Haskell performs _lazy evaluation_, lists in Haskell can be infinite.  For example, we can write code like this,
+
+```haskell
+evens = doubleList [1..]
+```
+
+where `evens` is in fact an infinite list of positive even numbers.
 
 -- Source: Haskell wikibook.
