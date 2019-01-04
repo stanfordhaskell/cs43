@@ -20,6 +20,11 @@ The first line tells us the type signature.  `length` is a function that accepts
 - If not, bind the variable `x` to the head of the list, and `xs` to the tail.
 - Recurse on \T{xs}.
 
+# Type system
+
+# Lazy evaluation
+
+# Immutability
 
 # Generalizing basic functions
 
