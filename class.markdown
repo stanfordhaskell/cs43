@@ -17,6 +17,9 @@ There are no formal prerequisites, but we recommend "programming maturity" at th
 
 ## Expectations
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+To pass the class (graded C/NC), we require:
+
+1. Attendance in >= 80% of lectures.
+2. Successful completion of >= 6/8 assignments.
+
+We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis.
