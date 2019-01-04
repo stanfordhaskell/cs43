@@ -53,8 +53,4 @@ A strong, static type system makes it possible to write safe code for systems th
 
 Haskell, and functional programming more broadly, is uncommon and orthogonal to the typical norm in software engineering.
 
-I argue that this orthogonality is a feature, not a bug.   For startups, it is often essential to move faster than industry competitors, and Haskell's unique tooling allows one to do so.
-
-<!-- ACG's post, "The Feynman heuristic" expounds on this further.  Paul Graham makes a similar point in ... -->
-=======
-## Orthogonality
+We argue that this orthogonality is a feature, not a bug.   For startups, it is often essential to move faster than industry competitors, and Haskell's unique tooling allows one to do so.
