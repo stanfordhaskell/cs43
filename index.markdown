@@ -10,9 +10,9 @@ Allan Jiang, co-creator of CS43.
 
 [Notes Features](notes/01_Notes_features.html)
 
-[Why FP](notes/02_Why_Functional_Programming.html)
+[Why Functional Programming?](notes/02_Why_Functional_Programming.html)
 
-[Intro to Haskell](notes/03_Introduction_to_Haskell.html)
+[Introduction to Haskell](notes/03_Introduction_to_Haskell.html)
 
 [Typeclasses](notes/06_Typeclasses.html)
 
