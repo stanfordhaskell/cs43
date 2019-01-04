@@ -4,22 +4,6 @@ title: Introduction to Haskell
 
 Haskell doesn't really have loops like imperative languages.  So, we need to rely on recursion to execute standard programming tasks.  We'll start with some easy examples since it takes a while to get used to thinking functionally.
 
-In Haskell, we can define a factorial function as follows:
-
-```haskell
-factorial 0 = 1
-factorial n = n * factorial (n - 1)
-```
-
-The first line defines the base case.  The second line defines the recursive step.
-<label for="todo-tail-rec"
-       class="margin-toggle sidenote-number">
-</label>
-<input type="checkbox"
-       id="todo-tail-rec"
-       class="margin-toggle"/>
-<span class="sidenote">TODO: Add a quick note on tail call recursion.</span>
-
 ## List-based recursion
 
 Consider the `length` function that finds the length of a list.  Below is a recursive definition.
@@ -36,19 +20,68 @@ The first line tells us the type signature.  `length` is a function that accepts
 - If not, bind the variable `x` to the head of the list, and `xs` to the tail.
 - Recurse on \T{xs}.
 
-## Concatenation
 
-The `(++)` function denotes concatenation, and joints two lists together.  
 
-```haskell
-Prelude> [1,2,3] ++ [4,5,6]
-[1,2,3,4,5,6]
-```
+## Introduction to `map`
 
-Think about this definition, and try to parse what this code means.
+[TODO: figure on stacked abstractions]
+
+Suppose we're writing a function that doubles every element in a list of `Integer`s.  We might write a function as follows:
 
 ```haskell
-(++) :: [a] -> [a] -> [a]
-[] ++ ys = ys
-(x:xs) ++ ys = x : xs ++ ys
+doubleList :: [Integer] -> [Integer]
+doubleList [] = []
+doubleList (x:xs) = (2 * x) : doubleList xs
 ```
+
+The first line is a type signature that states that "`doubleList` is a function that accepts lists of `Integer`s and returns lists of `Integer`s."  The next few parts specify the base case and recursive case.
+
+We can easily generalize this.
+
+We might write a function that multiplies every element in a list of `Integer`s by $m$.
+
+```haskell
+multiplyList :: Integer -> [Integer] -> [Integer]
+multiplyList _ [] = []
+multiplyList m (x:xs) = (m * x) : multiplyList m xs
+```
+
+The type signature looks different here.  It turns out that the `->` operator is right associative, so we can read this like
+
+```haskell
+multiplyList :: Integer -> ([Integer] -> [Integer])`
+```
+
+Intuitively, `multiplyList` takes a single integer and then returns a function with type signature `[Integer] -> [Integer]`.  In Haskell, this is _technically true_.  In particular, note that we can recover `doubleList` by passing one argument to `multiplyList`.  The following code
+
+```haskell
+doubleList' = multiplyList 2
+```
+gives us a function equivalent to the original.
+
+This is important.  Functions in Haskell are "first-class citizens," and behave like any other value.  As we've seen, functions can return other functions.  We now ask: can we accept functions _as arguments_?  The short answer is yes.  To generalize `multiplyList` further, we can write
+
+```
+applyToIntegers :: (Integer -> Integer) -> [Integer] -> [Integer]
+applyToIntegers _ [] = []
+applyToIntegers f (x:xs) = (f x) : applyToIntegers f xs
+```
+
+Now, we can recover multiplyList as follows:
+
+```
+multiplyList = applyToIntegers *
+```
+
+The take home message here is that _all Haskell functions only take one argument_.  This process, of creating intermediate functions when passing arguments into a complex function is called _currying_.
+
+Can we generalize `applyToIntegers` further still?  Indeed we can.  While its type signature is `(Integer -> Integer) -> [Integer] -> [Integer]`, the definition is not integer specific.  We can make a polymorphic version with the type signature `(a -> b) -> [a] -> [b]`.  This function is called `map`, which you might be familiar with:
+
+```haskell
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x:xs) = (f x) : map f xs
+```
+
+
+-- Source: Haskell wikibook.
