@@ -7,15 +7,13 @@ subtitle: Winter Quarter 2019
 
 This course explores the philosophy and fundamentals of functional programming, with a focus on the Haskell and Clojure programming languages. Topics include: functional abstractions (function composition, higher order functions), immutable data structures, type systems, Lisp macros, homoiconicity, and monads. The course interleaves a theoretical description of fundamentals with hands-on projects in Haskell and Clojure.
 
-- Lectures: Mon / Wed: 4:30pm - 5:50pm.
-- Office Hours: TBD
+- Lectures: Mon / Wed: 4:30pm - 5:50pm, at Building 200, Room 030.
 - Instructors: Adithya Ganesh and Isaac Scheinfeld
+- Office Hours: By appointment.
 
 ## Prerequisites
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-culpa qui officia deserunt mollit anim id est laborum.
+There are no formal prerequisites, but we recommend "programming maturity" at the level of CS107.
 
 ## Expectations
 
