@@ -1,6 +1,6 @@
 ---
 title: CS43 Notes
-subtitle: Functional Programming Paradigms
+subtitle: Functional Programming Abstractions
 ---
 
 These notes form an introductory course on functional programming focused
