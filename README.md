@@ -81,3 +81,10 @@ To work locally with this project:
 1. Generate the website: `stack exec site build`
 1. Preview your project: `stack exec site watch`
 1. Add content
+
+## Slides
+
+Slides are made using [reveal-md](https://github.com/webpro/reveal-md). First, install this globally with `npm`.
+
+1. `cd` into `/slides`
+2. To serve, run `reveal-md -w -t serif SLIDES.md`.
