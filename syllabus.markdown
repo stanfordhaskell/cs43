@@ -18,20 +18,17 @@ systems, and various functional design patters (monads, etc).
 
 ## Prerequisites
 
-There are no formal prerequisites, but we recommend "programming maturity" at
-the level of CS107.
+There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
+
 
 ## Expectations
 
 To pass the class (graded C/NC), we expect:
 
 1. Attendance in $\ge$ 80% of lectures.
-2. Successful completion of $\ge 6/8$ assignments, which should take no more than
-   an hour each.
+2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
 
-We also welcome open source contributions to the course materials; we will offer
-extra credit for this on a case-by-case basis to replace assignments and/or
-attendance.
+We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
 
 ## Weekly Schedule
 
