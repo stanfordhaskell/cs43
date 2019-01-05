@@ -6,7 +6,7 @@ Adithya Ganesh and Isaac Scheinfeld
 
 ## A brief history
 
---
+---
 
 ## The lambda calculus
 
@@ -22,7 +22,7 @@ $$ f = \lambda \, x \, . \, x + 1 $$
 
 Ref: http://www.cse.psu.edu/~gxt29//historyOfFP/historyOfFP.html#turing37
 
---
+---
 
 ## LISP
 
@@ -38,7 +38,7 @@ Ref: http://www.cse.psu.edu/~gxt29//historyOfFP/historyOfFP.html#turing37
 
 Ref: http://www.cse.psu.edu/~gxt29//historyOfFP/historyOfFP.html#turing37
 
---
+---
 
 ## Haskell
 
@@ -70,7 +70,25 @@ http://haskell.cs.yale.edu/wp-content/uploads/2011/02/history.pdf
 
 ## Course logistics
 
+* Lectures: Mon/Wed 4:30pm - 5:50pm.  Building 200, Room 030.
+* Office hours by appointment (for now).
+* Prerequisites: "Programming / mathematical maturity."  CS107 and CS103 should suffice.
 
+---
 
+## Course expectations
 
+To pass the class (C/NC), we expect:
 
+* Attendance in $\geq$ 80% of lectures.
+* Successful completion of $ \geq 6/8$ assignments, which should take no more than an hour each. 
+
+---
+
+## Open source
+
+We would like to open source the course materials.  We welcome contributions to the course repo, and will offer extra-credit on a case-by-case basis to replace assignments.
+
+---
+
+## Examples in Haskell
