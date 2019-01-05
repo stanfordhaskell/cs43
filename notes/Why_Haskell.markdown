@@ -13,22 +13,23 @@ In what follows, we'll talk more about the implementation details of Haskell
 that enables this.
 
 Feel free to play around with it in the embedded interpreter:
+
 ```haskell
 quicksort [] = []
 quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
-    where
-            lesser = filter (< p) xs
-                    greater = filter (>= p) xs
-                    ```
+  where
+    lesser = filter (< p) xs
+    greater = filter (>= p) xs
+```
 
-                    <figure class="repl-wrapper" style="height:30rem;">
-                    <iframe
-                    src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1"
-                    scrolling="no" frameborder="no" allowtransparency="true"
-                    allowfullscreen="true" sandbox="allow-forms
-                    allow-pointer-lock allow-popups allow-same-origin
-                    allow-scripts allow-modals"></iframe>
-                    </figure>
+<figure class="repl-wrapper" style="height:30rem;">
+<iframe
+src="https://repl.it/@cs43/QuickSortRepl?lite=true&outputonly=1"
+scrolling="no" frameborder="no" allowtransparency="true"
+allowfullscreen="true" sandbox="allow-forms
+allow-pointer-lock allow-popups allow-same-origin
+allow-scripts allow-modals"></iframe>
+</figure>
 
 ## Functionality
 
