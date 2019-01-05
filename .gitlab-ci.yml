@@ -13,7 +13,7 @@ build:
       - _cache
       - .stack
   script:
-    - stack exec site build
+    - stack exec site rebuild
   except:
     - master
 
