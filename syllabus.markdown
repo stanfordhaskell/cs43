@@ -13,6 +13,7 @@ systems, and various functional design patters (monads, etc).
 
 - Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030.
 - Instructors: Adithya Ganesh and Isaac Scheinfeld
+- Advisor: Jerry Cain
 - Office Hours: By appointment, with scheduled times TBD.
 
 ## Prerequisites
@@ -31,3 +32,10 @@ To pass the class (graded C/NC), we expect:
 We also welcome open source contributions to the course materials; we will offer
 extra credit for this on a case-by-case basis to replace assignments and/or
 attendance.
+
+## Weekly Schedule
+
+1. Introduction
+    - History, Logistics, and Diving In
+    - Functions and List Processing
+1. Week 2

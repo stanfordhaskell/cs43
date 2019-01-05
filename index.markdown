@@ -15,26 +15,31 @@ this page will be updated throughout the course with new material.
 
 ## Background and Basics
 
-[Why Functional Programming?](notes/02_Why_Functional_Programming.html)
+1. [Why Haskell?](notes/Why_Haskell.html): An overview of Haskell's defining
+   features, with brief examples.
+   
+1. [A Brief History](notes/A_Brief_History.html): A brief history of functional
+   programming, type systems, and Haskell.
 
-Getting Set Up
+1. Getting Set Up: One way to set up a Haskell environment with stack, as well
+   as some options for minimal tooling.
 
-[Introduction to Haskell](notes/03_Introduction_to_Haskell.html)
+1. [Introduction to Haskell](notes/Introduction_to_Haskell.html)
 
-[Typeclasses](notes/06_Typeclasses.html)
+1. [Typeclasses](notes/Typeclasses.html)
 
 ## Type Design Patterns
 
-[Semigroup and Monoid](notes/07_Semigroup_and_Monoid.html)
+1. [Semigroup and Monoid](notes/Semigroup_and_Monoid.html)
 
-[Functor and Applicative](notes/08_Functor.html)
+1. [Functor and Applicative](notes/Functor.html)
 
-[Monad](notes/09_Monad.html)
+1. [Monad](notes/Monad.html)
 
 ## Beyond Haskell
 
-Idris and Dependent Types
+1. Idris and Dependent Types
 
 ## Contributing
 
-[Notes Features](notes/01_Notes_features.html)
+1. [Notes Features](notes/Notes_features.html)
