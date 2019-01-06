@@ -14,60 +14,14 @@ Course website for Stanford's CS43: Functional Programming Paradigms.
 
 - [GitLab CI](#gitlab-ci)
 - [Building locally](#building-locally)
-- [GitLab User or Group Pages](#gitlab-user-or-group-pages)
-- [Did you fork this project?](#did-you-fork-this-project)
-- [Getting help](#getting-help)
+- [Slides](#slides)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Webpage Structure
-
-(Bullet = page, number = section)
-
-- Notes (Home Page)
-    1. General Description
-    1. ToC
-        - Notes 1
-        - Notes 2
-        - etc.
-- Class
-    1. Intro
-    1. Info
-    1. Thanks
-- Resources
-    1. Haskell Language
-        1. Language Reference
-        1. Build and Project Tools
-    1. General FP
-        1. History
-        1. Interesting papers and posts
-- GitLab
 
 ## GitLab CI
 
 This project's static Pages are built by GitLab CI, following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
-
-```
-image: haskell:7.10.3
-
-pages:
-  cache:
-    paths:
-      - _cache
-      - .stack
-  before_script:
-    - export STACK_ROOT=`pwd`/.stack
-    - stack install --only-dependencies
-    - stack build
-  script:
-    - stack exec site build
-  artifacts:
-    paths:
-      - public
-  only:
-    - master
-```
 
 Initial build may take some time (around 30 minutes), following builds will be significantly faster.
 
