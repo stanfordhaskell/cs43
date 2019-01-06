@@ -7,8 +7,14 @@ title: Getting Set Up
 The simplest way to get started with Haskell is the
 [Stack](https://docs.haskellstack.org/en/stable/README/) build system. Stack
 handles sandboxing (allowing different projects to use different versions of the
-GHC (TODO note) compiler and packages), dependency resolution, and building Haskell
+GHC<label for="GHC" class="margin-toggle sidenote-number"></label><input type="checkbox" id="GHC" class="margin-toggle"/>
+<span class="sidenote">
+    The [Glasgow Haskell Compiler](https://wiki.haskell.org/GHC) is by far the
+    most commonly-used Haskell compiler, and provides a variety of extensions to
+    the standard Haskell language.
+</span> compiler and packages), dependency resolution, and building Haskell
 applications.
+
 
 ### Installation
 
@@ -56,7 +62,8 @@ manual](https://docs.haskellstack.org/en/stable/GUIDE/#hello-world-example).
 
 ### The REPL
 
-An important tool in Haskell development is `ghci`, a REPL (TODO note) provided
+An important tool in Haskell development is `ghci`, a REPL<label for="GHC" class="margin-toggle sidenote-number"></label><input type="checkbox" id="GHC" class="margin-toggle"/>
+<span class="sidenote">Read-Eval-Print-Loop</span> provided
 by GHC. We can start `ghci` and load our project's code as follows.
 
 ```
