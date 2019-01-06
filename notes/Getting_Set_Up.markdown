@@ -93,6 +93,6 @@ A variety of tooling is available for Haskell. We recommend, at least at first,
 setting up syntax highlighting in the text editor of your choice and relying
 only on it and ghci.
 
+<!---
 TODO add links to syntax highlighting and further config
-
-
+-->
