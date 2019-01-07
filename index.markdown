@@ -1,45 +1,32 @@
 ---
-title: CS43 Notes
-subtitle: Functional Programming Abstractions
+title: Class Information
+subtitle: CS43 -  Winter Quarter 2019
 ---
 
-These notes form an introductory course on functional programming using the
-Haskell programming language, based on Stanford's CS43. They are intended to
-briefly present the necessary syntax and basic concepts (which are covered
-elsewhere in much greater depth) and focus on further theoretical exposition and
-examples. They are written by Adithya Ganesh and Isaac Scheinfeld, under the
-advising of Jerry Cain.  Special thanks to Allan Jiang, co-creator of CS43.
+## General Info
 
-Note that since this is the first year this material is being taught in CS43,
-this page will be updated throughout the course with new material.
+This course explores the philosophy and fundamentals of functional programming,
+focusing on the Haskell language, its theoretical underpinnings, and practical
+applications. Topics include: functional abstractions
+(function composition, higher order functions), immutable data structures, type
+systems, and various functional design patters (monads, etc). 
 
-## Background and Basics
+- Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030.
+- Instructors: Adithya Ganesh and Isaac Scheinfeld
+- Advisor: Jerry Cain
+- Office Hours: By appointment, with scheduled times TBD.
 
-1. [Why Haskell?](notes/Why_Haskell.html): An overview of Haskell's defining
-   features, with brief examples.
-   
-1. [A Brief History](notes/A_Brief_History.html): A brief history of functional
-   programming, type systems, and Haskell.
+## Prerequisites
 
-1. Getting Set Up: One way to set up a Haskell environment with stack, as well
-   as some options for minimal tooling.
+There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
 
-1. [Introduction to Haskell](notes/Introduction_to_Haskell.html)
 
-1. [Typeclasses](notes/Typeclasses.html)
+## Expectations
 
-## Type Design Patterns
+To pass the class (graded C/NC), we expect:
 
-1. [Semigroup and Monoid](notes/Semigroup_and_Monoid.html)
+1. Attendance in $\ge$ 80% of lectures.
+2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
 
-1. [Functor and Applicative](notes/Functor.html)
+We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
 
-1. [Monad](notes/Monad.html)
-
-## Beyond Haskell
-
-1. Idris and Dependent Types
-
-## Contributing
-
-1. [Notes Features](notes/Notes_features.html)
