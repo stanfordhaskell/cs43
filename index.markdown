@@ -30,3 +30,6 @@ To pass the class (graded C/NC), we expect:
 
 We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
 
+## Attendance form
+
+The attendance form is [here](https://goo.gl/forms/rXTlBo5CrRSvpdxp1).
