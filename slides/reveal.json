@@ -1,5 +1,5 @@
 {
   "controls": true,
   "progress": true,
-  "transition": "none"
+  "transition": "fade"
 }
