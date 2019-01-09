@@ -33,17 +33,15 @@ allow-scripts allow-modals"></iframe>
 
 ## Functionality
 
-- Noun, "The quality of being suited to serve a purpose well; practicality"
-  (OED)
+- Noun, "The quality of being suited to serve a purpose well; practicality" (source: OED)
 
-  - Noun, "Of or relating to functions in computer science or mathematics."
+- Noun, "Of or relating to functions in computer science or mathematics." (source: us)
 
-  Functional programming, we argue, pertains to both definitions.  By
-  programming at a higher level of abstraction, it is often easier to get things
-  done with less code (definition 1).
+Functional programming, pertains to both definitions.  By
+programming at a higher level of abstraction, it is often easier to get things
+done with less code.
 
-  On the other hand, functional programming is about programming with functions.
-  The emphasis is on writing software with the building blocks of functions.
+On the other hand, functional programming is fundamentally about programming with functions.
 
 
 ## Expressivity
