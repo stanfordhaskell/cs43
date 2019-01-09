@@ -15,12 +15,9 @@ this page will be updated throughout the course with new material.
 
 ## Background and Basics
 
-1. Why Haskell?<!--[Why Haskell?](notes/Why_Haskell.html)-->: An overview of Haskell's defining
+1. [Why Haskell?](notes/Why_Haskell.html): An overview of Haskell's defining
    features, with brief examples.
    
-1. A Brief History<!---[A Brief History](notes/A_Brief_History.html)-->: A brief history of functional
-   programming, type systems, and Haskell.
-
 1. [Getting Set Up](notes/Getting_Set_Up.html): One way to set up a Haskell environment with stack, as well
    as some options for minimal tooling.
 
