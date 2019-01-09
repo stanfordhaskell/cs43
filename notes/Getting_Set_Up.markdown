@@ -35,6 +35,7 @@ template
 
 ```
 stack new first-project simple
+cd first-project
 ```
 
 with the following directory structure.
@@ -86,7 +87,8 @@ redefined to take on new values, among other things. This will become clearer in
 the next set of notes.
 
 `ghci` also supports a variety of specialty commands. The most useful will be
-`:r`, which reloads the project code, and `:t x`, which gives the type of `x`.
+`:r`, which reloads the project code, `:t x`, which gives the type of `x`, and
+`:q`, which quits the repl.
 
 ```
 *Main> :r

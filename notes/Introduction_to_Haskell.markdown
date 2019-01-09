@@ -1,108 +1,258 @@
 ---
-title: Introduction to Haskell
+title: Expressions, Values, and Types
 ---
 
-Haskell doesn't really have loops like imperative languages.  So, we need to rely on recursion to execute standard programming tasks.  We'll start with some easy examples since it takes a while to get used to thinking functionally.
+## Every expression has a value
 
-## List-based recursion
-
-Consider the `length` function that finds the length of a list.  Below is a recursive definition.
-
-```haskell
-length :: [a] -> Int
-length [] = 0
-length (x:xs) = 1 + length xs
-```
-
-The first line tells us the type signature.  `length` is a function that accepts a list of an arbitrary type `a`, and returns an `Int`.  The `x:xs` section is a feature of list-based pattern matching.  Here's how the function works:
-
-- Check if the list is `[]`.  If so, return 0.
-- If not, bind the variable `x` to the head of the list, and `xs` to the tail.
-- Recurse on \T{xs}.
-
-## Type system
-
-## Lazy evaluation
-
-## Immutability
-
-## Generalizing basic functions
-
-[TODO: figure on stacked abstractions]
-
-Suppose we're writing a function that doubles every element in a list of `Integer`s.  We might write a function as follows:
+Variables in Haskell are immutable; once defined, their values never change. For
+this reason, the following code gives an error
 
 ```haskell
-doubleList :: [Integer] -> [Integer]
-doubleList [] = []
-doubleList (x:xs) = (2 * x) : doubleList xs
+x = 1
+x = 2 -- error "multiple declarations of x"
 ```
 
-The first line is a type signature that states that "`doubleList` is a function that accepts lists of `Integer`s and returns lists of `Integer`s."  The next few parts specify the base case and recursive case.
-
-We can easily generalize this.
-
-We might write a function that multiplies every element in a list of `Integer`s by $m$.
+and the order of definitions does not matter so long as all variables are defined.
 
 ```haskell
-multiplyList :: Integer -> [Integer] -> [Integer]
-multiplyList _ [] = []
-multiplyList m (x:xs) = (m * x) : multiplyList m xs
+z = x + 1
+x = 1
 ```
 
-The type signature looks different here.  It turns out that the `->` operator is right associative, so we can read this like
+Thus, since variables and more generally expressions in Haskell never change in 
+value, any expression can be replaced with its value at any point in a Haskell
+program to no effect.^[This property, known as "referential transparency," is
+what makes Haskell a "pure" language.]
+
+In this sense, Haskell variables are similar to variables in mathematics where, for
+example, the $x$ in $2 x + 1 = 0$ has a single unchanging value and replacing it
+with that values does not change the truth of the statement.
+
+If variables cannot change, how does Haskell do anything useful? This first
+answer to this question is provided by functions.
 
 ```haskell
-multiplyList :: Integer -> ([Integer] -> [Integer])`
+inc x = x + 1
+absMax x y = if abs x > abs y
+                then abs x
+                else abs y
 ```
 
-Intuitively, `multiplyList` takes a single integer and then returns a function with type signature `[Integer] -> [Integer]`.  In Haskell, this is _technically true_.  In particular, note that we can recover `doubleList` by passing one argument to `multiplyList`.  The following code
+We can use these functions in `ghci` or elsewhere in our code.
 
 ```haskell
-doubleList' = multiplyList 2
-```
-gives us a function equivalent to the original.
-
-This is important.  Functions in Haskell are "first-class citizens," and behave like any other value.  As we've seen, functions can return other functions.  We now ask: can we accept functions _as arguments_?  The short answer is yes.  To generalize `multiplyList` further, we can write
-
-```
-applyToIntegers :: (Integer -> Integer) -> [Integer] -> [Integer]
-applyToIntegers _ [] = []
-applyToIntegers f (x:xs) = (f x) : applyToIntegers f xs
+ghci> inc 4
+5
+ghci> absMax (-4) 2
+4
 ```
 
-Now, we can recover multiplyList as follows:
-
-```
-multiplyList = applyToIntegers *
-```
-
-The take home message here is that _all Haskell functions only take one argument_.  This process, of creating intermediate functions when passing arguments into a complex function is called _currying_.
-
-Can we generalize `applyToIntegers` further still?  Indeed we can.  While its type signature is `(Integer -> Integer) -> [Integer] -> [Integer]`, the definition is not integer specific.  We can make a polymorphic version with the type signature `(a -> b) -> [a] -> [b]`.  This function is called `map`, which you might be familiar with:
+Functions in Haskell are values like any other. While they cannot be printed in
+the REPL,
 
 ```haskell
-map :: (a -> b) -> [a] -> [b]
-map _ [] = []
-map f (x:xs) = (f x) : map f xs
+ghci> inc
 ```
 
-# Tips and tricks
+```error
+error:
+    • No instance for (Show (Integer -> Integer))
+```
 
-Here we'll provide some tips and tricks that can be useful when getting acquainted with Haskell.
-
-## Dot dot notation
-
-We can specify lists of numbers using a convenient dot dot syntax.  For example, the code `[1..10]` evaluates to `[1,2,3,4,5,6,7,8,9,10]`.  This notation works with characters and floating point numbers, but more care must be taken.
-
-## Infinite lists
-
-Since Haskell performs _lazy evaluation_, lists in Haskell can be infinite.  For example, we can write code like this,
+since Haskell does not know how to print function values, they 
+can be treated like any other value. Thus, we can pass functions as
+arguments to other functions,
 
 ```haskell
-evens = doubleList [1..]
+applyTwice f x = f (f x)
 ```
 
-where `evens` is in fact an infinite list of positive even numbers.
+and evaluate them on different values in the repl.
 
--- Source: Haskell wikibook.
+```haskell
+ghci> applyTwice inc 3
+5
+ghci> applyTwice not True
+True
+```
+
+In the same way, Haskell programs give different results only by treating the
+outside world as an input to a function which the program defines.^[Don't worry
+about this too much, it will become much clearer later on.]
+
+Since functions are so important in Haskell, it has plenty of syntactic sugar
+for defining them. The most basic representation of a function in Haskell
+is as a function value without a name
+
+```haskell
+ghci> (\x -> x + 1) 5
+6
+```
+
+The function definitions above do nothing more than name these anonymous
+functions, for example the functions above are equivalent to
+
+```haskell
+inc = \x -> x + 1
+absMax = \x y -> if abs x > abs y then abs x else abs y
+applyTwice = \f x -> f (f x)
+```
+
+In Haskell functions are applied simply by writing them before their arguments.
+The only exception is infix functions like `+` which are written between their
+arguments, though surrounding them in parentheses makes them act like normal
+functions.
+
+```haskell
+ghci> 1 + 2
+3
+ghci> (+) 1 2
+3
+```
+
+## Every value has a type
+
+Every value in Haskell, and therefore every expression with that value, has a
+type.
+
+```haskell
+ghci> :t True
+True :: Bool
+```
+
+Some expressions can represent different values with different types depending
+on context^[This is known as polymorphism.], for example written out integers can
+represent any of Haskell's number types.
+
+```haskell
+ghci> :t 1
+1 :: Num p => p
+```
+
+This type signature says that `1` can be of any type `p` so long as `p` is part
+of the number type class `Num`.^[This will be explained in great detail when we cover
+typeclasses, but for now it is sufficient to know that `Num` represents a set of
+types for which the usual numerical operations are defined.] Here, `p` is a type
+variable. In general, everything before `=>` in a type signature is a constraint
+on its type variables. When we want a polymorphic expression to have a specific
+type we can annotate it.
+
+```haskell
+ghci> :t (1 :: Int)
+(1 :: Int) :: Int
+ghci> :t (1 :: Float)
+(1 :: Float) :: Float
+```
+
+Since functions are values, they also have types.
+
+```haskell
+ghci> :t not
+not :: Bool -> Bool
+ghci> :t (+)
+(+) :: Num a => a -> a -> a
+```
+
+Haskell is strongly typed, meaning that functions cannot be applied to values of the
+wrong type and such errors are caught at compilation.
+
+```haskell
+ghci> not (1 :: Int)
+```
+```error
+error:
+     • Couldn't match expected type ‘Bool’
+       with actual type ‘Int’
+```
+
+One of Haskell's strongest features is type inference. Every expression in
+Haskell has an associated type, but one rarely needs to write this out
+explicitely since Haskell can usually figure out the type on its own. For
+example, when we defined `inc` Haskell inferred the type for us.
+
+```haskell
+ghci> :t inc
+inc :: Num a => a -> a
+```
+
+Just like written integers, the `inc` function is polymorphic, and returns a
+value of its input type so long as that input type is in `Num`.
+
+```haskell
+ghci> :t inc (1 :: Int)
+inc (1 :: Int) :: Int
+```
+
+While Haskell's ability to infer types is powerful, it is often a good idea to
+specify the type of a function by writing the type above its definition. This
+can be very useful in reasoning about code, and also forces the function to have
+the prescribed type even if Haskell could give it a more general one. Thus, we
+could write^[Note that Haskell's infix functions can be written as normal
+functions that take their arguments on the right by surrounding them in
+parentheses.]
+
+```haskell
+incInt :: Int -> Int
+incInt = inc
+```
+
+and this annotated function could not be passed a value of any type besides
+`Int`.
+
+```haskell
+ghci> incInt (1 :: Float)
+```
+```error
+error:
+    • Couldn't match expected type ‘Int’
+      with actual type ‘Float’
+```
+
+## Currying
+
+Haskell functions are applied to only one argument, and function application is
+evaluated left to right, i.e. is left associative. This means that a function
+`f` of two arguments `f x y` is correctly interpreted as `f` being applied to
+`x` to give a function which is applied to `y`, i.e.
+
+```haskell
+f x y == (f x) y
+```
+
+The type signature of `f` hints at this as well.
+
+```haskell
+f :: a -> b -> c
+```
+
+This says that `f` takes a value of type `a` and returns a function that takes a
+value of type `b` and returns a value of type `c`. Here, the `->` symbol in the
+type signature is applied right to left, i.e. it is right associative. Thus, the
+type above can be written as 
+
+```haskell
+f :: a -> (b -> c)
+```
+
+Note that function application associates to the left and `->` associates to the
+right because the first or innermost function application corresponds to the
+outermost `->`. If you don't see this right away, it is a good point to dwell
+on.
+
+This property allows us to simplify many definitions using equational reasoning,
+i.e. rewriting definitions as one might in math.^[This is an example of
+translating a function into so-called pointfree style. More will be said about this later
+on.]
+
+```haskell
+inc x = (+) 1 x
+inc   = (+) 1
+```
+
+Here `(+) 1` is a partial application of `(+)`. 
+
+```haskell
+(+) ::  Num a => a -> (a -> a)
+(+) 1 ::  Num a => a -> a 
+(+) 1 2 :: Num a => a
+```

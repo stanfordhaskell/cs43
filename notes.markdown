@@ -24,8 +24,7 @@ this page will be updated throughout the course with new material.
 1. [Getting Set Up](notes/Getting_Set_Up.html): One way to set up a Haskell environment with stack, as well
    as some options for minimal tooling.
 
-1. Introduction to Haskell<!--[Introduction to
-   Haskell](notes/Introduction_to_Haskell.html)-->: Expressions, values, and
+1. [Introduction to Haskell](notes/Introduction_to_Haskell.html): Expressions, values, and
    types.
 
 1. Algebraic Datatypes: Defining and using types in Haskell, and the basics of
