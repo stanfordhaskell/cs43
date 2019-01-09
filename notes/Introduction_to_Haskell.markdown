@@ -33,11 +33,18 @@ answer to this question is provided by functions.
 
 ```haskell
 inc x = x + 1
-doubleSum x y = 2 * (x + y)
+absMax x y = if abs x > abs y
+                then abs x
+                else abs y
 ```
 
+We can use these functions in `ghci` or elsewhere in our code.
+
 ```haskell
-ghci> doubleSum 1 2 = 6
+ghci> inc 4
+5
+ghci> absMax (-4) 2
+4
 ```
 
 Functions in Haskell are values like any other. While they cannot be printed in
@@ -87,7 +94,7 @@ functions, for example the functions above are equivalent to
 
 ```haskell
 inc = \x -> x + 1
-doubleSum = \x y -> 2 * (x + y)
+absMax = \x y -> if abs x > abs y then abs x else abs y
 applyTwice = \f x -> f (f x)
 ```
 
