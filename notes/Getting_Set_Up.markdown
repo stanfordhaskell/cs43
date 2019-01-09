@@ -35,6 +35,7 @@ template
 
 ```
 stack new first-project simple
+cd first-project
 ```
 
 with the following directory structure.

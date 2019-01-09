@@ -14,7 +14,7 @@ main = putStrLn "hello world"
 -------------------------------
 
 a = 1
--- a = 2 -- immutable
+-- a = 3 -- immutable
 
 b = (c, 5, "This is a tuple")
 c = True -- order invariant
@@ -23,7 +23,7 @@ d = [1, 2, 3, 4]
 -- > [1..4]
 -- > take 4 [1..]
 
-e = [5 * x | x <- [1..],
+e = [5 * x | x <- [1..4],
              mod x 3 == 0 ] -- infinite values
 -- > take 5 e
 
@@ -70,9 +70,11 @@ type StringAlias = String
 -- > :t ((&&) True)
 -- > :t (+)
 -- > :t ((+) :: Int -> Int -> Int)
+--
+sum3 x y z = x + y + z
 
 inc :: Int -> Int  -- inference
-inc x = (+) 1 x
+inc x = ((+) 1) x
 
 inc' :: Int -> Int
 inc' = (+) 1
