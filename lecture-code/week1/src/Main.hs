@@ -13,39 +13,43 @@ main = putStrLn "hello world"
 -- Every expression has a value
 -------------------------------
 
-a = 1
--- a = 3 -- immutable
+a = True
+-- a = False -- immutable
 
-b = (c, 5, "This is a tuple")
-c = True -- order invariant
+b = c + 1
+c = 1 -- order invariant
 
-d = [1, 2, 3, 4]
--- > [1..4]
--- > take 4 [1..]
+-- Functions -----------------------------------
 
-e = [5 * x | x <- [1..4],
-             mod x 3 == 0 ] -- infinite values
--- > take 5 e
+inc x = 1 + x
 
-f x = if x > 10
-         then 10
-         else x
+inc' x = (+) 1 x 
 
-f' x
-    | x > 10 = 10
-    | True   = x
+-- > inc 4
 
-g x y = x * y + 1
--- > g 1 2 == (g 1) 2
--- > g 1 2 == 1 `g` 2
--- > 1 + 2 == (+) 1 2
 
-h x y z
-    | x < y && y < z = "ascending"
-    | x > y && y > z = "descending"
-    | otherwise      = "z wins!"
+absMax x y = if abs x > abs y
+                then abs x
+                else abs y
 
--- > otherwise == True
+absMax' x y
+    | abs x > abs y = abs x
+    | otherwise     = abs y -- otherwise == True
+
+-- > absMax (-5) 2
+
+
+applyTwice f x = f (f x)
+
+applyTwice' f x = f $ f x
+
+-- > applyTwice inc 4
+
+-- Anonymous Functions --------------------------------
+
+inc'' = \x -> x + 1
+absMax'' = \x y -> if abs x > abs y then abs x else abs y
+applyTwice'' = \f x -> f (f x)
 
 
 ------------------------------------
@@ -55,29 +59,41 @@ h x y z
 -- > :t True
 -- > :t 1 
 -- > :t (1 :: Int)
--- > :t (True, False, 1 :: Int)
--- > :t "Hello"
--- > :t [1, 2, 3, 15]
--- > :t ("hello" :: String) == ("hello" :: [Char])
-
-type StringAlias = String
-
--- > :t (1 :: Int) == (1 :: Integer)
+-- > :t (1 :: Float)
 
 
 -- > :t not
--- > :t (&&)
--- > :t ((&&) True)
--- > :t (+)
--- > :t ((+) :: Int -> Int -> Int)
---
-sum3 x y z = x + y + z
+-- > not (1 :: Int)
 
-inc :: Int -> Int  -- inference
-inc x = ((+) 1) x
+-- Inference
+-- > :t inc 
+-- > :t (inc :: Int -> Int)
+-- > (inc :: Int -> Int) (1 :: Float)
 
-inc' :: Int -> Int
-inc' = (+) 1
+incInt :: Int -> Int
+incInt x = x + 1
+
+-- Currying ----------------------------
+
+sumInts x y = (x :: Int) + y
+
+-- > :t sumInts
+-- > sumInts 1 2
+-- > (sumInts 1) 2
+
+sumInts' :: Int -> (Int -> Int)
+sumInts' = \x -> (\y -> x + y)
+
+incInt' :: Int -> Int          -- read type signature as take and give
+incInt' x = sumInts 1 x
+
+incInt'' :: Int -> Int         -- read type signature as value
+incInt'' = \x -> (sumInts 1) x -- applies function to x
+
+incInt''' :: Int -> Int
+incInt''' = sumInts 1
+
+
 
 lowestForm :: Int -> Int -> Bool
 lowestForm num denom
@@ -102,13 +118,23 @@ lowestForm num denom
 --               ...
 --               | Constructor Type Type ...
 
-data Point = Point Float Float
+data Point = Point Float Float deriving (Show)
+
+-- > Point 0 1
+-- > :t Point 0 1
+-- > :t Point
+
+norm :: Point -> Float
+norm (Point x y) = sqrt $ x ^ 2 + y ^ 2
+
+
+
 
 data Coord = Point0D
            | Point1D Float
            | Point2D Float Float
            | Point3D Float Float Float
-    deriving (Eq, Show)
+    deriving (Show)
 
 getXCoord :: Coord -> Float
 getXCoord (Point3D x y z) = x
@@ -128,6 +154,8 @@ getXCoord' (Point1D x)     = Just x
 getXCoord' Point0D         = Nothing
 
 
+-- above, we needed a type for alternate or error
+
 -- data Either a b  =  Left a | Right b
 
 lowestForm' :: Int -> Int -> Either String Bool
@@ -135,4 +163,44 @@ lowestForm' num denom
     | gcd num denom /= 1 = Right False
     | denom == 0         = Left "error, divide by 0"
     | otherwise          = Right True
+
+
+-- Recursive datatypes  ----------------------
+
+data List a = Nil
+            | Cons a (List a)
+    deriving (Show)
+
+-- > Nil
+-- > :t Nil
+-- > Cons True Nil
+-- > :t Cons True Nil
+-- > Cons 1 $ Cons 2 $ Cons 3 $ Cons 4 Nil
+-- > :t Cons 1 $ Cons 2 $ Cons 3 $ Cons 4 Nil
+
+listHead :: List a -> a
+listHead (Cons a _) = a
+
+-- > listHead (Cons 1 $ Cons 2 $ Cons 3 Nil)
+-- > listHead Nil
+
+safeListHead :: List a -> Maybe a
+safeListHead Nil        = Nothing
+safeListHead (Cons a _) = Just a
+
+{- Lists in Haskell
+
+data [] a = []
+          | a : [a]
+
+head (x:xs)             =  x
+-}
+
+-- > [1, 2, 3] == 1 : 2 : 3 : []
+
+safeHead :: [a] -> Maybe a
+safeHead [] = Nothing
+safeHead (x:xs) = Just x
+
+-- > safeHead [1, 2, 3, 4]
 
