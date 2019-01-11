@@ -25,12 +25,6 @@ The first line tells us the type signature.  `length` is a function that accepts
 - If not, bind the variable `x` to the head of the list, and `xs` to the tail.
 - Recurse on \T{xs}.
 
-## Type system
-
-## Lazy evaluation
-
-## Immutability
-
 ## Generalizing basic functions
 
 [TODO: figure on stacked abstractions]
@@ -91,3 +85,19 @@ map :: (a -> b) -> [a] -> [b]
 map _ [] = []
 map f (x:xs) = (f x) : map f xs
 ```
+
+## Lazy evaluation
+
+Example 1.
+
+Example 2.
+
+Example 3.
+
+## Immutability
+
+List processing and immutability.
+
+Example 1.
+
+Example 2.
