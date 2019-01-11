@@ -21,13 +21,15 @@ this page will be updated throughout the course with new material.
 1. [Getting Set Up](notes/Getting_Set_Up.html): One way to set up a Haskell environment with stack, as well
    as some options for minimal tooling.
 
-1. [Introduction to Haskell](notes/Introduction_to_Haskell.html): Expressions, values, and
-   types.
+1. [Introduction to Haskell](notes/Introduction_to_Haskell.html): Expressions, values, and types.
 
 1. Algebraic Datatypes: Defining and using types in Haskell, and the basics of
    type algebra.
 
-1. Functional Design Patterns: Recursion and list processing.
+1. Higher Order Functions: Functions that operate on other functions, generalizing basic functions, and defining `map`.
+
+1. Folds, Scans, and Zippers: Examining the many ways to process lists.
+
 
 1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and
    deriving typeclasses, and the power of polymorphism.
