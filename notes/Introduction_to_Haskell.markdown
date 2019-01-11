@@ -33,6 +33,7 @@ answer to this question is provided by functions.
 
 ```haskell
 inc x = x + 1
+
 absMax x y = if abs x > abs y
                 then abs x
                 else abs y
@@ -48,7 +49,7 @@ ghci> absMax (-4) 2
 ```
 
 Functions in Haskell are values like any other. While they cannot be printed in
-the REPL,
+the REPL since Haskell does not know how to print function values,
 
 ```haskell
 ghci> inc
@@ -59,15 +60,14 @@ error:
     • No instance for (Show (Integer -> Integer))
 ```
 
-since Haskell does not know how to print function values, they 
-can be treated like any other value. Thus, we can pass functions as
-arguments to other functions,
+we can pass functions as arguments to other functions.
 
 ```haskell
 applyTwice f x = f (f x)
 ```
 
-and evaluate them on different values in the repl.
+This lets us define higher-order functions that control the behaviour of other
+functions and enable higher levels of abstraction.
 
 ```haskell
 ghci> applyTwice inc 3
@@ -76,21 +76,22 @@ ghci> applyTwice not True
 True
 ```
 
-In the same way, Haskell programs give different results only by treating the
-outside world as an input to a function which the program defines.^[Don't worry
-about this too much, it will become much clearer later on.]
+Since Haskell values are immutable and therefore cannot change during runtime,
+programs give different results only by treating the outside world as an input
+to a function which the program defines.^[Don't worry about this too much, it
+will become much clearer later on.]
 
-Since functions are so important in Haskell, it has plenty of syntactic sugar
-for defining them. The most basic representation of a function in Haskell
-is as a function value without a name
+The most basic representation of a function in Haskell is as an unnamed,
+anonymous function value.
 
 ```haskell
 ghci> (\x -> x + 1) 5
 6
 ```
 
-The function definitions above do nothing more than name these anonymous
-functions, for example the functions above are equivalent to
+Haskell has plenty of syntactic sugar for defining functions. For example, the
+function definitions above do nothing more than name these anonymous functions,
+and they are interpreted as
 
 ```haskell
 inc = \x -> x + 1
@@ -108,6 +109,20 @@ ghci> 1 + 2
 3
 ghci> (+) 1 2
 3
+```
+
+While function application is implicit in Haskell, there is also a function
+operator `$`. While this might seem redundant since
+
+```haskell
+f x == f $ x
+```
+
+one use for `$` is enabled by it having the lowest precedence of any operator.
+This allows it to replace parentheses in many expressions as follows.
+
+```haskell
+f (g (h x)) == f $ g $ h x
 ```
 
 ## Every value has a type
@@ -153,8 +168,10 @@ ghci> :t (+)
 (+) :: Num a => a -> a -> a
 ```
 
-Haskell is strongly typed, meaning that functions cannot be applied to values of the
-wrong type and such errors are caught at compilation.
+Here `(+)` takes two values of some type `a` and returns a value of type `a`, so
+long as `a` is a type in the `Num` typeclass. Haskell is strongly typed, meaning
+that functions cannot be applied to values of the wrong type and such errors are
+caught at compilation.
 
 ```haskell
 ghci> not (1 :: Int)
@@ -225,10 +242,10 @@ The type signature of `f` hints at this as well.
 f :: a -> b -> c
 ```
 
-This says that `f` takes a value of type `a` and returns a function that takes a
-value of type `b` and returns a value of type `c`. Here, the `->` symbol in the
-type signature is applied right to left, i.e. it is right associative. Thus, the
-type above can be written as 
+This says that `f` takes a value of type `a` and returns a value of type `a ->
+a`, which is a function that takes a value of type `b` and returns a value of
+type `c`. Here, the `->` symbol in the type signature is applied right to left,
+i.e. it is right associative. Thus, the type above can be written as 
 
 ```haskell
 f :: a -> (b -> c)
@@ -240,12 +257,12 @@ outermost `->`. If you don't see this right away, it is a good point to dwell
 on.
 
 This property allows us to simplify many definitions using equational reasoning,
-i.e. rewriting definitions as one might in math.^[This is an example of
-translating a function into so-called pointfree style. More will be said about this later
-on.]
+i.e. rewriting definitions as one might in math.^[Equational reasoning will be a
+reoccuring theme. Here, we are translating a function into so-called pointfree
+style. More will be said about this later on.]
 
 ```haskell
-inc x = (+) 1 x
+inc x = ((+) 1) x
 inc   = (+) 1
 ```
 

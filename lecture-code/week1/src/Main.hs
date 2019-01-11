@@ -97,8 +97,8 @@ incInt''' = sumInts 1
 
 lowestForm :: Int -> Int -> Bool
 lowestForm num denom
+    | denom == 0         = error "error, divide by 0"
     | gcd num denom /= 1 = False
-    | denom == 0         = False
     | otherwise          = True
 
 -- try and replace the second False with "invalid fraction"
@@ -118,7 +118,8 @@ lowestForm num denom
 --               ...
 --               | Constructor Type Type ...
 
-data Point = Point Float Float deriving (Show)
+data Point = Point Float Float
+    deriving (Show)
 
 -- > Point 0 1
 -- > :t Point 0 1
@@ -127,31 +128,41 @@ data Point = Point Float Float deriving (Show)
 norm :: Point -> Float
 norm (Point x y) = sqrt $ x ^ 2 + y ^ 2
 
+xCoord (Point x _) = x
+yCoord (Point _ y) = y
 
+data Point' = Point' { xCoord' :: Float,
+                       yCoord' :: Float }
 
-
-data Coord = Point0D
-           | Point1D Float
-           | Point2D Float Float
-           | Point3D Float Float Float
+data Person = Person { name :: String,
+                       age :: Int }
     deriving (Show)
 
-getXCoord :: Coord -> Float
-getXCoord (Point3D x y z) = x
-getXCoord (Point2D x y)   = x
-getXCoord (Point1D x)     = x
-getXCoord Point0D         = 0.0
+
+
+data Rect = Rect2D Float Float
+          | Rect3D Float Float Float
+    deriving (Show)
+
+rectLength (Rect2D l _)   = l
+rectLength (Rect3D l _ _) = l
+
+rectWidth  (Rect2D _ w)   = w
+rectWidth  (Rect3D _ w _) = w
+
+rectHeight  (Rect2D _ _)   = 0 -- Does this make sense?
+rectHeight  (Rect3D _ _ h) = h
 
 -- need type for optional or missing values
 
 
 -- data Maybe a = Just a | Nothing
+data OptionalFloat = Existing Float | Nope
 
-getXCoord' :: Coord -> Maybe Float
-getXCoord' (Point3D x y z) = Just x
-getXCoord' (Point2D x y)   = Just x
-getXCoord' (Point1D x)     = Just x
-getXCoord' Point0D         = Nothing
+rectHeight'  (Rect2D _ _)   = Nothing 
+-- rectHeight'  (Rect3D _ _ h) = Just h
+
+
 
 
 -- above, we needed a type for alternate or error
@@ -203,4 +214,6 @@ safeHead [] = Nothing
 safeHead (x:xs) = Just x
 
 -- > safeHead [1, 2, 3, 4]
+
+
 
