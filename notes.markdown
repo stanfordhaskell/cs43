@@ -26,7 +26,7 @@ this page will be updated throughout the course with new material.
 1. Algebraic Datatypes: Defining and using types in Haskell, and the basics of
    type algebra.
 
-1. Higher Order Functions: Functions that operate on other functions, generalizing basic functions, and defining `map`.
+1. [Higher Order Functions](notes/Higher_Order_Functions.html): Functions that operate on other functions, generalizing basic functions, and defining `map`.
 
 1. Folds, Scans, and Laziness: Examining the many ways to process lists.
 
