@@ -28,7 +28,7 @@ this page will be updated throughout the course with new material.
 
 1. Higher Order Functions: Functions that operate on other functions, generalizing basic functions, and defining `map`.
 
-1. Folds, Scans, and Zippers: Examining the many ways to process lists.
+1. Folds, Scans, and Laziness: Examining the many ways to process lists.
 
 
 1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and

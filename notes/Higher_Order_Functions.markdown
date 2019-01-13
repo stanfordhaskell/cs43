@@ -86,18 +86,41 @@ map _ [] = []
 map f (x:xs) = (f x) : map f xs
 ```
 
+## The filter function
+
+As in other languages, `filter` is a function that takes a predicate and a list, and returns the list of elements that satisfy the predicate.
+
+Its type signature is
+
+```
+filter :: (a -> Bool) -> [a] -> [a],
+```
+
+and it behaves as follows:
+
+```
+filter p xs = [ x | x <- xs, p x]
+```
+
+Here are some examples:
+
+```haskell
+Prelude> filter even [1..10]
+[2,4,6,8,10]
+Prelude> filter (>2) [1,6,2,3,8,3]
+[6,3,8,3]
+```
+
 ## Lazy evaluation
 
-Example 1.
+Haskell is a lazy language.  "Expressions are not evaluated when they are bound to variables, but their evaluation is deferred until their results are needed by other computatations" (source: [Haskell wiki](https://wiki.haskell.org/Lazy_evaluation)).
 
-Example 2.
+We will revisit `quicksort`, as it highlights ways in which Haskell is lazy.
 
-Example 3.
+Suppose we have the following implementation:
+```haskell
+quickSort [] = []
+quickSort (x:xs) = quickSort (filter (< x) xs) ++ [x] ++ quickSort (filter (>= x) xs)
+````
 
-## Immutability
-
-List processing and immutability.
-
-Example 1.
-
-Example 2.
+If we run `take k $ quicksort xs`, then thanks to lazy evaluation, only the first `k` elements will be sorted.  Indeed, this will take $O(n + k \log k)$ time, whereas a non-lazy quicksort would always take $O(n \log n)$ time.
