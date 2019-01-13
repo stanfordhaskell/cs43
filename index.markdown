@@ -16,6 +16,10 @@ systems, and various functional design patters (monads, etc).
 - Advisor: Jerry Cain
 - Office Hours: By appointment, with scheduled times TBD.
 
+## Assignments
+
+- HW1 will go out in week 2.
+
 ## Prerequisites
 
 There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
