@@ -99,17 +99,3 @@ Prelude> filter even [1..10]
 Prelude> filter (>2) [1,6,2,3,8,3]
 [6,3,8,3]
 ```
-
-## Lazy evaluation
-
-Haskell is a lazy language.  "Expressions are not evaluated when they are bound to variables, but their evaluation is deferred until their results are needed by other computatations" (source: [Haskell wiki](https://wiki.haskell.org/Lazy_evaluation)).
-
-We will revisit `quicksort`, as it highlights ways in which Haskell is lazy.
-
-Suppose we have the following implementation:
-```haskell
-quickSort [] = []
-quickSort (x:xs) = quickSort (filter (< x) xs) ++ [x] ++ quickSort (filter (>= x) xs)
-````
-
-If we run `take k $ quicksort xs`, then thanks to lazy evaluation, only the first `k` elements will be sorted.  Indeed, this will take $O(n + k \log k)$ time, whereas a non-lazy quicksort would always take $O(n \log n)$ time.
