@@ -22,7 +22,7 @@ There is no formal textbook, but we recommend the Haskell wikibook as a primary 
 
 ## Assignments
 
-- HW1 will go out in week 2.
+- [Assignment 1](/assignments/assign1.html) (out: 1/14, due: 1/21).
 
 ## Prerequisites
 
