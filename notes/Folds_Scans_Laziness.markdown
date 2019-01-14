@@ -18,8 +18,7 @@ quickSort (x:xs) = quickSort (filter (< x) xs) ++ [x] ++ quickSort (filter (>= x
 
 If we run `take k $ quicksort xs`, then thanks to lazy evaluation, only the first `k` elements will be sorted.  Indeed, this will take $O(n + k \log k)$ time, whereas a non-lazy quicksort would always take $O(n \log n)$ time.
 
-## Folds
-
+## Foldsr
 A _fold_ is a higher order function that takes a function, and "accumulator", and a list.  One example is a function that sums the elements in a list, which could be implement as follows:
 
 ```haskell
