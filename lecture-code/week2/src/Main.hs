@@ -16,12 +16,21 @@ length' :: [a] -> Integer
 length' [] = 0
 length' (x:xs) = 1 + length' xs
 
+-- length' [1,2,3,4];
+--  x = 1
+--  xs = [2,3,4]
+
 --- Generalizing some basic functions ---
 
 -- Doubling
 doubleList :: [Integer] -> [Integer]
 doubleList [] = []
 doubleList (x:xs) = 2*x : doubleList xs
+
+-- : on left: deconstruction
+-- : on right: construction
+
+-- take 10 $ doubleList [1..]
 
 -- Multiplying
 multiplyList :: Integer -> [Integer] -> [Integer]
@@ -38,10 +47,10 @@ applyToIntegers _ [] = []
 applyToIntegers f (x:xs) = (f x) : applyToIntegers f xs
 
 -- Recovering multiplyList
-multiplyList' m xs = applyToIntegers (* m) xs
-multiplyList'' m = applyToIntegers (* m)
+multiplyList' m xs = applyToIntegers ((*) m) xs
+multiplyList'' m = applyToIntegers ((*) m)
 
--- Filter'
+-- Map'
 map' :: (a -> b) -> [a] -> [b] 
 map' _ [] = []
 map' f (x:xs) = (f x) : map' f xs
@@ -51,6 +60,7 @@ map' f (x:xs) = (f x) : map' f xs
 filter' :: (a -> Bool) -> [a] -> [a]
 filter' p xs = [ x | x <- xs, p x ]
 
+-- Also: can implement filter' with guards.
 
 ---------------------------------
 ---------------------------------
@@ -65,6 +75,7 @@ filter' p xs = [ x | x <- xs, p x ]
 -- length $ filter even [1..]
 
 -- Laziness example: quicksort
+-- Technically not optimal, because it's not inplace, and uses concatenation.  But still interesting.
 quickSort [] = []
 quickSort (x:xs) = (quickSort lesser) ++ [x] ++ (quickSort greater)
   where
@@ -110,6 +121,9 @@ foldr1' _ [] = error "empty list"
 
 -- Right-associative tends to be more natural in Haskell.
 -- Right folds can operate on infinite lists; compiler will know when to stop.
+
+-- Important questions: why does foldr work on infinite lists but not foldl?
+-- Foldr evaluates "outside-in", while foldl evaluates "inside-out"
 
 echoes :: [Int] -> [Int]
 echoes = foldr (\ x xs -> (replicate x x) ++ xs) []
