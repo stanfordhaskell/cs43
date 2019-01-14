@@ -1,5 +1,5 @@
 ---
-title: Higher order functions
+title: Folds, scans, and laziness
 published: 2000-01-03
 ---
 
@@ -20,7 +20,7 @@ If we run `take k $ quicksort xs`, then thanks to lazy evaluation, only the firs
 
 ## Folds
 
-A _fold_ is a higher order function that takes a function and a list.  One example is a function that sums the elements in a list, which could be implement as follows:
+A _fold_ is a higher order function that takes a function, and "accumulator", and a list.  One example is a function that sums the elements in a list, which could be implement as follows:
 
 ```haskell
 sum :: [Integer] -> Integer
