@@ -37,7 +37,7 @@ Pick three of the following.
 
 ## Submission instructions
 
-Send an email to cs43-win1819-staff@stanford.edu with either:
+Send an email to cs43-win1819-staff@lists.stanford.edu with either:
 
 - (Preferred) A link to a Gitlab / Github repository with your code.
 
