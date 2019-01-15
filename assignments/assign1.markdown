@@ -31,3 +31,10 @@ Pick three of the following.
 
 1. Write code to compute the $n$th prime number.  Provide an answer for $n = 10001$.
 
+Submission instructions:
+
+Send an email to cs43-win1819-staff@stanford.edu with either:
+
+- (Preferred) A link to a Gitlab / Github repository with your code.
+
+- A .zip file with your code.
