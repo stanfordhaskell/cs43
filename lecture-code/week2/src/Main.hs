@@ -22,7 +22,7 @@ length' (x:xs) = 1 + length' xs
 
 --- Generalizing some basic functions ---
 
--- Doubling
+-- Doubling a list
 doubleList :: [Integer] -> [Integer]
 doubleList [] = []
 doubleList (x:xs) = 2*x : doubleList xs
@@ -34,7 +34,7 @@ doubleList (x:xs) = 2*x : doubleList xs
 
 -- Multiplying
 multiplyList :: Integer -> [Integer] -> [Integer]
-multiplyList m [] = []
+multiplyList _ [] = []
 multiplyList m (x:xs) = m * x : multiplyList m xs
 
 -- Recovering doubleList
@@ -50,17 +50,30 @@ applyToIntegers f (x:xs) = (f x) : applyToIntegers f xs
 multiplyList' m xs = applyToIntegers ((*) m) xs
 multiplyList'' m = applyToIntegers ((*) m)
 
+
+
 -- Map'
 map' :: (a -> b) -> [a] -> [b] 
 map' _ [] = []
 map' f (x:xs) = (f x) : map' f xs
 
+-- map ((+) 3) [1..100]
+-- map (map (^2)) [[1,2,3,4],[5,6,7,8]]  
+
 
 -- Filter'
-filter' :: (a -> Bool) -> [a] -> [a]
-filter' p xs = [ x | x <- xs, p x ]
 
--- Also: can implement filter' with guards.
+filter' _ [] = []
+filter' p (x:xs)
+    | p x       = x : filter p xs
+    | otherwise = filter p xs
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p xs = [ x | x <- xs, p x ]
+
+-- filter (`elem` ['a'..'z']) "FuNcTiOnAL PrOgRaMmInG"
+-- filter (> 10) [1..100]
+-- filter (\x -> length x > 4) ["aaaaa", "bb", "CCCCC"]
 
 ---------------------------------
 ---------------------------------
