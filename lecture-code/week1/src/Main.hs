@@ -110,6 +110,11 @@ lowestForm num denom
 -----------------------------------
 -- Algebraic Datatypes
 -----------------------------------
+    --
+
+data Person = Student String Int Float
+            | Teacher String Int
+    deriving (Show)
 
 -- need to build up more complicated types
 
@@ -120,6 +125,13 @@ lowestForm num denom
 
 data Point = Point Float Float
     deriving (Show)
+
+
+
+
+getName :: Person -> String
+getName (Student name _ _) = name
+getName (Teacher name _ ) = name
 
 -- > Point 0 1
 -- > :t Point 0 1
@@ -134,9 +146,6 @@ yCoord (Point _ y) = y
 data Point' = Point' { xCoord' :: Float,
                        yCoord' :: Float }
 
-data Person = Person { name :: String,
-                       age :: Int }
-    deriving (Show)
 
 
 
@@ -214,6 +223,13 @@ safeHead [] = Nothing
 safeHead (x:xs) = Just x
 
 -- > safeHead [1, 2, 3, 4]
+--
+data IntList = NoInts
+             | Prepend Int IntList
+    deriving (Show)
 
+
+intHead :: IntList -> Int
+intHead (Prepend x xs) = x
 
 
