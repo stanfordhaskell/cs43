@@ -28,8 +28,7 @@ this page will be updated throughout the course with new material.
 
 1. [Higher Order Functions](notes/Higher_Order_Functions.html): Functions that operate on other functions, generalizing basic functions, and defining `map`.
 
-1. Folds, Scans, and Laziness: Examining the many ways to process lists.
-
+1. [Folds, Scans, and Laziness](notes/Folds_Scans_Laziness.html): Examining the many ways to process lists.
 
 1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and
    deriving typeclasses, and the power of polymorphism.

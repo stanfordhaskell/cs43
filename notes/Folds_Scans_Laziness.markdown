@@ -122,4 +122,16 @@ foldr f acc [] = acc
 foldr f acc (x:xs) = f x (foldr f acc xs)
 ```
 
+Also, note that the type of the accumulated value and the list values need not
+be the same (as they are in the sum example). For instance, you could check a
+property holds for all the elements in the list by having a boolean accumulator
+and setting it to false once some element does not satisfy a condition.
+
+```haskell
+ghci> foldl (\acc x -> acc && even x) True [2, 4, 6]
+True
+ghci> foldl (\acc x -> acc && even x) True [2, 4, 5, 6]
+False
+```
+
 <!-- TODO folds and laziness -->
