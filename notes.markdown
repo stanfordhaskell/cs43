@@ -29,12 +29,15 @@ this page will be updated throughout the course with new material.
 
 1. [Folds, Scans, and Laziness](notes/Folds_Scans_Laziness.html): Examining the many ways to process lists.
 
-1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and
-   deriving typeclasses, and the power of polymorphism.
 
 ## Type Design Patterns
 
 1. [Algebraic Datatypes](notes/Algebraic_Datatypes.html): Defining and using types in Haskell, and the basics of type algebra.
+
+1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and
+   deriving typeclasses, and the power of polymorphism.
+
+## Algebraic Abstractions
 
 1. Semigroup and Monoid<!--[Semigroup and
    Monoid](notes/Semigroup_and_Monoid.html)-->: Abstracting compositional
