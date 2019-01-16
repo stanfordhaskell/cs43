@@ -45,7 +45,7 @@ length Nil = 0
 length (Cons x xs) = 1 + length xs
 ```
 
-## Generalizing basic functions
+## Abstracting to map
 
 Suppose we're writing a function that doubles every element in a list of
 `Int`s.  We might write the following.
