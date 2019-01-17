@@ -49,6 +49,12 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
+    match "solutions/*" $ do
+        route $ setExtension "html"
+        compile $ customPandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
     match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
