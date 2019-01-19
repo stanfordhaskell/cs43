@@ -116,8 +116,18 @@ instance Eq a => Eq (Maybe a) where
   (==) Nothing Nothing   = True
   (==) _ _               = False
 ```
-Note that we have atypeclass constraint on `a` being in `Eq`, since otherwise we could not have `x == y` in the second line. 
+Note that we have a typeclass constraint on `a` being in `Eq`, since otherwise we could not have `x == y` in the second line. 
 
+## Automatic derivation
+
+It turns out that GHC can automatically derive instances for certain typeclasses.  Instead of manually writing `instance Eq Color` above, we can just write 
+
+```haskell
+data Color = Red | Green | Blue
+  deriving (Read, Show, Eq, Ord)
+```
+
+On the type `Color`, this will automatically implement functions for string parsing (`Read`), string printing (`Show`), equality testing (`Eq`), and ordering (`Ord`).
 
 ### References
 
