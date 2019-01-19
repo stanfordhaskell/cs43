@@ -68,7 +68,7 @@ typeclass `Eq`, meaning that `a` must be a type for which the function `(==)` is
 defined. A basic definition of the typeclass `Eq` could be 
 
 ```haskell
-class BasicEq a where 
+class Eq a where 
   (==) :: a -> a -> Bool
 ```
 
