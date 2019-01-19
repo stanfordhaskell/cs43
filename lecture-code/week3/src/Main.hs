@@ -66,4 +66,9 @@ data Color2 = Red2 | Green2 | Blue2
   deriving (Read, Show, Eq, Ord)
 
 -- Show that eq is automatically derived.
+readShowDouble = do
+  putStrLn "Please enter a Double:"
+  inpStr <- getLine
+  let inpDouble = (read inpStr)::Double
+  putStrLn ("Twice " ++ show inpDouble ++ " is " ++ show (inpDouble * 2))
 
