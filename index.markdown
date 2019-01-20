@@ -18,7 +18,7 @@ systems, and various functional design patters (monads, etc).
 
 ## Resources
 
-There is no formal textbook, but we recommend the Haskell wikibook as a primary reference.  A larger compilation of resources can be found [here](/notes/Resources.html).
+There is no formal textbook, but we recommend the Haskell wikibook as a primary reference.  A larger compilation of resources can be found [here](/resources.html).
 
 ## Assignments
 
