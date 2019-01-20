@@ -47,8 +47,9 @@ time, whereas a non-lazy quicksort would always take $O(n \log n)$ time.
 So far, we have seen two higher order functions `map` and `filter` that process
 lists using other functions. Each of these captures a natural class of
 operations, with `map` operating element-wise on a list and `filter` ...
-filtering a list. A _fold_ is a higher order function that captures the
-operation of summerizing a list's elements as a single value.
+filtering a list. 
+
+A _fold_ is a higher order function that captures the operation of summarizing a list's elements as a single value.  In other contexts, a fold is sometimes referred to as a _reduce_.
 
 Let us begin by considering an example. Assume we have a list of integers and
 wish to sum them. We could restate this problem as accumulating the list values
@@ -134,4 +135,17 @@ ghci> foldl (\acc x -> acc && even x) True [2, 4, 5, 6]
 False
 ```
 
-<!-- TODO folds and laziness -->
+## Scans
+
+A _scan_ is like a hybrid between a `map` and a `fold`.  For example,
+
+```haskell
+ghci> take 10 $ scanl1 (+) [1..]
+[1,3,6,10,15,21,28,36,45,55]
+ghci> foldl1 (+) [1..10]
+55
+```
+
+`scanl` is similar to `foldl`, but returns a list of successive folded values from the left.
+
+Note that `last (scanl f z xs) == foldl f z xs`.
