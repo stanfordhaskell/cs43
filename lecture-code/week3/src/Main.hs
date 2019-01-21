@@ -7,6 +7,7 @@ main = do
 -- Suppose we define a new type, Color.
 data Color = Red | Green | Blue
 
+-- (==) 
 -- We might want to define an equality check for it.
 colorEq :: Color -> Color -> Bool
 colorEq Red Red     = True
@@ -47,6 +48,9 @@ instance BasicEq Bool where
 -- Expanding on this: we can define a more sophisticated typeclass
 -- with multiple functions.  For a type to be in the "BasicEq2" type class,
 -- it must implement _one of_ "isEqual2" and "isNotEqual2".
+
+-- Need to put types for all functions
+-- But the implementations are optional
 class BasicEq2 a where
   isEqual2 :: a -> a -> Bool
   isEqual2 x y = not (isNotEqual2 x y)
@@ -57,6 +61,7 @@ class BasicEq2 a where
 -- We can make `Color` an instance of 
 -- `BasicEq2` by implementing `isEqual2`.
 -- Compiler is really smart, it will figure out the other.
+-- everything to left of => is a type constraint
 instance BasicEq2 Color where
   isEqual2 Red Red     = True
   isEqual2 Green Green = True
@@ -70,12 +75,13 @@ instance BasicEq2 Color where
 
 -- Look at Show
 -- :t show
-
 instance Show Color where
   show Red   = "Red"
   show Green = "Green"
   show Blue  = "Blue" 
 
 -- Automatic typeclass derivation!
+-- Ord: typeclass for ordering
+-- Read: "inverse" of Show
 data Color2 = Red2 | Green2 | Blue2
   deriving (Read, Show, Eq, Ord)

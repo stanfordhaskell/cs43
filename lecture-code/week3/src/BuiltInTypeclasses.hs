@@ -28,6 +28,8 @@ instance Eq Color where
 
 -- Alternatively, use automatic derivation!
 
+-- Say: how haskell derives the equality operator
+-- Todo: look through ordering derivation
 data Color2 = Red2 | Green2 | Blue2
   deriving (Eq)
 
@@ -72,6 +74,8 @@ class  (Eq a) => Ord a  where
 -- Hoogle: Ord a => [a] -> [a]
 
 -- Example instance
+--
+-- By hand: write instnaces for Eq / Ord / Show
 instance Ord Color where
   compare Red Red = EQ
   compare Green Green = EQ
@@ -85,7 +89,7 @@ instance Ord Color where
 -- Deriving Ord works here.
 
 -------------------------------------
--- 3. Num: the basc numeric typeclass
+-- 3. Num: the basic numeric typeclass
 -------------------------------------
 
 class  Num a  where
@@ -112,7 +116,7 @@ class  Enum a  where
     succ, pred     :: a -> a   -- Successor / predecessor of a value
     toEnum         :: Int -> a            -- Convert from an Int
     fromEnum       :: a -> Int            -- Convert to an Int 
-    enumFrom       :: a -> [a]            -- [n..]  
+    enumFrom       :: a -> [a]            -- [n..]
     enumFromThen   :: a -> a -> [a]       -- [n,n'..]  
     enumFromTo     :: a -> a -> [a]       -- [n..m]  
     enumFromThenTo :: a -> a -> a -> [a]  -- [n,n'..m]  
@@ -131,6 +135,8 @@ class  Enum a  where
 data Color = Red | Green | Blue
   deriving (Read, Show, Eq, Ord, Enum)
 
+-- TODO: add example Red .. Blue 
+
 -- GHCI examples
 -- :t toEnum
 -- :t fromEnum
@@ -144,17 +150,11 @@ data Color = Red | Green | Blue
 -- This is the machinery we invoke when we type
 -- "deriving Show" after declaring a custom type.
 -- A little complicated, and the details don't matter too much.
+-- TODO: add examples on read and show when they're introduced.
+-- omit read from here; but talk about show.
 
-type  ReadS a = String -> [(a,String)]  
 type  ShowS   = String -> String  
  
-class  Read a  where  
-    readsPrec :: Int -> ReadS a  
-    readList  :: ReadS [a]  
-    -- ... default decl for readList given in Prelude 
-
--- Minimal complete definition: readsPrec or readPrec.  Complicated parsing logic.  Often easier to use Parsec.
-
 class  Show a  where  
     showsPrec :: Int -> a -> ShowS  
     show      :: a -> String  
