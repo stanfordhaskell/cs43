@@ -4,7 +4,8 @@ title: Assignment 2
 
 ## Problems
 
-So far, we have seen that typeclasses allow us to implement functions separately
+So far, we have seen that typeclasses allow us to implement functions (for
+example, `(+)` in the `Num` typeclass) separately
 for various types.^[This is known as *ad hoc* polymorphism, in contrast to the
 *parametric* polymorphism provided by type variables.] Another common
 Haskell idiom is to create a typeclass for functions with a specific
