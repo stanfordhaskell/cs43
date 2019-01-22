@@ -18,13 +18,7 @@ For example, consider the `Semigroup` typeclass (already implemented in Haskell)
 class Semigroup a where
   (<>) :: a -> a -> a
 
-  stimes :: Integral b => b -> a -> a
-  stimes n x   -- not the actual default implementation
-    | n <= 0    = error "positive multiplier expected" -- runtime error
-    | n = 1     = x
-    | otherwise = x <> stimes (n - 1) x
-
-  -- 1 more function defined in terms of <>
+  -- two more functions implemented in terms of <>
 ```
 
 The primary function provided by the `Semigroup` typeclass is `<>`.  Besides the
@@ -102,19 +96,35 @@ All True
    wrapping `Int` in the starter code, mirroring the implementations of `Any`
    and `All`.
 
-1. The power of using typeclasses to represent operations with a given structure
-   becomes apparent when we want to write generic functions using the structures
-   they represent. Consider the `stimes` function, which is also implemented in
-   the `Semigroup` typeclass (see above). It computes the following.
-   
-   ```haskell
-   stimes n x = x <> x <> ... (n times) ...
-   ```
-   
-   It has a default implementation in terms of `<>`. The default given above has
-   $O(n)$ performance, which is less efficient than the best general
-   implementation. Using the associative property of `<>`, provide a more
-   efficient default implementation, `stimes'`, with time complexity $O(\log n)$.
+The power of using typeclasses to represent operations with a given structure
+becomes apparent when we want to write generic functions using the structures
+they represent. Consider the `stimes` function, which is also implemented in
+the `Semigroup` typeclass.
+
+```haskell
+class Semigroup a where
+  (<>) :: a -> a -> a
+
+  -- Integral is a typeclass containing Int and Integer
+  stimes :: Integral b => b -> a -> a
+  stimes n x   -- not the actual default implementation
+    | n <= 0    = error "positive multiplier expected" -- runtime error
+    | n = 1     = x
+    | otherwise = x <> stimes (n - 1) x
+
+  -- 1 more function defined in terms of <>
+```
+
+It computes the following.
+
+```haskell
+stimes n x = x <> x <> ... (n times) ...
+```
+
+2. The default given above has $O(n)$ performance, which is less efficient than
+   the best general implementation.  Using the associative property of `<>`,
+   provide a more efficient implementation, `stimes'`, with time
+   complexity $O(\log n)$.
 
 1. While $O(\log n)$ is the best possible performance in general, specific
    instances can perform even better. Extend your instances for `Sum` and `Product`
