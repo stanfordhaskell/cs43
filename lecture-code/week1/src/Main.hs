@@ -191,6 +191,9 @@ data List a = Nil
             | Cons a (List a)
     deriving (Show)
 
+data Tree a = Node a
+            | Branch (Node a) (Node a)
+
 -- > Nil
 -- > :t Nil
 -- > Cons True Nil

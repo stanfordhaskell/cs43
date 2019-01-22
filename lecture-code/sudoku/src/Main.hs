@@ -4,6 +4,8 @@ main :: IO ()
 main = do
   putStrLn "hello world"
 
+-- function composition
+
 
 -- define type synonyms
 
@@ -62,10 +64,6 @@ correct b = all nodups (rows b) &&
             all nodups (cols b) &&
             all nodups (boxs b)
 
-nodups :: Eq a => [a] -> Bool
-nodups [] = True
-nodups (x:xs) = notElem x xs && nodups xs
-
 rows :: Matrix a -> Matrix a
 rows = id
 
@@ -75,12 +73,26 @@ cols :: Matrix a -> Matrix a
 cols [xs] = [[x] | x <- xs]
 cols (xs:xss) = zipWith (:) xs (cols xss)
 
--- cols . cols = id
+-- cols . cols = id  (identity on matrices)
 
 boxs :: Matrix a -> Matrix a
 boxs = map ungroup . ungroup . map cols . group . map group
 
--- boxs . boxs = id
+-- since
+--     group . ungroup = id
+--     ungroup . group = id
+--     map f . map g = map (f . g)
+--     map id = id
+-- we have
+--     boxs . boxs = (map ungroup . ungroup . map cols . group . map group) . 
+--                   (map ungroup . ungroup . map cols . group . map group
+--                 = ...
+--                 = id
+
+
+nodups :: Eq a => [a] -> Bool
+nodups [] = True
+nodups (x:xs) = notElem x xs && nodups xs
 
 
 -------------------------
@@ -99,15 +111,22 @@ mcp = cp . map cp
   where cp [] = [[]]
         cp (xs:xss) = [x : ys | x <- xs, ys <- cp xss]
 
+-- > mcp [["1", "23"], ["4","5"]] !! 0
+
 sudoku :: Board -> [Board]
 sudoku = filter correct . mcp . choices
 
+-- sudoku b = filter correct $ mcp $ choices b
+
+-- 9^40 boards to check! (assuming half full)
 
 
 -------
 -- v2.0
 -------
 
+-- prune choices, goal `prune` function s.t. 
+--       filter correct . mcp = filter correct . mcp . prune
 
 fixed :: [Choices] -> Choices
 fixed = concat . filter single
@@ -116,14 +135,11 @@ reduce :: [Choices] -> [Choices]
 reduce css = map (remove (fixed css)) css
   where remove fs cs = if single cs then cs else delete fs cs
 
-prune :: Matrix Choices -> Matrix Choices
-
--- filter correct . mcp = filter corrrect . mcp . prune
-
 pruneBy :: (Matrix Choices -> Matrix Choices) ->
            (Matrix Choices -> Matrix Choices)
 pruneBy f = f . map reduce . f
 
+prune :: Matrix Choices -> Matrix Choices
 prune = pruneBy boxs . pruneBy cols . pruneBy rows
 
 sudoku' :: Board -> [Board]
