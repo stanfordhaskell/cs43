@@ -119,7 +119,7 @@ All True
    instances can perform even better. Extend your instances for `Sum` and `Product`
    with $O(1)$ implementations of `stimes`.
 
-Here is starter code which you should complete for your solutions.
+[Here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/blob/master/starter-code/assignment2/src/Main.hs) is starter code which you should complete for your solutions.
 
 ## Submission instructions
 
