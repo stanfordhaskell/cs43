@@ -68,22 +68,6 @@ class  (Eq a) => Ord a  where
 
 Defining either `compare` or `<=` is sufficient for a minimal complete definition.  See [here](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Ord.html#t:Ord) for more properties.
 
-### Read
-
-The typeclass `Read` handles conversion of strings to values.
-
-```haskell
-type  ReadS a = String -> [(a,String)]  
-type  ShowS   = String -> String  
- 
-class  Read a  where  
-    readsPrec :: Int -> ReadS a  
-    readList  :: ReadS [a]  
-    -- ... default decl for readList given in Prelude 
-```
-
-Defining either `readsPrec` or `readPrec` is sufficient for a minimal complete definition.  See [here](http://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#t:Read) for more properties.
-
 ### Show
 
 The typeclass `Show` handles conversion of values to readable `String`s.  This is the machinery used whenever we write `deriving (Show)` for custom types.
