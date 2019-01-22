@@ -8,8 +8,8 @@ main = do
   putStrLn "hello world"
 
 
-newtype Sum = Sum Int deriving (Show)
 newtype Product = Product Int deriving (Show)
+newtype Sum = Sum Int deriving (Show)
 
 instance Semigroup Sum where
     _ <> _ = undefined -- define <>
@@ -20,7 +20,7 @@ instance Semigroup Sum where
     --   fromIntegral function to cast any `Integral` value to any other `Num`
     --   value, for example if `x` has a type in typeclass `Integral` then
     --   `fromIntegral x` can be any type (for example, `Int`) in the typeclass
-    --   `Num`.
+    --   `Num`. If you get stuck, write the Product instance first.
     
 instance Semigroup Product where
     _ <> _ = undefined -- define <>
