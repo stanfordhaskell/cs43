@@ -34,8 +34,9 @@ this page will be updated throughout the course with new material.
 
 1. [Algebraic Datatypes](notes/Algebraic_Datatypes.html): Defining and using types in Haskell, and the basics of type algebra.
 
-1. Typeclasses<!--[Typeclasses](notes/Typeclasses.html)-->: Using, writing, and
-   deriving typeclasses, and the power of polymorphism.
+1. [Typeclasses](notes/Typeclasses.html): Introducing typeclasses and polymorphism.
+
+1. [Typeclasses II, Batteries Included](notes/TypeclassesII.html): More on the built-in typeclasses in Haskell.
 
 ## Algebraic Abstractions
 

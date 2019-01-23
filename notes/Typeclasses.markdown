@@ -2,28 +2,38 @@
 title: Typeclasses
 ---
 
-## Motivation
+## Motivation: Equality testing with `(==)` 
 
-We have seen that every Haskell function has a type signature that specifies
-the types of its arguments. These types can be completely specific, as in
-
-```haskell
-doubleInt :: Int -> Int
-doubleInt x = 2 * x
-```
-
-or can contain type variables, as in
+Suppose we define the following `Color` type, and want to implement an equality test for it.
 
 ```haskell
-fst :: (a,b) -> a
-fst (x,_) =  x
+data Color = Red | Green | Blue
 ```
 
-where `a` and `b` can be any type. While polymorphic functions like `fst` give 
-us some flexibility in what types a function can accept, there are cases where
-we might want the same function to work on different types in a manner that 
-cannot be captured in a single polymorphic implementation. For example, we might
-want a function
+A naive strategy would be to do the following:
+
+```haskell
+-- Source: RWH, Ch. 6
+colorEq :: Color -> Color -> Bool
+colorEq Red Red     = True
+colorEq Green Green = True
+colorEq Blue Blue   = True
+colorEq _    _      = False
+```
+
+Now, suppose we want to create an equality test for strings.  We might define a function like this:
+
+```haskell
+-- Source: RWH, Ch. 6
+stringEq :: [Char] -> [Char] -> Bool
+stringEq [] [] = True
+stringEq (x:xs) (y:ys) = x == y && stringEq xs ys
+stringEq _ _ = False
+```
+
+As you might've noticed, writing a separate function for every equality test is not great.
+
+We really want a function
 
 ```haskell
 (==) :: a -> a -> Bool
@@ -38,7 +48,12 @@ some types (such as functions) might not have a reasonable implementation of
 ## A Typeclass to the Rescue
 
 A typeclass allows us to give different definitions of a function for different
-types. It can be seen as an extensible interface to some set of functions, and solves
+types<label for="java-interfaces"
+       class="margin-toggle sidenote-number"></label>.
+<span class="sidenote">
+This is similar to the notion of <a href="http://tutorials.jenkov.com/java/interfaces.html">interfaces in Java</a>.
+</span>
+It can be seen as an extensible interface to some set of functions, and solves
 exactly the problem presented above. Consider the real type signature of `(==)`,
 
 ```haskell
@@ -58,7 +73,7 @@ class Eq a where
 ```
 
 This tells us that for a type `a` to be an instance of `Eq`, we must define a
-function with type `a -> a -> Bool`. Many primitive Haskell types are already
+function `(==)` with type `a -> a -> Bool`. Many primitive Haskell types are already
 instances of `Eq`, for example
 
 ```haskell
@@ -68,13 +83,32 @@ Prelude> True == False
 False
 ```
 
-However, assume we wanted to implement `(==)` for the type
+## Built-in Eq typeclass
+
+Indeed, here is the definition of the built-in `Eq` typeclass:
 
 ```haskell
-data Maybe a = Just a | Nothing
+class Eq a where
+  (==), (/=) :: a -> a -> Bool
+
+  x /= y     = not (x == y)
+  x == y     = not (x /= y)
 ```
 
-To do so, we need to make `Maybe a` an instance of the `Eq` typeclass. 
+Importantly, we only need to implement _one of_ `==` or `/=`, since the compiler can figure out the other function by applying `not`.
+
+Now, suppose we wanted to implement `(==)` for the `Color` type defined above.  We just need to make `Color` an instance of the `Eq` typeclass.  Indeed, we can write
+
+```haskell
+instance Eq Color where
+    (==) Red Red     = True
+    (==) Green Green = True
+    (==) Blue Blue   = True
+    (==) _    _      = False
+```
+
+
+Similarly, if we wanted to make `Maybe a` an instance of `Eq`, we could write:
 
 ```haskell
 instance Eq a => Eq (Maybe a) where
@@ -82,84 +116,19 @@ instance Eq a => Eq (Maybe a) where
   (==) Nothing Nothing   = True
   (==) _ _               = False
 ```
-All we are doing here is defining `(==)` for the type `Maybe a`. Note that we have a
-typeclass constraint on `a` being in `Eq`, since otherwise we could not have `x
-== y` in the second line. 
+Note that we have a typeclass constraint on `a` being in `Eq`, since otherwise we could not have `x == y` in the second line. 
 
-## Some Common Typeclasses<label for="haskell-2010"
-       class="margin-toggle sidenote-number">
-</label>
-<input type="checkbox"
-       id="haskell-2010"
-       class="margin-toggle"/>
-<span class="sidenote">
-These typeclasses are all part of the [Haskell 2010](https://www.haskell.org/onlinereport/haskell2010/haskellch6.html)
- standard. Note that the type hierarchy given there no longer exactly that in the GHC Prelude.
-</span>
+## Automatic derivation
 
-
-### Eq
-
-Equality.
+It turns out that GHC can automatically derive instances for certain typeclasses.  Instead of manually writing `instance Eq Color` above, we can just write 
 
 ```haskell
-class  Eq a  where  
-  (==), (/=)  ::  a -> a -> Bool  
-
-  x /= y  = not (x == y)  
-  x == y  = not (x /= y)
+data Color = Red | Green | Blue
+  deriving (Read, Show, Eq, Ord)
 ```
 
-Note minimial complete definition.
+On the type `Color`, this will automatically implement functions for string parsing (`Read`), string printing (`Show`), equality testing (`Eq`), and ordering (`Ord`).
 
-### Ord
+### References
 
-Ordering can be represented in Haskell using the built-in type
-
-```haskell
-data Ordering = LT | EQ | GT
-```
-
-The typeclass `Ord` defined functions that compare values.
-
-```haskell
-class  (Eq a) => Ord a  where
-  compare              :: a -> a -> Ordering  
-  (<), (<=), (>=), (>) :: a -> a -> Bool  
-  max, min             :: a -> a -> a 
-
-  compare x y | x == y    = EQ  
-              | x <= y    = LT  
-              | otherwise = GT  
-
-  x <= y  = compare x y /= GT  
-  x <  y  = compare x y == LT  
-  x >= y  = compare x y /= LT  
-  x >  y  = compare x y == GT  
-
-  max x y | x <= y    =  y  
-          | otherwise =  x  
-  min x y | x <= y    =  x  
-          | otherwise =  y
-```
-
-Defining either `compare` or `==` and `<=` for a type gives a minimal complete
-definition.
-
-Note the class constraint 
-
-### Enum
-
-```haskell
-
-```
-
-### Num
-
-```haskell
-
-```
-
-### Show
-
-### Read
+[_Real World Haskell_, Chapter 6](http://book.realworldhaskell.org/read/using-typeclasses.html).
