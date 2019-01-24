@@ -42,3 +42,7 @@ We also welcome open source contributions to the course materials; we will offer
 ## Attendance form
 
 The attendance form is [here](https://goo.gl/forms/rXTlBo5CrRSvpdxp1).
+
+## Anonymous feedback
+
+Any feedback is appreciated; the anonymous form is [here](https://goo.gl/forms/NX7aVMRIG072csX53).
