@@ -44,8 +44,7 @@ this page will be updated throughout the course with new material.
    Monoid](notes/Semigroup_and_Monoid.html)-->: Abstracting compositional
    structures.
 
-1. Functor and Applicative<!--[Functor and Applicative](notes/Functor.html)-->:
-   Lifting function application to a new level.
+1. [Functor](notes/Functor.html): Lifting function application to a new level.
 
 1. Monad<!--[Monad](notes/Monad.html)-->: It isn't *that* complicated.
 
