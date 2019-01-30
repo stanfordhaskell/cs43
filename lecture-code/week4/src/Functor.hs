@@ -23,6 +23,8 @@ instance Functor Tree where
   fmap f (Leaf x) = Leaf (f x)
   fmap f (Branch left right) = Branch (fmap f left) (fmap f right)
 
+-- NonEmpty a
+
 
 -- fmap (+2) [1..10]
 -- fmap (+2) Just 2
