@@ -36,3 +36,13 @@ Define an instance of `Functor` for this datatype.
 Is this statement true or false? The composition of two `Functor`s is also a `Functor`.
 
 If false, give a counterexample; if true, provide an explanation.
+
+### Submission instructions
+
+See [here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/blob/master/starter-code/assignment3/src/Main.hs) for the starter code.
+
+Send an email to cs43-win1819-staff@lists.stanford.edu with either:
+
+- (Preferred) A link to a Gitlab / Github repository with your code.
+
+- A .zip file with your code.
