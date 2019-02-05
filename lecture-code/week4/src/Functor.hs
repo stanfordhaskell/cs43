@@ -1,5 +1,6 @@
--- Functor: a typeclass representing
--- "types that can be mapped over."
+-- Functor: one of the most fundamental typeclasses
+-- in standard library.  It represents a "container"
+-- as well as an ability to apply functions to it.
 
 -- f is a container
 class Functor f where
