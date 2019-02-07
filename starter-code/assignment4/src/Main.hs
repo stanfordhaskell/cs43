@@ -34,10 +34,10 @@ data Expr = Num Int
 -- We also have an evaluator for `Expr` values.
 
 eval :: Expr -> Int
-eval (Num a) = a
-eval (Neg a) = - eval a
-eval (Add as) = eval l + eval r
-eval (Mul as) = eval l * eval r
+eval (Num x) = x
+eval (Neg x) = - eval x
+eval (Add x y) = eval x + eval y
+eval (Mul x y) = eval x * eval y
 
 -- ghci> eval (Add (Mul (Num 4) (Num 5)) (Neg (Num 4)))
 
@@ -77,9 +77,21 @@ mul = Mul <$> ((spaceChar '*') *> expr) <*> expr
 -- ghci> getParser neg " -  555"
 -- ghci> getParser add " +666 555"
 
+expr :: Parser Expr
 expr = number <|> inParens (neg <|> add <|> mul)
 
 -- ghci> getParser expr "(+ (* 2 3) (- 5))"
 -- ghci> getParser expr " (+(*2 3)(-5))  "
 -- ghci> getParser expr " (+(*23)(-5))  "
 
+-- finally, we can write a function that parses a string into an
+-- Expr and then interprets this to give a result. This function returns
+-- a Maybe Int so that if parsing fails interpret can return Nothing.
+
+interpret :: String -> Maybe Int
+interpret s = case getParser expr s of
+                []     -> Nothing
+                (x:xs) -> Just $ eval $ fst x
+
+-- ghci> interpret "(+ 1 (* 3 4))"
+-- ghci> interpret "(+ 1 (* 3 4)"
