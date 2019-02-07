@@ -1,159 +1,85 @@
-{-# LANGUAGE InstanceSigs #-} -- allows type signatures in instances
-
 module Main where
 
-import Data.Char (toUpper)
 import Control.Applicative
+import Parser (Parser(..), item, satisfy, char, notChar, digit, spaces)
 
 main :: IO ()
-main = do
-  putStrLn "hello world"
-
--- code based on 
---   https://eli.thegreenplace.net/2017/deciphering-haskells-applicative-and-monadic-parsers/
---   https://blog.lahteenmaki.net/applicative-parsing.html
+main = putStrLn "hi"
 
 
---------------
--- Parser Type
---------------
-
--- A parser is a function from a string to a list of value-string pairs.
--- Each list element represents a partial parse of the input string, and
--- an empty list represents a failed parse.
-newtype Parser a = Parser { getParser :: (String -> [(a,String)]) }
-
-
-
-----------------
--- Basic Parsers
-----------------
-
--- basic parser, captures the first character
-item :: Parser Char
-item = Parser $ \input ->
-    case input of
-      []      -> []        -- fails on empty string
-      (x:xs)  -> [(x,xs)]  -- non-empty string
-
--- ghci> getParser item "hello"
---
-items :: Parser Char
-items = Parser $ \input ->
-    case input of 
-      [] -> []
-      (x:[]) -> [(x,[])]
-      (x:y:zs) -> [(x,zs), (y,zs)]
+-- The goal of this assignment is to extend an interpreter for a simple integer
+-- calculator language. We define our initial grammer as follows. An expression
+-- can be either an integer or
+--   (- expr)
+--   (+ expr expr2)
+--   (* expr expr2)
+-- where expr and expr2 are expressions. This gives expressions that look like
+--   (+ (- 3) (* 4 (+ 5 6)))
+-- Further, we want to allow arbitrary numbers of spaces between and around
+-- expressions.
 
 
--- parser that captures the first character if it satisfied a predicate
-satisfy :: (Char -> Bool) -> Parser Char
-satisfy pred = Parser $ \input -> 
-    case input of
-      x:xs | pred x -> [(x,xs)] 
-      _ -> []
+-- First we define a datatype the encodes expressions in our language.
+-- Our goal will be to write a parser that transforms a string into
+-- values of type Expr.
 
--- ghci> getParser (satisfy (== 'h')) "hello"
--- ghci> getParser (satisfy (== 'g')) "hello"
+data Expr = Num Int
+          | Neg Expr
+          | Add Expr Expr
+          | Mul Expr Expr
+          | Div Expr Expr
+          deriving (Show)
 
 
--- parser that captures a specific character
-char :: Char -> Parser Char
-char = satisfy . (==) -- char c = satisfy (== c)
+-- We also have an evaluator for `Expr` values.
 
-notChar :: Char -> Parser Char
-notChar = satisfy . (/=)
+eval :: Expr -> Int
+eval (Num a) = a
+eval (Neg a) = - eval a
+eval (Add l r) = eval l + eval r
+eval (Mul l r) = eval l * eval r
 
--- ghci> getParser (char 'h') "hello"
--- ghci> getParser (char 'g') "hello"
+-- ghci> eval (Add (Mul (Num 4) (Num 5)) (Neg (Num 4)))
 
 
 
-------------------
--- Parser Intances
-------------------
+-- first we write two helper parsers
 
--- the functor instance allows us to create new parsers by applying
--- functions to their results
-instance Functor Parser where
-  fmap :: (a -> b) -> Parser a -> Parser b
-  fmap g (Parser px) = Parser $ \input ->
-      [(g x, out) | (x, out) <- px input]
+-- parses a character optionally surrounded by spaces
+spaceChar :: Char -> Parser Char
+spaceChar c = spaces *> (char c) <* spaces
 
--- ghci> getParser (fmap toUpper item) "hello"
+-- ghci> getParser (spaceChar 'a') "  a    "
 
+-- parses an expression in parenthesis (optionally surrounded by spaces)
+inParens :: Parser a -> Parser a
+inParens p = spaces *> char '(' *> p <* char ')' <* spaces
 
-
--- the applicative instance allows sequencing parsers, by taking parsed
--- functions and applying them to subsequent parsed values
-instance Applicative Parser where
-  pure :: a -> Parser a
-  pure x = Parser $ \inp -> [(x,inp)] -- lifts a value to a parsed value
-
-  (<*>) :: Parser (a -> b) -> Parser a -> Parser b
-  Parser pf <*> Parser px = Parser $ \input ->
-      [(f a, output) | (f, intermediate) <- pf input,
-                       (a, output) <- px intermediate]
-
--- for example, we can fmap a function over parsed input
-inparens = middle <$> char '(' <*> notChar ')' <*> char ')'
-  where middle x y z = y
-
--- ghci> getParser inparens "(h)ello"
+-- ghci> getParser (inParens spaceChar) "   (   d ) ef"
 
 
--- one simple example of how applicative is useful uses two functions it
--- provides, '(*>)' and '(<*)'. These are defined as
---     (<*) :: f a -> f b -> f a
---     (<*) = liftA2 const
---
---     (*>) :: f a -> f b -> f b
---     (*>) = liftA2 (flip const)
--- these functions simply lift the functions of two arguments that return
--- their first and second argument respectively. However, since they are
--- being applied in the applicative context, whatever effects they produce
--- are still applied without their return values being used. In the context
--- of parsing, this means that, for example, (*>) consumes whatever is matched
--- both parsers passed to it, but returns only the result of the second parser
 
--- ghci> getParser (item *> item) "hello"
--- ghci> getParser (item <* item) "hello"
+-- now we can write parsers for expressions in our language
 
--- we can redefine inparens in using these functions
-inparens' = char '(' *> notChar ')' <* char ')'
+number :: Parser Expr
+number = Num . read <$> (spaces *> some digit <* spaces)
 
--- next we implement an instance for Parser of the Alternative typeclass,
--- which builds on top of Applicative. You can read about it here:
--- https://en.wikibooks.org/wiki/Haskell/Alternative_and_MonadPlus
+neg :: Parser Expr
+neg = Neg <$> ((spaceChar '-') *> expr)
 
--- the alternative instance allows running multiple parsers until
--- one succeeds
-instance Alternative Parser where
-    empty :: Parser a  -- represents a failed parser, identity under <|>
-    empty = Parser $ \_ -> []
+add :: Parser Expr
+add = Add <$> ((spaceChar '+') *> expr) <*> expr
 
-    (<|>) :: Parser a -> Parser a -> Parser a
-    (Parser p) <|> (Parser q) = Parser $ \input ->
-        case p input of
-            [] -> q input  -- run second parser if first fails
-            r -> r         -- if first parser succeeds, ignore second
+mul :: Parser Expr
+mul = Mul <$> ((spaceChar '*') *> expr) <*> expr
 
+-- ghci> getParser number " 4444  "
+-- ghci> getParser neg " -  555"
+-- ghci> getParser add " +666 555"
 
--- we can use the functions above directly
---
--- ghci> getParser (char 'h' <|> char 'g') "hello"
--- ghci> getParser (char 'h' <|> char 'g') "gello"
--- ghci> getParser (char 'h' <|> char 'g') "kello"
+expr = number <|> inParens (neg <|> add <|> mul)
 
-
--- we can also use two other functions provided by Alternative,
---   some :: f a -> f [a] -- matches one or more
---   many :: f a -> f [a] -- matches zero or more
-
--- matches zero or more spaces
-space :: Parser String
-space = many $ char ' ' -- many takes a Parser Char and gives a Parser [Char]
-
--- ghci> getParser space "   hello"
--- ghci> getParser (space *> item) "   hello"
+-- ghci> getParser expr "(+ (* 2 3) (- 5))"
+-- ghci> getParser expr " (+(*2 3)(-5))  "
+-- ghci> getParser expr " (+(*23)(-5))  "
 
