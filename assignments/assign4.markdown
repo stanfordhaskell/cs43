@@ -10,8 +10,12 @@ and provides an interpreter and parser, can be found
 [here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/tree/master/starter-code/assignment4).
 
 The homework is simply to extend the language by modifying the code; no new
-functions need to be written. As currently implemented, the language consists of
-expressions like the following.
+functions need to be written. Modifications should be made to `Main.hs`, while
+`Parser.hs` provides parsing functionality basically as implemented in lecture
+on Wednesday 2/6.
+
+As currently implemented, the language consists of
+expressions like the following. 
 
 ```
 1
