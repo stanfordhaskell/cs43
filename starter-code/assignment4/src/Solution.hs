@@ -7,40 +7,26 @@ main :: IO ()
 main = putStrLn "hi"
 
 
--- The goal of this assignment is to extend an interpreter for a simple integer
--- calculator language. We define our initial grammer as follows. An expression
--- can be either an integer or
---   (- expr)
---   (+ expr expr2)
---   (* expr expr2)
--- where expr and expr2 are expressions. This gives expressions that look like
---   (+ (- 3) (* 4 (+ 5 6)))
--- Further, we want to allow arbitrary numbers of spaces between and around
--- expressions.
-
-
 -- First we define a datatype the encodes expressions in our language.
 -- Our goal will be to write a parser that transforms a string into
 -- values of type Expr.
 
 data Expr = Num Int
           | Neg Expr
-          | Add Expr Expr
-          | Mul Expr Expr
+          | Add [Expr]
+          | Mul [Expr]
           deriving (Show)
-
 
 
 -- We also have an evaluator for `Expr` values.
 
 eval :: Expr -> Int
-eval (Num a) = a
-eval (Neg a) = - eval a
-eval (Add as) = eval l + eval r
-eval (Mul as) = eval l * eval r
+eval (Num x) = x
+eval (Neg x) = - eval x
+eval (Add xs) = sum $ map eval xs
+eval (Mul xs) = product $ map eval xs
 
--- ghci> eval (Add (Mul (Num 4) (Num 5)) (Neg (Num 4)))
-
+-- ghci> eval $ Add [Mul [(Num 4), (Num 5), (Num 6)], (Neg (Num 4))]
 
 
 -- first we write two helper parsers
@@ -68,10 +54,10 @@ neg :: Parser Expr
 neg = Neg <$> ((spaceChar '-') *> expr)
 
 add :: Parser Expr
-add = Add <$> ((spaceChar '+') *> expr) <*> expr
+add = Add <$> ((spaceChar '+') *> some expr)
 
 mul :: Parser Expr
-mul = Mul <$> ((spaceChar '*') *> expr) <*> expr
+mul = Mul <$> ((spaceChar '*') *> some expr)
 
 -- ghci> getParser number " 4444  "
 -- ghci> getParser neg " -  555"
