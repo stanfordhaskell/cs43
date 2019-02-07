@@ -24,7 +24,7 @@ expressions like the following.
 (+ (-5) (* 1 2))
 ```
 
-You should extend the parsers, language datatype, and interpreter to
+You should extend the parsers, language datatype, and `eval` function to
 allow one or more arguments to `+` and `*` instead of exactly two. 
 
 
