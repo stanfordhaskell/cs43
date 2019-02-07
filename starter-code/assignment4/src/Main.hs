@@ -27,8 +27,8 @@ data Expr = Num Int
           | Neg Expr
           | Add Expr Expr
           | Mul Expr Expr
-          | Div Expr Expr
           deriving (Show)
+
 
 
 -- We also have an evaluator for `Expr` values.
@@ -36,8 +36,8 @@ data Expr = Num Int
 eval :: Expr -> Int
 eval (Num a) = a
 eval (Neg a) = - eval a
-eval (Add l r) = eval l + eval r
-eval (Mul l r) = eval l * eval r
+eval (Add as) = eval l + eval r
+eval (Mul as) = eval l * eval r
 
 -- ghci> eval (Add (Mul (Num 4) (Num 5)) (Neg (Num 4)))
 
