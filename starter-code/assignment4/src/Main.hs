@@ -92,7 +92,10 @@ expr = number <|> inParens (neg <|> add <|> mul)
 interpret :: String -> Maybe Int
 interpret s = case getParser expr s of
                 []     -> Nothing
-                (x:xs) -> Just $ eval $ fst x
+                (x:xs) -> Just $ eval $ fst x -- evaluate the first parsed expression
+                -- note that with this parser only one possible parse is
+                -- possible, and therefore a successful parse will always give a
+                -- list of length 1
 
 -- ghci> interpret "(+ 1 (* 3 4))"
 -- ghci> interpret "(+ 1 (* 3 4)"
