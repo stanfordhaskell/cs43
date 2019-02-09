@@ -1,5 +1,6 @@
 module Main where
 
+import Data.Char
 import Control.Applicative
 import Parser (Parser(..), item, satisfy, char, notChar, digit, spaces)
 
