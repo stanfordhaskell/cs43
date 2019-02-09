@@ -8,6 +8,12 @@ This week's homework is to extend a parser and interpreter for a simple
 calculator language. The starter code, which describes the initial language
 and provides an interpreter and parser, can be found
 [here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/tree/master/starter-code/assignment4).
+The interpreter can be run by calling the `interpret` function from Main.hs in
+ghci.
+
+```haskell
+ghci> interpret "(+ 1 (* 3 4))"
+```
 
 The homework is simply to extend the language by modifying the code; no new
 functions need to be written. Modifications should be made to `Main.hs`, while
