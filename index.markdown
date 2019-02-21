@@ -25,6 +25,9 @@ There is no formal textbook, but we recommend the Haskell wikibook as a primary 
 - [Assignment 2](/assignments/assign2.html) (out: 1/21, due: 1/28). Solutions [here](/solutions/assign2.html).
 - [Assignment 3](/assignments/assign3.html) (out: 1/29, due: 2/6).
 - [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15).
+- [Assignment 5](/assignments/assign5.html) (out: 2/20, due: 2/27).
+- Assignment 6 (out: 2/27, due: 3/6).
+- Assignment 7 (out: 3/6, due: 3/13).
 
 ## Prerequisites
 
@@ -36,7 +39,7 @@ There are no formal prerequisites, but we recommend "programming and mathematica
 To pass the class (graded C/NC), we expect:
 
 1. Attendance in $\ge$ 80% of lectures.
-2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
+2. Successful completion of $\ge 5/7$ assignments, which are designed to take around an hour each.
 
 We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
 
