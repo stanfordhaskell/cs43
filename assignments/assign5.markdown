@@ -6,9 +6,12 @@ title: Assignment 5
 
 This week's homework is to complete an implementation of Harold the Robot.
 The starter code can be found [here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/tree/master/starter-code/assignment5).
+Note that since some additional configuration is required to enable the packages
+used, you should clone the `harold` folder directly rather than just the source
+code in `src`.
 
 The homework is simply to complete the functions which are marked incomplete in
-the starter code. Modifications should be made to `Harold.hs`, while `World.hs` 
+the starter code. Modifications should be made to `Harold.hs` and `Main.hs`, while `World.hs` 
 provides the types and functions required to create the World that Harold lives in.
 `Main.hs` can be run either by running `main` in ghci or by building and
 executing the project. After implementing the required functions, Harold should
