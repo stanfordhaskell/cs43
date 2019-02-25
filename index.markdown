@@ -24,7 +24,7 @@ There is no formal textbook, but we recommend the Haskell wikibook as a primary 
 - [Assignment 1](/assignments/assign1.html) (out: 1/14, due: 1/21). Solutions [here](/solutions/assign1.html).
 - [Assignment 2](/assignments/assign2.html) (out: 1/21, due: 1/28). Solutions [here](/solutions/assign2.html).
 - [Assignment 3](/assignments/assign3.html) (out: 1/29, due: 2/6).
-- [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15).
+- [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15). Solutions [here](/solutions/assign4.html).
 - [Assignment 5](/assignments/assign5.html) (out: 2/20, due: 2/27).
 - Assignment 6 (out: 2/27, due: 3/6).
 - Assignment 7 (out: 3/6, due: 3/13).
