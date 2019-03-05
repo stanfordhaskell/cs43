@@ -22,7 +22,7 @@ depending on the result.
 Finally, extend the Expr type and eval function to include one or more
 additional expressions of your choice. For example, you might try to
 
-1. add strings and a `Show` expression
+1. add strings and a `Print` expression
 
 1. add complex numbers and extend arithmatic to work on them
 
