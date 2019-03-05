@@ -26,13 +26,12 @@ There is no formal textbook, but we recommend the Haskell wikibook as a primary 
 - [Assignment 3](/assignments/assign3.html) (out: 1/29, due: 2/6).
 - [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15). Solutions [here](/solutions/assign4.html).
 - [Assignment 5](/assignments/assign5.html) (out: 2/20, due: 2/27).
-- Assignment 6 (out: 3/3, due: 3/10).
+- [Assignment 6](/assignments/assign6.html) (out: 3/5, due: 3/12).
 - Assignment 7 (out: 3/10, due: 3/17).
 
 ## Prerequisites
 
 There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
-
 
 ## Expectations
 
@@ -42,10 +41,6 @@ To pass the class (graded C/NC), we expect:
 2. Successful completion of $\ge 5/7$ assignments, which are designed to take around an hour each.
 
 We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
-
-## Attendance form
-
-The attendance form is [here](https://goo.gl/forms/rXTlBo5CrRSvpdxp1).
 
 ## Anonymous feedback
 
