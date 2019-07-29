@@ -187,12 +187,50 @@ lowestForm' num denom
 
 -- Recursive datatypes  ----------------------
 
+data IntList = IntNil
+             | IntCons Int IntList
+    deriving (Show)
+
+-- > IntNil
+-- > IntCons 1 IntNil
+-- > IntCons 2 (IntCons 1 IntNil)
+-- > IntCons 2 $ IntCons 1 IntNil
+
+intListLength :: IntList -> Int
+intListLength IntNil = 0
+intListLength (IntCons x xs) = 1 + intListLength xs
+
+-- > intListLength $ IntCons 2 $ IntCons 1 IntNil
+
 data List a = Nil
             | Cons a (List a)
     deriving (Show)
 
-data Tree a = Node a
-            | Branch (Node a) (Node a)
+listLength :: List a -> Int
+listLength Nil = 0
+listLength (Cons x xs) = 1 + listLength xs
+
+
+data IntBinTree = IntEmpty
+                | IntNode Int IntBinTree IntBinTree
+    deriving (Show)
+
+intBinTreeSize :: IntBinTree -> Int
+intBinTreeSize IntEmpty = 0
+intBinTreeSize (IntNode x l r) = 1 + lsize + rsize
+  where lsize = intBinTreeSize l
+        rsize = intBinTreeSize r
+                                 
+
+data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show)  
+
+
+
+
+
+
+
+
 
 -- > Nil
 -- > :t Nil
@@ -226,13 +264,3 @@ safeHead [] = Nothing
 safeHead (x:xs) = Just x
 
 -- > safeHead [1, 2, 3, 4]
---
-data IntList = NoInts
-             | Prepend Int IntList
-    deriving (Show)
-
-
-intHead :: IntList -> Int
-intHead (Prepend x xs) = x
-
-

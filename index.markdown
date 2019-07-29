@@ -5,8 +5,7 @@ subtitle: CS43 -  Winter Quarter 2019
 
 ## General Info
 
-This course explores the philosophy and fundamentals of functional programming,
-focusing on the Haskell language, its theoretical underpinnings, and practical
+This course explores the philosophy and fundamentals of functional programming, focusing on the Haskell language, its theoretical underpinnings, and practical
 applications. Topics include: functional abstractions
 (function composition, higher order functions), immutable data structures, type
 systems, and various functional design patters (monads, etc). 
@@ -25,24 +24,23 @@ There is no formal textbook, but we recommend the Haskell wikibook as a primary 
 - [Assignment 1](/assignments/assign1.html) (out: 1/14, due: 1/21). Solutions [here](/solutions/assign1.html).
 - [Assignment 2](/assignments/assign2.html) (out: 1/21, due: 1/28). Solutions [here](/solutions/assign2.html).
 - [Assignment 3](/assignments/assign3.html) (out: 1/29, due: 2/6).
+- [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15). Solutions [here](/solutions/assign4.html).
+- [Assignment 5](/assignments/assign5.html) (out: 2/20, due: 2/27).
+- [Assignment 6](/assignments/assign6.html) (out: 3/5, due: 3/15).
+- [Assignment 7](/assignments/assign7.html) (out: 3/5, due: 3/15).
 
 ## Prerequisites
 
 There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
-
 
 ## Expectations
 
 To pass the class (graded C/NC), we expect:
 
 1. Attendance in $\ge$ 80% of lectures.
-2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
+2. Successful completion of $\ge 5/7$ assignments, which are designed to take around an hour each.
 
 We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
-
-## Attendance form
-
-The attendance form is [here](https://goo.gl/forms/rXTlBo5CrRSvpdxp1).
 
 ## Anonymous feedback
 

@@ -85,3 +85,13 @@ instance Show Color where
 -- Read: "inverse" of Show
 data Color2 = Red2 | Green2 | Blue2
   deriving (Read, Show, Eq, Ord)
+
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,8 @@ this page will be updated throughout the course with new material.
 
 1. [Introduction to Haskell](notes/Introduction_to_Haskell.html): Expressions, values, and types.
 
+1. [Algebraic Datatypes](notes/Algebraic_Datatypes.html): Defining and using types in Haskell, and the basics of type algebra.
+
 ## Functional Abstractions
 
 1. [Higher Order Functions](notes/Higher_Order_Functions.html): Functions that operate on other functions, generalizing basic functions, and defining `map`.
@@ -32,17 +34,14 @@ this page will be updated throughout the course with new material.
 
 ## Type Design Patterns
 
-1. [Algebraic Datatypes](notes/Algebraic_Datatypes.html): Defining and using types in Haskell, and the basics of type algebra.
-
 1. [Typeclasses](notes/Typeclasses.html): Introducing typeclasses and polymorphism.
 
 1. [Typeclasses II, Batteries Included](notes/TypeclassesII.html): More on the built-in typeclasses in Haskell.
 
 ## Algebraic Abstractions
 
-1. Semigroup and Monoid<!--[Semigroup and
-   Monoid](notes/Semigroup_and_Monoid.html)-->: Abstracting compositional
-   structures.
+1. [Semigroup](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Semigroup.html) and [Monoid](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Monoid.html#t:Monoid):
+   Abstracting compositionalstructures.
 
 1. [Functor](notes/Functor.html): Lifting function application to a new level.
 
