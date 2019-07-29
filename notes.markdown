@@ -48,13 +48,9 @@ this page will be updated throughout the course with new material.
 
 1. Monad<!--[Monad](notes/Monad.html)-->: It isn't *that* complicated.
 
-1. ...
-
 ## Beyond Haskell
 
 1. Idris and Dependent Types
-
-1. ...
 
 <!--
 ## Contributing
