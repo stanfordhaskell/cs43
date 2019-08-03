@@ -41,7 +41,7 @@ this page will be updated throughout the course with new material.
 ## Algebraic Abstractions
 
 1. [Semigroup](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Semigroup.html) and [Monoid](http://hackage.haskell.org/package/base-4.12.0.0/docs/Data-Monoid.html#t:Monoid):
-   Abstracting compositionalstructures.
+   Abstracting compositional structures.
 
 1. [Functor](notes/Functor.html): Lifting function application to a new level.
 
