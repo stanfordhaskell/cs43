@@ -8,7 +8,7 @@ stimulating and practically useful.
 Let's start with an example.  Here's an implementation of `quicksort`.  It's a
 striking example of Haskell's expressivity and concision.  
 
-(make this a sidenote)
+
 In what follows, we'll talk more about the implementation details of Haskell
 that enables this.
 
