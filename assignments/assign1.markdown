@@ -10,8 +10,6 @@ Create a Gitlab account, and familiarize yourself with the course repository.
 
 ## Problems
 
-Pick three of the following.
-
 1. Implement the `map` function using a fold. Your solution should look like the
    following for some `g` and `acc`.
 
@@ -30,10 +28,6 @@ Pick three of the following.
    ```
 1. Implement `foldl` using `foldr`.
 
-1. Write code to compute the smallest positive number that is evenly divisible
-   by all the numbers from 1 to $n$.  Provide an answer for $n = 20$.
-
-1. Write code to compute the $n$th prime number.  Provide an answer for $n = 10001$.
 
 ## Submission instructions
 
@@ -47,4 +41,3 @@ Include
 
 1. Your Gitlab username.
 1. Your code.
-1. Answers for 4 or 5 if you choose them.
