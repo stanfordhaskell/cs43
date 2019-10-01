@@ -1,14 +1,18 @@
 ---
 title: Class Information
-subtitle: CS43 -  Winter Quarter 2019
+subtitle: CS43 -  Winter Quarter 2020
 ---
 
 ## General Info
 
-This course explores the philosophy and fundamentals of functional programming, focusing on the Haskell language, its theoretical underpinnings, and practical
-applications. Topics include: functional abstractions
-(function composition, higher order functions), immutable data structures, type
-systems, and various functional design patters (monads, etc). 
+This course covers the fundamentals of functional programming and algebraic type
+systems, and explores a selection of modern programming paradigms and current
+research in these areas. [Haskell](https://www.haskell.org/) is taught and used
+throughout the course, though much of the material is applicable to other
+languages.  Topics will be covered from both theoretical and practical points of
+view, and will include higher order functions, immutable data structures,
+algebraic data types, type inference, lenses and optics, effect systems,
+concurrency and parallelism, and dependent types.
 
 - Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030.
 - Instructors: Adithya Ganesh and Isaac Scheinfeld
@@ -17,31 +21,33 @@ systems, and various functional design patters (monads, etc).
 
 ## Resources
 
-There is no formal textbook, but we recommend the Haskell wikibook as a primary reference.  A larger compilation of resources can be found [here](/resources.html).
+There is no formal textbook, but we recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
+and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary references.
+A larger compilation of resources can be found [here](/resources.html). Lecture
+notes will be uploaded over the duration of the course.
 
 ## Assignments
 
-- [Assignment 1](/assignments/assign1.html) (out: 1/14, due: 1/21). Solutions [here](/solutions/assign1.html).
-- [Assignment 2](/assignments/assign2.html) (out: 1/21, due: 1/28). Solutions [here](/solutions/assign2.html).
-- [Assignment 3](/assignments/assign3.html) (out: 1/29, due: 2/6).
-- [Assignment 4](/assignments/assign4.html) (out: 2/7, due: 2/15). Solutions [here](/solutions/assign4.html).
-- [Assignment 5](/assignments/assign5.html) (out: 2/20, due: 2/27).
-- [Assignment 6](/assignments/assign6.html) (out: 3/5, due: 3/15).
-- [Assignment 7](/assignments/assign7.html) (out: 3/5, due: 3/15).
+- [Assignment 1](/assignments/assign1.html) (out: 1/6, due: 1/13).
 
 ## Prerequisites
 
-There are no formal prerequisites, but we recommend "programming and mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or equivalent experience will suffice.
+There are no formal prerequisites, but we recommend "programming and
+mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or
+equivalent experience will suffice, though the material in those courses 
+will not be relied upon.
+
+This course intends to cover a lot of material, and depending on background some
+topics may be more easily accessible than others. However, the aim is to provide
+enough background in class for everyone to master the basics of Haskell, and
+enough flexibility for people to focus on more theoretical or applied problems
+depending on personal interest.
 
 ## Expectations
 
 To pass the class (graded C/NC), we expect:
 
 1. Attendance in $\ge$ 80% of lectures.
-2. Successful completion of $\ge 5/7$ assignments, which are designed to take around an hour each.
+2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
 
-We also welcome open source contributions to the course materials; we will offer extra credit for this on a case-by-case basis to replace assignments. 
-
-## Anonymous feedback
-
-Any feedback is appreciated; the anonymous form is [here](https://goo.gl/forms/NX7aVMRIG072csX53).
+We also welcome open source contributions to the course materials; we will offer credit for this on a case-by-case basis.
