@@ -67,9 +67,10 @@ to make the course materials and presentation more accessible. Also, feel free
 to reach out with any personal questions or concerns about the course. We are always open
 to making changes!
 
-We would also like to acknowledge that Haskell has a reputation for being an
-extremely male dominated and generally inaccessible "ivory tower" language.
-Although we do not expect this class to solve this problem, we are doing our
+We would also like to acknowledge that the Haskell community is
+extremely male dominated and the language has a reputation for being
+a generally inaccessible "ivory tower" language.
+Although we do not expect to solve this problem on our own, we are doing our
 best to make Haskell accessible to everyone regardless of background or
 identity. Please do not hesitate to point out where we can do better in this
 regard.
