@@ -14,21 +14,27 @@ view, and will include higher order functions, immutable data structures,
 algebraic data types, type inference, lenses and optics, effect systems,
 concurrency and parallelism, and dependent types.
 
-- Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030.
-- Instructors: Adithya Ganesh and Isaac Scheinfeld
+- Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030
+- Instructors: Isaac Scheinfeld, Adithya Ganesh, Patrick DeMichele
 - Advisor: Jerry Cain
-- Office Hours: By appointment, with scheduled times TBD.
+- Office Hours: TBD, twice weekly
 
 ## Resources
 
-There is no formal textbook, but we recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
-and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary references.
-A larger compilation of resources can be found [here](/resources.html). Lecture
-notes will be uploaded over the duration of the course.
+There is no formal textbook. Lecture notes will be released at least a week before
+material is covered in class. A list of resources can be found here, and will be
+updated with additional material as the class progresses. We recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
+and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free references.
 
 ## Assignments
 
-- [Assignment 1](/assignments/assign1.html) (out: 1/6, due: 1/13).
+Assignments will be posted here. They will generally be biweekly, and the intent
+is to provide sufficient starter to make developing practical software
+possible. Probable assignments include:
+
+- Fractal Art Generator
+- Interpreters for simple languages, up to a full Scheme implementation
+- Simple Web Server
 
 ## Prerequisites
 
@@ -47,7 +53,23 @@ depending on personal interest.
 
 To pass the class (graded C/NC), we expect:
 
-1. Attendance in $\ge$ 80% of lectures.
-2. Successful completion of $\ge 6/8$ assignments, which are designed to take around an hour each.
+1. Attendance in $\ge$ 80% of lectures. There will be in-class exercises to
+   attempt before working them out as a class, so students should bring a laptop.
+2. Successful completion of the assignments. Submission deadlines will not be
+   enforced but all work must be completed by the end of the quarter. Solutions
+   will be available upon submission.
 
-We also welcome open source contributions to the course materials; we will offer credit for this on a case-by-case basis.
+## Accessibility
+
+We as a course staff are dedicated to making this course accessible to everyone.
+Please let us know if you have any OAE accommodations or if we can do anything
+to make the course materials and presentation more accessible. Also, feel free
+to reach out with any personal questions or concerns about the course. We are always open
+to making changes!
+
+We would also like to acknowledge that Haskell has a reputation for being an
+extremely male dominated and generally inaccessible "ivory tower" language.
+Although we do not expect this class to solve this problem, we are doing our
+best to make Haskell accessible to everyone regardless of background or
+identity. Please do not hesitate to point out where we can do better in this
+regard.
