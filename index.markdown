@@ -14,15 +14,15 @@ view, and will include higher order functions, immutable data structures,
 algebraic data types, type inference, lenses and optics, effect systems,
 concurrency and parallelism, and dependent types.
 
-- Lectures: Mon / Wed: 4:30pm - 5:50pm, in Building 200, Room 030
+- Lectures: Tue / Thu: 4:30pm - 5:50pm, in Building 200, Room 030
 - Instructors: Isaac Scheinfeld, Adithya Ganesh, Patrick DeMichele
 - Advisor: Jerry Cain
 - Office Hours: TBD, twice weekly
 
 ## Resources
 
-There is no formal textbook. Lecture notes will be released at least a week before
-material is covered in class. A list of resources can be found here, and will be
+There is no formal textbook. [Lecture notes](/notes.html) will be released at least a week before
+material is covered in class. A list of resources can be found [here](/resources.html), and will be
 updated with additional material as the class progresses. We recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
 and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free references.
 
