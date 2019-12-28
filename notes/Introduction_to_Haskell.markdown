@@ -90,8 +90,15 @@ ghci> (\x -> x + 1) 5
 ```
 
 Haskell has plenty of syntactic sugar for defining functions. For example, the
-function definitions above do nothing more than name these anonymous functions,
-and they are interpreted as
+function definitions above (repeated here)
+
+```haskell
+inc x = x + 1
+absMax x y = if abs x > abs y then abs x else abs y
+applyTwice f x = f (f x)
+```
+
+are nothing but syntatic sugar for naming anonymous functions.
 
 ```haskell
 inc = \x -> x + 1
@@ -112,14 +119,16 @@ ghci> (+) 1 2
 ```
 
 While function application is implicit in Haskell, there is also a function
-operator `$`. While this might seem redundant since
+application operator `$`. 
 
 ```haskell
-f x == f $ x
+infixr 0 $ -- defines right associate infix operator of lowest precedence
+($) f x = f x
 ```
 
-one use for `$` is enabled by it having the lowest precedence of any operator.
-This allows it to replace parentheses in many expressions as follows.
+While this might seem redundant, one use for `$` is enabled by it having the
+lowest precedence of any operator.  This allows it to replace parentheses in
+many expressions as follows.
 
 ```haskell
 f (g (h x)) == f $ g $ h x
@@ -148,7 +157,7 @@ This type signature says that `1` can be of any type `p` so long as `p` is part
 of the number type class `Num`.^[This will be explained in great detail when we cover
 typeclasses, but for now it is sufficient to know that `Num` represents a set of
 types for which the usual numerical operations are defined.] Here, `p` is a type
-variable. In general, everything before `=>` in a type signature is a constraint
+variable. Everything before `=>` in a type signature is a constraint
 on its type variables. When we want a polymorphic expression to have a specific
 type we can annotate it.
 
@@ -258,7 +267,7 @@ on.
 
 This property allows us to simplify many definitions using equational reasoning,
 i.e. rewriting definitions as one might in math.^[Equational reasoning will be a
-reoccuring theme. Here, we are translating a function into so-called pointfree
+reccuring theme. Here, we are translating a function into so-called pointfree
 style. More will be said about this later on.]
 
 ```haskell

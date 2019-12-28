@@ -14,8 +14,6 @@ applications.
 most commonly-used Haskell compiler, and provides a variety of extensions to
 the standard Haskell language.
 
-
-
 ### Installation
 
 On Mac, you can install Stack using the [Homebrew](https://brew.sh) package
@@ -83,8 +81,8 @@ hello world
 We can run Haskell code in `ghci`. It is important to note that `ghci` does not
 execute code in the same way it is executed in a Haskell program. Instead, it is
 executed in a computational context known as a monad, which allows symbols to be
-redefined to take on new values, among other things. This will become clearer in
-the next set of notes.
+redefined to take on new values, among other things. This will become clearer
+later on.
 
 `ghci` also supports a variety of specialty commands. The most useful will be
 `:r`, which reloads the project code, `:t x`, which gives the type of `x`, and

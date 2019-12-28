@@ -19,6 +19,27 @@ concurrency and parallelism, and dependent types.
 - Advisor: Jerry Cain
 - Office Hours: TBD, twice weekly
 
+## Why Haskell?
+
+Haskell is a pure, lazy language with strong typing. We think this 
+combination of features makes it one of the most elegant programming
+languages in existence, giving it great expressive power and making it very easy
+to write and refactor code that does what you think it does. But you'll have to
+take the class for us to convince you of this!
+
+Haskell is also a production-ready research language. It presents a unique
+combination of actual industry usage[^USE]  and constant evolution.  Many old concepts
+from Haskell have been incorporated into other languages[^FEATS] and many new ideas
+in programming language theory are being worked out in Haskell today.
+
+[^USE]: See Github's
+  [Semantic](https://github.com/github/semantic), Facebook's
+  [Sigma](https://engineering.fb.com/security/fighting-spam-with-haskell/), and
+  the [Elm](https://github.com/elm/compiler/tree/master/compiler/src/Elm)
+  compiler.
+
+[^FEATS]: Examples include list comprehensions in Python, traits in Rust, and optionals in Swift.
+
 ## Resources
 
 There is no formal textbook. [Lecture notes](/notes.html) will be released at least a week before
@@ -29,19 +50,15 @@ and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free 
 ## Assignments
 
 Assignments will be posted here. They will generally be biweekly, and the intent
-is to provide sufficient starter to make developing practical software
-possible. Probable assignments include:
-
-- Fractal Art Generator
-- Interpreters for simple languages, up to a full Scheme implementation
-- Simple Web Server
+is to provide sufficient starter code to make developing interesting software
+possible. 
 
 ## Prerequisites
 
 There are no formal prerequisites, but we recommend "programming and
 mathematical maturity."  In terms of Stanford courses, CS107 + CS103 or
 equivalent experience will suffice, though the material in those courses 
-will not be relied upon.
+will not be heavily relied upon.
 
 This course intends to cover a lot of material, and depending on background some
 topics may be more easily accessible than others. However, the aim is to provide
@@ -66,11 +83,3 @@ Please let us know if you have any OAE accommodations or if we can do anything
 to make the course materials and presentation more accessible. Also, feel free
 to reach out with any personal questions or concerns about the course. We are always open
 to making changes!
-
-We would also like to acknowledge that the Haskell community is
-extremely male dominated and the language has a reputation for being
-a generally inaccessible "ivory tower" language.
-Although we do not expect to solve this problem on our own, we are doing our
-best to make Haskell accessible to everyone regardless of background or
-identity. Please do not hesitate to point out where we can do better in this
-regard.

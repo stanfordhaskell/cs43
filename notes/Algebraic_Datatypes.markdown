@@ -190,8 +190,8 @@ gpa :: Student -> Float
 
 ### Optional values
 
-Coming later today.
+Coming.
 
 ### Alternate values
 
-Coming later today.
+Coming.
