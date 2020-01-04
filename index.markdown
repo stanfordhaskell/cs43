@@ -14,9 +14,10 @@ view, and will include higher order functions, immutable data structures,
 algebraic data types, type inference, lenses and optics, effect systems,
 concurrency and parallelism, and dependent types.
 
-- Lectures: Tue / Thu: 4:30pm - 5:50pm, in Building 200, Room 030
 - Instructors: Isaac Scheinfeld, Adithya Ganesh, Patrick DeMichele
 - Advisor: Jerry Cain
+- Time: Tue / Thu: 4:30pm - 5:50pm, usually ending 5:30 for questions
+- Location: Building 200, Room 030
 - Office Hours: TBD, twice weekly
 
 ## Why Haskell?
