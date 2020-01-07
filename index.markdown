@@ -18,7 +18,8 @@ concurrency and parallelism, and dependent types.
 - Advisor: Jerry Cain
 - Time: Tue / Thu: 4:30pm - 5:50pm, usually ending 5:30 for questions
 - Location: Building 200, Room 030
-- Office Hours: TBD, twice weekly
+- Office Hours: Twice weekly, fill in times that work
+  [here](https://www.when2meet.com/?8544350-txWhU)
 
 ## Why Haskell?
 
