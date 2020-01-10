@@ -55,6 +55,8 @@ Assignments will be posted here. They will generally be biweekly, and the intent
 is to provide sufficient starter code to make developing interesting software
 possible. 
 
+- [Assignment 1](/assignments/assign1.html) Out Jan 9 / Due Jan 23.
+
 ## Prerequisites
 
 There are no formal prerequisites, but we recommend "programming and
