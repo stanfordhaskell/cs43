@@ -64,7 +64,34 @@ but when evaluated crashes the program.
 
 ## Problems
 
-### Problem 1 - List Processing (/src/ListProcess.hs)
+Note that all the material for these problems will be covered by the end of
+lecture Tuesday, Jan 14.
+
+
+### Problem 1 - Primes (/src/Primes.hs)
+
+As you may know, a prime number is a natural number greater than 1 with no
+divisors other than 1 and itself. We are going to ask you to implement a few
+functions related to prime numbers.
+
+1. Write a function  `isPrime :: Int -> Bool` that returns whether a positive
+   integer is prime. Hint: somewhere in there you'll want to `filter` some
+   `[Int]`.
+
+
+1. Using isPrime, define an infinite list `primes :: [Int]` which consists of
+   all prime numbers. Hint: `filter`.
+
+1. Look into the Sieve of Eratosthenes algorithm for computing prime numbers.
+   The intro on [Wikipedia](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) gives a
+   great description. Define the list of positive primes -- call it `primesSieve
+   :: [Int]` -- using an implementation of the Sieve of Eratosthenes.
+
+   It will help to write a helper `sieve :: [Int] -> [Int]` where the first
+   element of the argument to `sieve` is assumed to be prime. Once again,
+   `filter` is your friend.
+
+### Problem 2 - List Processing (/src/ListProcess.hs)
 
 In class we saw various list processing functions. This problem asks you to
 puzzle through writing `map` and `filter` in terms of `foldr`. 
@@ -89,29 +116,6 @@ puzzle through writing `map` and `filter` in terms of `foldr`.
 1. (Optional Challenge) Implement `foldl` using `foldr`. Make sure your
    implementation works on infinite lists. Can you write `foldr` using
    `foldl`, with the same restriction?
-
-### Problem 2 - Primes (/src/Primes.hs)
-
-As you may know, a prime number is a natural number greater than 1 with no
-divisors other than 1 and itself. We are going to ask you to implement a few
-functions related to prime numbers.
-
-1. Write a function  `isPrime :: Int -> Bool` that returns whether a positive
-   integer is prime. Hint: somewhere in there you'll want to `filter` some
-   `[Int]`.
-
-
-1. Using isPrime, define an infinite list `primes :: [Int]` which consists of
-   all prime numbers. Hint: `filter`.
-
-1. Look into the Sieve of Eratosthenes algorithm for computing prime numbers.
-   The intro on [Wikipedia](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) gives a
-   great description. Define the list of positive primes -- call it `primesSieve
-   :: [Int]` -- using an implementation of the Sieve of Eratosthenes.
-
-   It will help to write a helper `sieve :: [Int] -> [Int]` where the first
-   element of the argument to `sieve` is assumed to be prime. Once again,
-   `filter` is your friend.
 
 ### Problem 3 - L-systems (/src/LSystem.hs)
 
