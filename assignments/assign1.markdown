@@ -57,7 +57,7 @@ ghci> :r
 ```
 
 There are two redundant indications for where you should edit the starter code.
-First, each definition that requires editing will be marked by TODO in the
+First, each definition that requires editing will be marked by `TODO` in the
 corresponding comment. Second, the code to be written will be replaced with the
 Haskell `undefined`, a value of any type which allows compilation to complete
 but when evaluated crashes the program.
