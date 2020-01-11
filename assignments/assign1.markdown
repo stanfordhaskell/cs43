@@ -120,7 +120,7 @@ puzzle through writing `map` and `filter` in terms of `foldr`.
 ### Problem 3 - L-systems (/src/LSystem.hs)
 
 This problem asks you to extend a module representing L-systems, a type of
-formal grammer. From [Wikipedia](https://en.wikipedia.org/wiki/L-system), "An
+formal grammar. From [Wikipedia](https://en.wikipedia.org/wiki/L-system), "An
 L-system consists of an alphabet of symbols that can be used to make strings, a
 collection of production rules that expand each symbol into some larger string
 of symbols, an initial 'axiom' string from which to begin construction, and a
@@ -143,7 +143,7 @@ screen. `Draw` draws a line moving forward, `Move` simply moves forward, `RTurn`
 and `LTurn` turn the turtle by an angle (specified later), `Mark` marks the
 current position and orientation and `Revert` returns to the previous mark.
 Finally, `Constant 0`, `Constant 1`, etc. allow us to have other symbols in our
-grammer that are not interpreted (i.e. ignored) by our turtle artist.
+grammar that are not interpreted (i.e. ignored) by our turtle artist.
 
 The code for generating the diagram is in `/app/Main.hs`, which is compiled by
 the `stack build` command into an executable. It should already work with the
@@ -153,7 +153,8 @@ replacement after completing this problem will change the diagram displayed to
 that defined in the second rewrite implementation.
 
 The following command runs the exectuable `draw`, outputing a diagram for an
-LSystem after a given number of iterations, and with a given turn angle.
+LSystem after a given number of iterations (try ~5, a high number of iterations
+can take a long time to render), and with a given turn angle.
 
 ```
 stack exec -- draw -o OUTPUTFILE.png -w 1000 -h 1000 NITER ANGLE

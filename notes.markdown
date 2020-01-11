@@ -9,6 +9,9 @@ briefly present the necessary syntax and basic concepts (which are covered
 elsewhere in much greater depth) and focus on further theoretical exposition and
 examples.
 
+Lecture code can be found in a repo [here](https://github.com/ischeinfeld/cs43-lectures)
+which you can clone and run yourself. It should be updated every night after lecture.
+
 ## Background and Basics
 
 1. [Getting Set Up](notes/Getting_Set_Up.html): One way to set up a Haskell environment with stack, as well
