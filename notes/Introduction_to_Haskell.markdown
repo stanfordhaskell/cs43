@@ -251,8 +251,8 @@ The type signature of `f` hints at this as well.
 f :: a -> b -> c
 ```
 
-This says that `f` takes a value of type `a` and returns a value of type `a ->
-a`, which is a function that takes a value of type `b` and returns a value of
+This says that `f` takes a value of type `a` and returns a value of type `b ->
+c`, which is a function that takes a value of type `b` and returns a value of
 type `c`. Here, the `->` symbol in the type signature is applied right to left,
 i.e. it is right associative. Thus, the type above can be written as 
 
