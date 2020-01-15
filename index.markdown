@@ -20,7 +20,7 @@ concurrency and parallelism, and dependent types.
 - Location: Building 200, Room 030
 - Office Hours: Twice weekly, fill in times that work
   [here](https://www.when2meet.com/?8544350-txWhU)
-- Attendance form: [tinyurl.com/cs43form](tinyurl.com/cs43form)
+- Attendance form: [tinyurl.com/cs43form](https://tinyurl.com/cs43form)
 
 ## Why Haskell?
 
