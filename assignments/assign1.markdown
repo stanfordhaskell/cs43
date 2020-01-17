@@ -157,7 +157,7 @@ LSystem after a given number of iterations (try ~5, a high number of iterations
 can take a long time to render), and with a given turn angle.
 
 ```
-stack exec -- draw -o OUTPUTFILE.png -w 1000 -h 1000 NITER ANGLE
+stack exec -- draw -o OUTPUTFILE.png -w 1000 -h 1000 <NITER> <ANGLE>
 ```
 
 ## Submission instructions
