@@ -19,6 +19,7 @@ concurrency and parallelism, and dependent types.
 - Time: Tue / Thu: 4:30pm - 5:50pm, usually ending 5:30 for questions
 - Location: Building 200, Room 030
 - Office Hours: Tue / Wed 1:30pm - 2:30pm, Old Union first floor couches
+- Attendance form: [tinyurl.com/cs43form](https://tinyurl.com/cs43form)
 
 ## Why Haskell?
 
