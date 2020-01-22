@@ -18,8 +18,7 @@ concurrency and parallelism, and dependent types.
 - Advisor: Jerry Cain
 - Time: Tue / Thu: 4:30pm - 5:50pm, usually ending 5:30 for questions
 - Location: Building 200, Room 030
-- Office Hours: Twice weekly, fill in times that work
-  [here](https://www.when2meet.com/?8544350-txWhU)
+- Office Hours: Tue / Wed 1:30pm - 2:30pm, Old Union first floor couches
 - Attendance form: [tinyurl.com/cs43form](https://tinyurl.com/cs43form)
 
 ## Why Haskell?
@@ -57,6 +56,7 @@ is to provide sufficient starter code to make developing interesting software
 possible. 
 
 - [Assignment 1](/assignments/assign1.html) Out Jan 9 / Due Jan 23.
+- Assignment 2 Out Jan 25 / Due Feb 6.
 
 ## Prerequisites
 
