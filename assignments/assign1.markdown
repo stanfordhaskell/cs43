@@ -162,7 +162,7 @@ stack exec -- draw -o OUTPUTFILE.png -w 1000 -h 1000 <NITER> <ANGLE>
 
 ## Submission instructions
 
-Send an email to cs43-win1819-staff@lists.stanford.edu with:
+Send an email to cs43-win1920-staff@lists.stanford.edu with:
 
 - A .zip file with your code, and a diagram generated from the rules in the
   second rule implementation.
