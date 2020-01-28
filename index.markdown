@@ -58,7 +58,7 @@ is to provide sufficient starter code to make developing interesting software
 possible. 
 
 - [Assignment 1](/assignments/assign1.html) Out Jan 9 / Due Jan 23.
-- Assignment 2 Out Jan 28 / Due Feb 6.
+- [Assignment 2](/assignments/assign2.html) Out Jan 28 / Due Feb 6.
 
 ## Prerequisites
 
