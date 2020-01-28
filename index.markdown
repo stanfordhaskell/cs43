@@ -20,6 +20,8 @@ concurrency and parallelism, and dependent types.
 - Location: Building 200, Room 030
 - Office Hours: Tue / Wed 1:30pm - 2:30pm, Old Union first floor couches
 - Attendance form: [tinyurl.com/cs43form](https://tinyurl.com/cs43form)
+- Feedback form (anonymous): [https://forms.gle/qXe5pnES1qxLtjkP6](https://forms.gle/qXe5pnES1qxLtjkP6)
+- Course email: cs43-win1920-staff@lists.stanford.edu
 
 ## Why Haskell?
 
