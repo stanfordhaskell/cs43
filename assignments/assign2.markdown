@@ -2,17 +2,153 @@
 title: Assignment 2
 ---
 
+## Set Up
+
+Download the started code from the [repo](https://github.com/ischeinfeld/cs43-assignments). 
+The `assignment2` folder is a stack project with the following directory structure.
+
+```
+TODO
+```
+
+All three problems below should be solved by editing the corresponding files in
+`/src/`. It is configured (in the file `assignment1.cabal`) so that
+
+```
+$ stack test
+```
+
+runs all the tests and each problem's tests can be run individually, i.e. Problem 1
+can be tested as follows.
+
+```
+$ stack test :p1
+```
+
+Passing all the tests and answering the written questions (as comments in code)
+should be sufficient to answer all the problems.
+
+To test out the code from a problem in ghci, run
+
+```
+$ stack ghci --no-load
+```
+
+where the `--no-load` flag prevents loading modules (since Problem3 has multiple overlapping
+implementations in different modules). Then, you can load specific modules as follows.
+
+```
+> :l Problem1
+```
+
 ## Problems
 
-So far, we have seen that typeclasses allow us to implement functions (for
-example, `(+)` in the `Num` typeclass) separately
+### Problem 1 - More about Functor
+
+Recall, Functor is a typeclass which represents the ability to map over a type.
+
+```haskell
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
+    (<$) :: a -> f b -> f a
+```
+
+We talked a lot about `fmap` but barely any about `(<$)`. Consider its type
+signature and try it out on some values to see how it behaves. Then, write
+`(<$)` (called `cmap` in the starter code `/src/Problem1.hs`) using `fmap`.
+You may want to use the `const` function.
+
+Because `(<$)` can be defined from `fmap`, specifying the
+`fmap` function is all that is necessary to define a Functor instance.
+However, `fmap` must follow certain rules. For the behavior of Functor to
+be predictable, `fmap` must satisfy the identity law `fmap id == id`
+and the composition law `fmap (f . g) == (fmap f) . (fmap g)`.
+
+Below we define four datatypes with instances of Functor. For each,
+either state that the functor laws are satisfied, argue that the type of `fmap`
+as given is incorrect, or present an expression `a == b` that shows this
+instance violates one of the functor laws. You can comment your answers in the
+starter code file for this problem.
+
+```haskell
+data TwoVals = V1 | V2
+data OneOf a b = First a | Second b 
+data OneOrTwo a = One a | Two a a
+
+instance Functor TwoVals where
+  fmap f V1 = V2
+  fmap f V2 = V1
+
+instance Functor OneOf a where
+  fmap f (First x) = First (f x)
+  fmap f (Second y) = Second (f y)
+
+instance Functor OneOrTwo where
+  fmap f (One x) = One (f x)
+  fmap f (Two x y) = Two (f y) (f y)
+```
+
+You'll notice that all of the illegal but well-typed examples above violated the
+identity law flat-out -- there weren't any examples that preserved identity but
+failed on composition. In fact, it is impossible to write a functor instance
+that follows the identity law but violates the composition law. The reason we
+state both laws (even though good identity implies good composition) is because
+this link is somewhat subtle and the composition law states more explicitly what
+we want from Functor. It also turns out that, if type has a functor instance, it
+is unique! You can read [this](https://wiki.haskell.org/Typeclassopedia#Laws) section of
+the Typeclassopedia for more on the Functor laws.
+
+Consider the following weird-looking datatype.
+
+```haskell
+data LotsOfPieces a =
+    Gone
+  | Two a a 
+  | RecTwo a a (LotsOfPieces a)
+  | TreeLike a (LotsOfPieces a) (LotsOfPieces a)
+  | TripleSandwich (LotsOfPieces a) (LotsOfPieces a) (LotsOfPieces a)
+  deriving (Show)
+```
+
+Write the functor instance for `LotsOfPieces`. It shouldn't require a lot
+of thinking -- in fact, because of all the weird parts, it should become more
+clear that you're following a certain pattern in writing `fmap`. Briefly
+describe the "algorithm" you were working through as you wrote the Functor
+instance.
+
+It turns out that due to this predictability Haskell can derive Functor
+instances automatically. Comment out your Functor instance and add `Functor` to 
+the list of deriving typeclasses. Check that the new automatically defined
+`fmap` works the same on some simple functions as your implementation. You can
+read about the `DeriveFunctor` language extension
+[here](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-DeriveFunctor) if you are interested.
+There are more subtleties invovled than this problem would suggest, most of
+which arrise when function types are part of your Functor instance. 
+
+### Problem 2 - Streams
+
+While the default list in Haskell allows infinite lists, we can go a step
+further and define a type `Stream` that must be infinite.  Specifically,
+streams are like lists, but with only a "cons" constructor -- there is no such
+thing as an "empty" stream. Complete the datatypes and functions in
+`/src/Problem2`.
+
+### Problem 3 - Extending an exception library
+
+In this problem, you will extend a library for dealing with exceptions to track
+all exceptions that occur in a computation instead of just the first. To do so,
+we will first learn about a new typeclass that will be used in our implementation.
+
+So far, we have seen how typeclasses allow us to implement functions (for
+example, `fmap` in the `Functor` typeclass) separately
 for various types.^[This is known as *ad hoc* polymorphism, in contrast to the
-*parametric* polymorphism provided by type variables.] Another common
+*parametric* polymorphism provided by type variables.] A common
 Haskell idiom is to create a typeclass for functions with a specific
 structure and then let a value's type determine which function with that
 structure to apply.
    
-For example, consider the `Semigroup` typeclass (already implemented in Haskell).
+For example, consider the `Semigroup` typeclass (already implemented in Haskell
+base, available in the Data.Semigroup module).
 
 ```haskell
 class Semigroup a where
@@ -90,51 +226,40 @@ ghci> (All True) <> (All True) <> (All True)
 All True
 ```
 
-1. Integers, like booleans, do not have a natural associative operation.
-   However, both addition and multiplication are associative operations on
-   integers. Write `Semigroup` instances for the `Sum` and `Product` types
-   wrapping `Int` in the starter code, mirroring the implementations of `Any`
-   and `All`.
+We will see many more examples of the power of this abstraction. For this part
+of the assignment, you will extend a library representing exceptions and a
+mock application using this library, using the `Semigroup` typeclass along the
+way.
 
-The power of using typeclasses to represent operations with a given structure
-becomes apparent when we want to write generic functions using the structures
-they represent. Consider the `stimes` function, which is also implemented in
-the `Semigroup` typeclass.
+You are given `/src/Exception1.hs` and `/app/WeatherApp1.hs` and this problem
+asks you to fill in `/src/Exception2.hs` and `/app/WeatherApp2.hs`. Read the
+commented files in this order, filling in the latter two as marked (by `TODO`).
+You can test your code by running
 
-```haskell
-class Semigroup a where
-  (<>) :: a -> a -> a
-
-  -- Integral is a typeclass containing Int and Integer
-  stimes :: Integral b => b -> a -> a
-  stimes n x   -- not the actual default implementation
-    | n <= 0    = error "positive multiplier expected" -- runtime error
-    | n = 1     = x
-    | otherwise = x <> stimes (n - 1) x
-
-  -- 1 more function defined in terms of <>
+```
+$ stack test :p3
 ```
 
-It computes the following.
+and you can run code from the provided implementations as follows
 
-```haskell
-stimes n x = x <> x <> ... (n times) ...
+```
+$ stack ghci --no-load
+> :l Exception1 WeatherApp1
+> buildWeatherPage badUserAccess goodWeatherAccess -- for example
 ```
 
-2. The default given above has $O(n)$ performance, which is less efficient than
-   the best general implementation.  Using the associative property of `<>`,
-   provide a more efficient implementation, `stimes'`, with time
-   complexity $O(\log n)$.
+and from your extended implementations as follows.
 
-1. While $O(\log n)$ is the best possible performance in general, specific
-   instances can perform even better. Extend your instances for `Sum` and `Product`
-   with $O(1)$ implementations of `stimes`.
+```
+> :l Exception2 WeatherApp2
+```
 
-[Here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/blob/master/starter-code/assignment2/src/Main.hs) is starter code which you should complete for your solutions.
+You can switch back and forth between implementations in `ghci` by loading the
+appropriate code, and you can reload the current implementation using `:r`.
 
 ## Submission instructions
 
-Send an email to cs43-win1819-staff@lists.stanford.edu with either:
+Send an email to cs43-win1920-staff@lists.stanford.edu with either:
 
 - (Preferred) A link to a Gitlab / Github repository with your code.
 
