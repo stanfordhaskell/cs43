@@ -146,7 +146,7 @@ the list of deriving typeclasses. Check that the new automatically defined
 `fmap` works the same on some simple functions as your implementation. You can
 read about the `DeriveFunctor` language extension
 [here](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/glasgow_exts.html#extension-DeriveFunctor) if you are interested.
-There are more subtleties invovled than this problem would suggest, most of
+There are more subtleties involved than this problem would suggest, most of
 which arrise when function types are part of your Functor instance. 
 
 ### Problem 2 - Streams
@@ -283,8 +283,4 @@ appropriate code, and you can reload the current implementation using `:r`.
 
 ## Submission instructions
 
-Send an email to cs43-win1920-staff@lists.stanford.edu with either:
-
-- (Preferred) A link to a Gitlab / Github repository with your code.
-
-- A .zip file with your code.
+Send an email to cs43-win1920-staff@lists.stanford.edu with a .zip file with your code.
