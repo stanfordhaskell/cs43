@@ -8,7 +8,31 @@ Download the started code from the [repo](https://github.com/ischeinfeld/cs43-as
 The `assignment2` folder is a stack project with the following directory structure.
 
 ```
-TODO
+.
+├── LICENSE
+├── README.md
+├── Setup.hs
+├── assignment2.cabal
+├── src
+│   ├── Exception1.hs
+│   ├── Exception2.hs
+│   ├── Problem1.hs
+│   ├── Problem2.hs
+│   ├── WeatherApp1.hs
+│   └── WeatherApp2.hs
+├── stack.yaml
+├── stack.yaml.lock
+└── test
+    ├── p1
+    │   ├── Problem1Spec.hs
+    │   └── Spec.hs
+    ├── p2
+    │   ├── Problem2Spec.hs
+    │   └── Spec.hs
+    └── p3
+        ├── Exception2Spec.hs
+        ├── Spec.hs
+        └── WeatherApp2Spec.hs
 ```
 
 All three problems below should be solved by editing the corresponding files in
