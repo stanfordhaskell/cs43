@@ -88,7 +88,7 @@ However, `fmap` must follow certain rules. For the behavior of Functor to
 be predictable, `fmap` must satisfy the identity law `fmap id == id`
 and the composition law `fmap (f . g) == (fmap f) . (fmap g)`.
 
-Below we define four datatypes with instances of Functor. For each,
+Below we define three datatypes with instances of Functor. For each,
 either state that the functor laws are satisfied, argue that the type of `fmap`
 as given is incorrect, or present an expression `a == b` that shows this
 instance violates one of the functor laws. You can comment your answers in the
