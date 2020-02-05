@@ -4,6 +4,8 @@ title: Assignment 2
 
 ## Set Up
 
+*Note starter code updated Feb 4 so that tests compile without modification.*
+
 Download the starter code from the [repo](https://github.com/ischeinfeld/cs43-assignments). 
 The `assignment2` folder is a stack project with the following directory structure.
 
