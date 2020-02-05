@@ -51,6 +51,19 @@ material is covered in class. A list of resources can be found [here](/resources
 updated with additional material as the class progresses. We recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
 and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free references.
 
+## Schedule
+
+1. Introduction
+1. Types
+1. Functor
+1. Applicative
+1. Monad
+1. IO
+1. Monad Transformers
+1. Effect Systems
+1. Optics
+1. Concurrency & Dependent Types
+
 ## Assignments
 
 Assignments will be posted here. They will generally be biweekly, and the intent
