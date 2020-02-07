@@ -4,7 +4,7 @@ title: Resources
 
 This is a selection of resources that we have found useful to enlightening.
 Rather than being arranged by media type (books, videos, research papers, blog
-posts, etc.) they are arranged by topic. 
+posts, etc.) they are (will be) arranged by topic. 
 
 ## The go-tos
 
