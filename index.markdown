@@ -46,10 +46,12 @@ in programming language theory are being worked out in Haskell today.
 
 ## Resources
 
-There is no formal textbook. [Lecture notes](/notes.html) will be released at least a week before
-material is covered in class. A list of resources can be found [here](/resources.html), and will be
-updated with additional material as the class progresses. We recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
-and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free references.
+There is no formal textbook. [Lecture code](/notes.html) will be released as
+material is covered in class. A list of resources can be found
+[here](/resources.html), and will be updated with additional material as the
+class progresses. We recommend the [Haskell
+wikibook](https://en.wikibooks.org/wiki/Haskell) and [Learn You a
+Haskell](http://learnyouahaskell.com/chapters) as primary free references.
 
 ## Schedule
 
