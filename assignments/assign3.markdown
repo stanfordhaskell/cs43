@@ -96,7 +96,8 @@ description of GADTs in Haskell.
 
 In this problem you complete the implementation of a typed 
 representation for a simple calculator-like language. Complete the
-starter code in `/src/Language.hs`.
+starter code in `/src/Language.hs`. The starter code describes the syntax
+of the language. The semantics are just the obvious ones.
 
 ### Problem 3 - Monadic parsing
 

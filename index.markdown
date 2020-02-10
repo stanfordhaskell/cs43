@@ -74,6 +74,7 @@ possible.
 
 - [Assignment 1](/assignments/assign1.html) Out Jan 9 / Due Jan 23.
 - [Assignment 2](/assignments/assign2.html) Out Jan 28 / Due Feb 6.
+- [Assignment 3](/assignments/assign3.html) Out Feb 10 / Due Feb 20.
 
 ## Prerequisites
 
