@@ -41,7 +41,10 @@ The `assignment4-rio` folder is a stack project with the following directory str
 This problem should be solved by reading and editing the files `Main1.hs`
 through `Main6.hs` in order. These implement a very simple program,
 demonstrating a rewrite using the ReaderT design pattern. This is an approach to
-writing programs centered around the monad instance for `ReaderT env IO a`. 
+writing programs centered around the monad instance for `ReaderT env IO a`. If
+you want to know more about this design pattern,
+[this](https://www.fpcomplete.com/blog/2017/06/readert-design-pattern) blog post goes
+into great depth. 
 
 ### Problem 2 - The ST Monad
 
