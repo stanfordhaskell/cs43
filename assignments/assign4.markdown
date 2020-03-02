@@ -69,6 +69,8 @@ Here:
 - `writeSTRef` writes a new value into an `STRef`.
 - `modifySTRef` mutates the contents of an `STRef`.
 
+These problems should be solved by editing the `STMonad.hs` file in the `src` directory.
+
 *Problem 2.1*. We've provided a skeleton implementation of `sumST`, which computes the sum of a list of type `a` in the `Num a` class.  Fill in the `undefined` to complete the implementation.  Here, the type of `sumST` is
 ```haskell
 sumST :: Num a => [a] -> a
@@ -115,9 +117,6 @@ Integer collatz(Integer n) {
     
 }
 ```
-
-
-
 
 ## Submission instructions
 
