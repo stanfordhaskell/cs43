@@ -48,12 +48,12 @@ into great depth.
 
 ### Problem 2 - The ST Monad
 
-The`ST` monad in `Control.Monad.ST` allows us to write programs that use arbitrary _mutable state_, implemented as actual mutable memory on the machine.  As detailed in Launchbury and Jones' ["Lazy Functional State Threads"](https://www.microsoft.com/en-us/research/wp-content/uploads/1994/06/lazy-functional-state-threads.pdf), the `ST` monad maintains full referential transparency.  `ST` is commonly used to implement mutable arrays and other data structures. Intuitively, the `ST` monad and `STRefs`  (references to mutable cells) allow for controlled mutability in otherwise pure programs.  
+The `ST` monad in `Control.Monad.ST` allows us to write programs that use arbitrary _mutable state_, implemented as actual mutable memory on the machine.  As detailed in Launchbury and Jones' ["Lazy Functional State Threads,"](https://www.microsoft.com/en-us/research/wp-content/uploads/1994/06/lazy-functional-state-threads.pdf) the `ST` monad maintains full referential transparency.  `ST` is commonly used to implement mutable arrays and other data structures. Intuitively, the `ST` monad and `STRefs`  (references to mutable cells) allow for controlled mutability in otherwise pure programs[^MORE].
 
-# footnote: see https://stackoverflow.com/questions/5545517/difference-between-state-st-ioref-and-mvar, https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Monad-ST.html for more details.
+[^MORE]: For more details, see [https://stackoverflow.com/questions/5545517/difference-between-state-st-ioref-and-mvar](https://stackoverflow.com/questions/5545517/difference-between-state-st-ioref-and-mvar), and [https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Monad-ST.html](https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Monad-ST.html).
 
 There are four key functions that are used when we operate on the `ST` monad.  Namely:
-```
+```haskell
 runST :: (forall s. ST s a) -> a
 newSTRef :: a -> ST s (STRef s a)
 readSTRef :: STRef s a -> ST s a
@@ -62,21 +62,26 @@ modifySTRef :: forall s a. STRef s a -> (a -> a) -> ST s ()
 ```
 
 Here:
+
 - `runST` takes stateful code and makes it pure again.
 - `newSTRef` creates an `STRef`, a place in memory to store values.
 - `readSTRef` reads the value from an `STRef`.
 - `writeSTRef` writes a new value into an `STRef`.
 - `modifySTRef` mutates the contents of an `STRef`.
 
-1. We've provided a skeleton implementation of `sumST`.  Fill in the `undefined` to complete the implementation.
-
-2. Implement `foldlST`, a version of `foldl` that uses the `ST` monad under the hood.  Here, the type of `foldlST` is
+*Problem 2.1*. We've provided a skeleton implementation of `sumST`, which computes the sum of a list of type `a` in the `Num a` class.  Fill in the `undefined` to complete the implementation.  Here, the type of `sumST` is
+```haskell
+sumST :: Num a => [a] -> a
 ```
+
+*Problem 2.2*. Implement `foldlST`, a version of `foldl` that uses the `ST` monad under the hood.  Here, the type of `foldlST` is
+
+```haskell
 foldlST :: (a -> b -> a) -> a -> [b] -> a,
 ```
 as in the usual `foldl`.
 
-3. Consider the following operation on a positive integer `n`
+*Problem 2.3*. Consider the following operation on a positive integer `n`:
 
 - If the number is even, divide it by two.
 - If the number is odd, triple it and add one.
@@ -86,7 +91,7 @@ The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) state
 
 Translate the following pseudocode to Haskell, using the ST monad to update mutable `STRef`s.
 
-```
+```C
 Integer collatz(Integer n) {
     
     assert(n > 0, "n must be positive");
