@@ -13,11 +13,7 @@ to get the most out of the assignment.
 
 Download the starter code from the [repo](https://github.com/ischeinfeld/cs43-assignments). 
 
-## Problems
-
-### Problem 1
-
-The `assignment4-rio` folder is a stack project with the following directory structure.
+The `assignment4` folder is a stack project with the following directory structure.
 
 ```
 .
@@ -37,6 +33,10 @@ The `assignment4-rio` folder is a stack project with the following directory str
 ├── stack.yaml
 └── stack.yaml.lock
 ```
+
+## Problems
+
+### Problem 1
 
 This problem should be solved by reading and editing the files `Main1.hs`
 through `Main6.hs` in order. These implement a very simple program,
