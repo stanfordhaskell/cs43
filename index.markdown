@@ -46,10 +46,25 @@ in programming language theory are being worked out in Haskell today.
 
 ## Resources
 
-There is no formal textbook. [Lecture notes](/notes.html) will be released at least a week before
-material is covered in class. A list of resources can be found [here](/resources.html), and will be
-updated with additional material as the class progresses. We recommend the [Haskell wikibook](https://en.wikibooks.org/wiki/Haskell)
-and [Learn You a Haskell](http://learnyouahaskell.com/chapters) as primary free references.
+There is no formal textbook. [Lecture code](/notes.html) will be released as
+material is covered in class. A list of resources can be found
+[here](/resources.html), and will be updated with additional material as the
+class progresses. We recommend the [Haskell
+wikibook](https://en.wikibooks.org/wiki/Haskell) and [Learn You a
+Haskell](http://learnyouahaskell.com/chapters) as primary free references.
+
+## Schedule
+
+1. Introduction
+1. Types
+1. Functor
+1. Applicative
+1. Monad
+1. IO
+1. Monad Transformers
+1. Effect Systems
+1. Optics
+1. Concurrency & Dependent Types
 
 ## Assignments
 
@@ -59,6 +74,8 @@ possible.
 
 - [Assignment 1](/assignments/assign1.html) Out Jan 9 / Due Jan 23.
 - [Assignment 2](/assignments/assign2.html) Out Jan 28 / Due Feb 6.
+- [Assignment 3](/assignments/assign3.html) Out Feb 10 / Due Feb 20.
+- [Assignment 4](/assignments/assign4.html) Out Feb 29 / Due Mar 13.
 
 ## Prerequisites
 

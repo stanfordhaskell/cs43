@@ -2,42 +2,54 @@
 title: Assignment 4
 ---
 
-## Problem
+This two-part assignment introduces a new design pattern in one part and a new
+monad for truly effectful computations in the other. It requires only a small
+amount of new code to be written, but reading through the code carefully and
+working out the types of various expressions in your head / in ghci will be
+important both to complete the code without too much trial and error and
+to get the most out of the assignment.
 
-This week's homework is to extend a parser and interpreter for a simple
-calculator language. The starter code, which describes the initial language
-and provides an interpreter and parser, can be found
-[here](https://gitlab.com/stanford-lambda/stanford-lambda.gitlab.io/tree/master/starter-code/assignment4).
-The interpreter can be run by calling the `interpret` function from Main.hs in
-ghci.
+## Setup
 
-```haskell
-ghci> interpret "(+ 1 (* 3 4))"
-```
+Download the starter code from the [repo](https://github.com/ischeinfeld/cs43-assignments). 
 
-The homework is simply to extend the language by modifying the code; no new
-functions need to be written. Modifications should be made to `Main.hs`, while
-`Parser.hs` provides parsing functionality basically as implemented in lecture
-on Wednesday 2/6.
+## Problems
 
-As currently implemented, the language consists of
-expressions like the following. 
+### Problem 1
+
+The `assignment4-rio` folder is a stack project with the following directory structure.
 
 ```
-1
-(- 4)
-(+ 1 2)
-(+ (-5) (* 1 2))
+.
+├── LICENSE
+├── README.md
+├── Setup.hs
+├── assignment4-rio.cabal
+├── src
+│   ├── Main.hs
+│   ├── Main1.hs
+│   ├── Main2.hs
+│   ├── Main3.hs
+│   ├── Main4.hs
+│   ├── Main5.hs
+│   ├── Main6.hs
+│   └── RIO.hs
+├── stack.yaml
+└── stack.yaml.lock
 ```
 
-You should extend the parsers, language datatype, and `eval` function to
-allow one or more arguments to `+` and `*` instead of exactly two. 
+This problem should be solved by reading and editing the files `Main1.hs`
+through `Main6.hs` in order. These implement a very simple program,
+demonstrating a rewrite using the ReaderT design pattern. This is an approach to
+writing programs centered around the monad instance for `ReaderT env IO a`. If
+you want to know more about this design pattern,
+[this](https://www.fpcomplete.com/blog/2017/06/readert-design-pattern) blog post goes
+into great depth. 
 
+### Problem 2 - The ST Monad
+
+Will be published this weekend.
 
 ## Submission instructions
 
-Send an email to cs43-win1819-staff@lists.stanford.edu with either:
-
-- (Preferred) A link to a Gitlab / Github repository with your code.
-
-- A .zip file with your code.
+Send an email to cs43-win1920-staff@lists.stanford.edu with a .zip file with your code.
