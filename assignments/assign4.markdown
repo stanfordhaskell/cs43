@@ -48,7 +48,71 @@ into great depth.
 
 ### Problem 2 - The ST Monad
 
-Will be published this weekend.
+The`ST` monad in `Control.Monad.ST` allows us to write programs that use arbitrary _mutable state_, implemented as actual mutable memory on the machine.  As detailed in Launchbury and Jones' ["Lazy Functional State Threads"](https://www.microsoft.com/en-us/research/wp-content/uploads/1994/06/lazy-functional-state-threads.pdf), the `ST` monad maintains full referential transparency.  `ST` is commonly used to implement mutable arrays and other data structures. Intuitively, the `ST` monad and `STRefs`  (references to mutable cells) allow for controlled mutability in otherwise pure programs.  
+
+# footnote: see https://stackoverflow.com/questions/5545517/difference-between-state-st-ioref-and-mvar, https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Monad-ST.html for more details.
+
+There are four key functions that are used when we operate on the `ST` monad.  Namely:
+```
+runST :: (forall s. ST s a) -> a
+newSTRef :: a -> ST s (STRef s a)
+readSTRef :: STRef s a -> ST s a
+writeSTRef :: STRef s a -> a -> ST s ()
+modifySTRef :: forall s a. STRef s a -> (a -> a) -> ST s ()
+```
+
+Here:
+- `runST` takes stateful code and makes it pure again.
+- `newSTRef` creates an `STRef`, a place in memory to store values.
+- `readSTRef` reads the value from an `STRef`.
+- `writeSTRef` writes a new value into an `STRef`.
+- `modifySTRef` mutates the contents of an `STRef`.
+
+1. We've provided a skeleton implementation of `sumST`.  Fill in the `undefined` to complete the implementation.
+
+2. Implement `foldlST`, a version of `foldl` that uses the `ST` monad under the hood.  Here, the type of `foldlST` is
+```
+foldlST :: (a -> b -> a) -> a -> [b] -> a,
+```
+as in the usual `foldl`.
+
+3. Consider the following operation on a positive integer `n`
+
+- If the number is even, divide it by two.
+- If the number is odd, triple it and add one.
+- (Repeat).
+
+The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) states that if we repeatedly apply this process, we will eventually reach the number 1, regardless of the start value of `n`.
+
+Translate the following pseudocode to Haskell, using the ST monad to update mutable `STRef`s.
+
+```
+Integer collatz(Integer n) {
+    
+    assert(n > 0, "n must be positive");
+    
+    Integer x = n;
+    Integer count = 0;
+    
+    while (x != 1) {
+        
+        count = count+1;
+        
+        if (x % 2 == 0) {
+            x = x/2;
+        } else {
+            x = 3*x+1;
+        }
+        
+    }
+    
+    return count;
+    
+}
+```
+
+
+
 
 ## Submission instructions
 
