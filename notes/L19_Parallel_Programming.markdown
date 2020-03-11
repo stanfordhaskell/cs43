@@ -181,9 +181,152 @@ For instance, if we want to use the `rpar` strategy, which sparks its argument f
 doubles = parMap rpar (\x -> x*2) [1..100]
 ```
 
+## Bonus example: K-Means Clustering
+
+An interesting example of how to apply these concepts in practice can be seen in the K-Means algorithm.  The algorithm takes the number of clusters to find as a parameter, and makes an initial guess at the center of each cluster.
+
+- Assign each point to the cluster to which it is closest.  This yields a new set of clusters.
+
+- Find the centroid of each cluster.
+
+- Repeat steps 1 and 2 until the cluster locations stabilize.  (For our purpose, we will stop the algorithm, after a arbitrary number of iterations).
+
+We represent a data point as follows:
+```
+data Point = Point !Double !Double,
+```
+and define various operations on points:
+```
+zeroPoint :: Point
+zeroPoint = Point 0 0
+
+sqDistance :: Point -> Point -> Double
+sqDistance (Point x1 y1) (Point x2 y2) = ((x1 - x2)^2) + ((y1-y2)^2)
+```
+
+We define clusters with the following type:
+```haskell
+data Cluster
+  = Cluster { clId :: Int
+            , clCent :: Point
+            }
+```
+which contains its number (`clId`) and its centroid (`clCent`).
+
+We also define an intermediate type called `PointSum`, which represents the sum of a set of points.  It contains the number of points in the set and the sum of their coordinates.
+
+We need a few more helper functions, to repeatedly add points  to a `PointSum`:
+
+```haskell
+addToPointSum :: PointSum -> Point -> PointSum
+addToPointSum (PointSum count xs ys) (Point x y)
+  = PointSum (count+1) (xs + x) (ys + y)
+```
+
+A `PointSum` can be turned into a `Cluster` by computing the centroid.
+```haskell
+pointSumToCluster :: Int -> PointSum -> Cluster
+pointSumToCluster i (PointSum count xs ys) =
+  Cluster {clId = i
+          , clCent = Point (xs / fromIntegral count) (ys / fromIntegral count)
+          } 
+```
+
+Now, a sequential implementation of `K-means` looks like this:
+
+```
+-- <<step
+step :: Int -> [Cluster] -> [Point] -> [Cluster]
+step nclusters clusters points
+   = makeNewClusters (assign nclusters clusters points)
+-- >>
+
+-- <<assign
+assign :: Int -> [Cluster] -> [Point] -> Vector PointSum
+assign nclusters clusters points = Vector.create $ do
+    vec <- MVector.replicate nclusters (PointSum 0 0 0)
+    let
+        addpoint p = do
+          let c = nearest p; cid = clId c
+          ps <- MVector.read vec cid
+          MVector.write vec cid $! addToPointSum ps p
+
+    mapM_ addpoint points
+    return vec
+ where
+  nearest p = fst $ minimumBy (compare `on` snd)
+                        [ (c, sqDistance (clCent c) p) | c <- clusters ]
+-- >>
+
+makeNewClusters :: Vector PointSum -> [Cluster]
+makeNewClusters vec =
+  [ pointSumToCluster i ps
+  | (i,ps@(PointSum count _ _)) <- zip [0..] (Vector.toList vec)
+  , count > 0
+  ]
+
+kmeans_seq :: Int -> [Point] -> [Cluster] -> IO [Cluster]
+kmeans_seq nclusters points clusters =
+  let
+      loop :: Int -> [Cluster] -> IO [Cluster]
+      loop n clusters | n > tooMany = do                  -- <1>
+        putStrLn "giving up."
+        return clusters
+      loop n clusters = do
+        printf "iteration %d\n" n
+        putStr (unlines (map show clusters))
+        let clusters' = step nclusters clusters points    -- <2>
+        if clusters' == clusters                          -- <3>
+           then return clusters
+           else loop (n+1) clusters'
+  in
+  loop 0 clusters
+
+tooMany = 80
+```
+
+To parallelize it, we can break up the `assign` function, since it is essential just a `map` over the points.  This would look like this:
+
+```
+-- <<kmeans_strat
+kmeans_strat :: Int -> Int -> [Point] -> [Cluster] -> IO [Cluster]
+kmeans_strat numChunks nclusters points clusters =
+  let
+      chunks = split numChunks points                            -- <1>
+
+      loop :: Int -> [Cluster] -> IO [Cluster]
+      loop n clusters | n > tooMany = do
+        printf "giving up."
+        return clusters
+      loop n clusters = do
+        printf "iteration %d\n" n
+        putStr (unlines (map show clusters))
+        let clusters' = parSteps_strat nclusters clusters chunks -- <2>
+        if clusters' == clusters
+           then return clusters
+           else loop (n+1) clusters'
+  in
+  loop 0 clusters
+-- >>
+
+-- <<split
+split :: Int -> [a] -> [[a]]
+split numChunks xs = chunk (length xs `quot` numChunks) xs
+
+chunk :: Int -> [a] -> [[a]]
+chunk n [] = []
+chunk n xs = as : chunk n bs
+  where (as,bs) = splitAt n xs
+-- >>
+```
+
+For the full code example, see https://github.com/simonmar/parconc-examples/tree/master/kmeans, and chapter 3 of Simon Marlow's "Parallel and Concurrent Programming in Haskell."
+
 ## References
 
 - Some of this material was adapted from Real World Haskell, [Chapter 24](http://book.realworldhaskell.org/read/concurrent-and-multicore-programming.html)
+
+- The KMeans example was adapted from https://github.com/simonmar/parconc-examples
 
 - Docs of [`Control.Parallel.Strategies`](http://hackage.haskell.org/package/parallel-3.2.2.0/docs/Control-Parallel-Strategies.html).
 
