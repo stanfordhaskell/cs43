@@ -159,7 +159,7 @@ parallelMap f (x:xs) = let r = f x
 parallelMap _ _      = []
 ```
 
-And alternate way to do this with `Strategies` is to use the `parList` function, which applies an evaluation strategy in parallel to every element of a list.  This isn't how it is implemented in the library, but semanatically, this function does something like this:
+And alternate way to do this with `Strategies` is to use the `parList` function, which applies an evaluation strategy in parallel to every element of a list.  This isn't how it is implemented in the library, but semantically, this function does something like this:
 
 ```
 paraList :: Strategy a -> Strategy [a]
