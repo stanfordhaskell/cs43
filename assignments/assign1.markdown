@@ -12,7 +12,6 @@ tool following the instructions
 The `assignment1` folder is a stack project (you don't need to create your
 own), with the following directory structure.
 ```
-.
 ├── LICENSE
 ├── Setup.hs
 ├── app -- Main executable
