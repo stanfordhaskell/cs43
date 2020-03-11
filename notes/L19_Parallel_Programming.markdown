@@ -133,13 +133,13 @@ m >>= f,
 
 An evaluation strategy does no computation; it simply ensures that a value is evaluated to some extent.  The simplest strategy is named `r0`, and does nothing:
 
-```
+```haskell
 r0 :: Strategy a
 r0 x = return x
 ```
 
 Next is `rseq`, which evaluates a value to weak head normal form, using [`evaluate`](https://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Exception.html#v:evaluate).
-```
+```haskell
 rseq :: Strategy a
 rseq x = Eval (evaluate x)
 ```
@@ -161,7 +161,7 @@ parallelMap _ _      = []
 
 And alternate way to do this with `Strategies` is to use the `parList` function, which applies an evaluation strategy in parallel to every element of a list.  This isn't how it is implemented in the library, but semantically, this function does something like this:
 
-```
+```haskell
 paraList :: Strategy a -> Strategy [a]
 parList strat [] = ()
 parList strat (x:xs) = strat x `par` (parList strat xs)
@@ -169,7 +169,7 @@ parList strat (x:xs) = strat x `par` (parList strat xs)
 
 Then, parallel map can be written like this:
 
-```
+```haskell
 parMap :: Strategy b -> (a -> b) -> [a] -> [b]
 parMap strat f xs = map f xs `using` parList strat
 ```
@@ -177,7 +177,7 @@ where `using :: a -> Strategy a -> a` evaluates a value using the given strategy
 
 For instance, if we want to use the `rpar` strategy, which sparks its argument for evaluation in parallel, we could do something like this:
 
-```
+```haskell
 doubles = parMap rpar (\x -> x*2) [1..100]
 ```
 
@@ -192,11 +192,11 @@ An interesting example of how to apply these concepts in practice can be seen in
 - Repeat steps 1 and 2 until the cluster locations stabilize.  (For our purpose, we will stop the algorithm, after a arbitrary number of iterations).
 
 We represent a data point as follows:
-```
+```haskell
 data Point = Point !Double !Double,
 ```
 and define various operations on points:
-```
+```haskell
 zeroPoint :: Point
 zeroPoint = Point 0 0
 
@@ -234,7 +234,7 @@ pointSumToCluster i (PointSum count xs ys) =
 
 Now, a sequential implementation of `K-means` looks like this:
 
-```
+```haskell
 -- <<step
 step :: Int -> [Cluster] -> [Point] -> [Cluster]
 step nclusters clusters points
@@ -285,9 +285,9 @@ kmeans_seq nclusters points clusters =
 tooMany = 80
 ```
 
-To parallelize it, we can break up the `assign` function, since it is essential just a `map` over the points.  This would look like this:
+To parallelize it, we can break up the `assign` function, since it is essentially just a `map` over the points.  This would look like this:
 
-```
+```haskell
 -- <<kmeans_strat
 kmeans_strat :: Int -> Int -> [Point] -> [Cluster] -> IO [Cluster]
 kmeans_strat numChunks nclusters points clusters =
