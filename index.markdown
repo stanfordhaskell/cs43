@@ -9,18 +9,7 @@ As per university guidelines, we are making Week 10 lectures available online as
 
 - [Lecture 19, Parallel Programming](notes/L19_Parallel_Programming.html)
 
-Question for attendance credit:
-
--- Using `Control.Parallel.Strategies`, write a parallel implementation of `map`, with type
-
-```haskell
-parMap :: Strategy b -> (a -> b) -> [a] -> [b]
-```
-
--- (EXTRA CREDIT) Write a function to time sequential and parallel sorting functions described in the lecture note.  Comment on what you observe, and if you see any further optimizations.
-
-- [Lecture 20]
-
+- [Lecture 20, coming soon.]
 
 ## General Info
 
