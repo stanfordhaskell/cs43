@@ -3,6 +3,15 @@ title: Class Information
 subtitle: CS43 -  Winter Quarter 2020
 ---
 
+## Online Lectures (Week 10)
+
+As per university guidelines, we are making Week 10 lectures available online as blog posts.
+
+- [Lecture 19, Parallel Programming](notes/L19_Parallel_Programming.html)
+
+- [Lecture 20]
+
+
 ## General Info
 
 This course covers the fundamentals of functional programming and algebraic type
