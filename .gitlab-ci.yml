@@ -1,4 +1,4 @@
-image: haskell:8.8.3
+image: sakshamsharma/docker-hakyll:v3
 
 before_script:
   - apt-get update && apt-get install xz-utils make
