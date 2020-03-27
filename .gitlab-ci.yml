@@ -1,9 +1,8 @@
-image: haskell:latest
+image: haskell:8.8.3
 
 before_script:
   - apt-get update && apt-get install xz-utils make
   - export STACK_ROOT=`pwd`/.stack
-  - export LANG=en_US.UTF-8 
   - stack setup
   - stack install --only-dependencies
   - stack build
